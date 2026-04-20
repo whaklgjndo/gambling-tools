@@ -372,6 +372,98 @@ main { padding: 48px 0 32px; }
   border-radius: 6px;
 }
 
+/* Downloads "pin" block embedded in a step. */
+.downloads-pin {
+  margin-top: 12px;
+  padding: 14px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: var(--radius);
+}
+
+.downloads-pin .pin-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.downloads-pin .pin-label::before {
+  content: "📌";
+  font-size: 1rem;
+}
+
+.downloads-pin .dl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.downloads-pin .dl-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.downloads-pin .dl-item:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  color: var(--text);
+}
+
+.downloads-pin .dl-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.downloads-pin .dl-item .dl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.downloads-pin .dl-item .dl-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.downloads-pin .dl-item .dl-desc {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.downloads-pin .dl-item .dl-platform {
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.downloads-pin .dl-item .dl-platform.stake { color: var(--stake); border-color: rgba(31, 255, 32, 0.3); }
+.downloads-pin .dl-item .dl-platform.nuts { color: var(--nuts); border-color: rgba(255, 176, 32, 0.3); }
+
 .feature-list {
   list-style: none;
   padding: 0;

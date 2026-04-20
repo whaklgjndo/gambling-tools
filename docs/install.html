@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Install Tampermonkey — Gambling Tools</title>
+  <title>Install Guide — Gambling Tools</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
     <div class="container">
       <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="install.html">Install Tampermonkey</a>
+        <a href="install.html">Install Guide</a>
         <a href="index.html#tools">Tools</a>
       </nav>
     </div>
@@ -19,8 +19,8 @@
 
   <main class="container">
     <section class="hero" style="text-align:left; padding: 32px 0 16px;">
-      <h1 style="font-size: 2.2rem;">Install Tampermonkey</h1>
-      <p style="margin:0;">Install the userscript manager for your platform once. Then open any tool page and click an install button — you'll get prompted to install the script.</p>
+      <h1 style="font-size: 2.2rem;">Install Guide + Tool Downloads</h1>
+      <p style="margin:0;">Pick your platform. Every tab has step-by-step instructions and a pinned download list with all the tools.</p>
     </section>
 
     <div class="tabs">
@@ -31,107 +31,333 @@
 
     <!-- ================= DESKTOP ================= -->
     <section class="tab-panel active" id="desktop">
-      <div class="notice">Works on Chrome, Edge, Brave, Opera, Firefox, and Safari.</div>
+      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install Tampermonkey.</p>
+
       <ol class="steps">
         <li>
-          <strong>Install Tampermonkey</strong> — go to <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">tampermonkey.net</a> and click <em>Download</em> for your browser. Add the extension from your browser's store and pin it to the toolbar.
+          <strong>Go to Tampermonkey's site and click Add to Chrome.</strong>
+          <div style="margin-top:8px;">
+            <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener" class="btn primary">Open Chrome Web Store →</a>
+          </div>
         </li>
         <li>
-          <strong>Right-click the Tampermonkey icon → Manage extension.</strong> This opens the extension's settings page where you can enable user scripts.
+          <strong>Right-click the Tampermonkey icon</strong> near your address bar → select <em>Manage extension</em>.
           <img src="assets/img/desktop-5.png" alt="Right-click Tampermonkey icon with Manage extension highlighted" />
         </li>
         <li>
-          <strong>Enable "Allow User Scripts"</strong> on the extension page (required on Chrome/Edge/Brave on current versions — replaces the old Developer Mode toggle).
+          <strong>On the extension page, find Allow User Scripts and turn it on.</strong> This is required by Chrome — without it, no userscript can run.
           <img src="assets/img/desktop-4.png" alt="Chrome extension page with Allow User Scripts toggle turned on" />
         </li>
         <li>
-          <strong>Click the Tampermonkey icon</strong> in the toolbar — the popup shows your scripts and options like <em>Create a new script</em> and <em>Find new scripts</em>.
-          <img src="assets/img/desktop-3.png" alt="Tampermonkey toolbar popup showing script options" />
+          <strong>Download a tool from the Desktop Downloads pin.</strong>
+          <div class="downloads-pin" id="dl-desktop">
+            <div class="pin-label">Desktop Downloads</div>
+            <div class="dl-grid">
+              <a class="dl-item" data-script="Desktop/stake-shuffle-dice-tool-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Dice Tool (Stake + Shuffle)</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Win-streak counter, autoplay stopper, balance export, strategy import. Install both: script + app.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/stake-iow-smart-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake IOW / Smart</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Manual/IOW/Smart bet-sizing for Stake Dice + Limbo, live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/nuts-iow-smart-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts IOW / Smart</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Manual/IOW/Smart bet-sizing for Nuts Dice + Target, live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/stake-mines-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Mines Auto</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Auto-plays Stake Mines with random picks, adjustable speed, live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/nuts-mines-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Mines Auto</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Auto-plays Nuts Mines with rapid picks, auto-cashout, adjustable speed.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/stake-keno-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Keno Presets</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Save + recall Keno picks + difficulty on Stake.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/nuts-keno-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Keno Presets</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Save + recall Keno picks + risk on Nuts. Shares presets with Stake Keno.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/stake-autovault-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Auto-Vault</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Auto-vaults a % of profits on Stake.com/us and mirrors.</span>
+              </a>
+              <a class="dl-item" data-script="Desktop/nuts-autovault-desktop.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Auto-Vault</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Auto-vaults a % of play-balance profits on Nuts.gg.</span>
+              </a>
+            </div>
+          </div>
         </li>
         <li>
-          <strong>Install a tool</strong> — on any tool page on this site, click the <em>Install for Desktop</em> button. Tampermonkey will show a confirmation page with the script name and matched URLs. Click <em>Install</em>.
+          <strong>Click the Tampermonkey icon → Create a new script…</strong>
+          <img src="assets/img/desktop-3.png" alt="Tampermonkey popup with Create a new script highlighted" />
+        </li>
+        <li>
+          <strong>Drag the downloaded .user.js file from your file explorer into the Tampermonkey editor.</strong>
+          <img src="assets/img/desktop-2.png" alt="Dragging a .user.js file from File Explorer into the Tampermonkey editor" />
+        </li>
+        <li>
+          <strong>Click Install on the page that appears.</strong>
           <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
         </li>
+        <li>
+          <strong>Open the site the tool is designed for. Refresh the page once. The tool appears.</strong>
+        </li>
       </ol>
-      <div class="notice">
-        <strong>Manual install (fallback):</strong> if a link ever opens as raw code, open Tampermonkey's dashboard, create a new empty script, and drag the <code>.user.js</code> file into the editor.
-        <img src="assets/img/desktop-2.png" alt="Tampermonkey editor with a userscript file being dragged in" style="margin-top:12px; max-width:100%; border-radius:6px; border:1px solid var(--border);" />
-      </div>
     </section>
 
     <!-- ================= ANDROID ================= -->
     <section class="tab-panel" id="android">
-      <div class="notice">
-        Regular Chrome on Android does not support extensions. Use <strong>Kiwi Browser</strong> (a Chromium-based browser that supports Chrome Web Store extensions) — or any other Chromium-on-Android browser with extension support.
-      </div>
+      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install Firefox + Tampermonkey. Chrome on Android doesn't support extensions.</p>
+
       <ol class="steps">
         <li>
-          <strong>Install Kiwi Browser</strong> from the Play Store. Open it, go to the Chrome Web Store, and search for <em>Tampermonkey</em>. Tap the Tampermonkey entry to add it to Kiwi.
-          <img src="assets/img/Android.png" alt="Searching Tampermonkey in the Chrome Web Store on Android" />
+          <strong>Install Firefox Browser by Mozilla from the Play Store.</strong> Not Firefox Focus, not Firefox Beta — only the regular Firefox supports extensions.
         </li>
         <li>
-          <strong>Open the browser menu (⋮) → Extensions</strong> to confirm Tampermonkey is enabled and to open its dashboard.
-          <img src="assets/img/android2.png" alt="Kiwi Browser menu with Extensions highlighted" />
+          <strong>Open Firefox → tap the ⋮ menu → Extensions.</strong>
         </li>
         <li>
-          <strong>Enable Developer Mode</strong> in the extensions page if prompted (required for user scripts on newer Chromium versions).
+          <strong>On the Extensions page, scroll to the bottom, and tap Find more extensions.</strong>
         </li>
         <li>
-          <strong>Install a tool</strong> — open any tool page on this site in Kiwi, tap <em>Install for Mobile</em>, and confirm the Tampermonkey install prompt.
+          <strong>Search for Tampermonkey</strong>, tap the first result, then tap <em>Add to Firefox</em> on the addons.mozilla.org page that opens.
+          <img src="assets/img/Android.png" alt="Tampermonkey shown in Firefox add-ons search results on Android" />
+        </li>
+        <li>
+          <strong>Back in Firefox, open the ⋮ menu → tap the Tampermonkey icon near the top.</strong>
+          <img src="assets/img/android2.png" alt="Firefox ⋮ menu with Extensions highlighted" />
+        </li>
+        <li>
+          <strong>This opens Tampermonkey's dashboard</strong> with Installed Userscripts / Settings / Utilities tabs. This is where you manage all your scripts.
+        </li>
+        <li>
+          <strong>Long-press a download link from the Mobile Downloads pin, copy the link, and paste it into Firefox's URL bar.</strong>
+          <div class="downloads-pin" id="dl-android">
+            <div class="pin-label">Mobile Downloads</div>
+            <div class="dl-grid">
+              <a class="dl-item" data-script="Mobile/stake-shuffle-dice-tools-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Dice Tools (Stake + Shuffle)</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Full Dice Tools app (calculator, simulator, optimizer, one-tap strategy import) in a phone-friendly floating panel.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-iow-smart-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake IOW / Smart</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Dice/Limbo bet-sizing with Manual/IOW/Smart modes and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-iow-smart-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts IOW / Smart</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Dice/Target bet-sizing with Manual/IOW/Smart modes and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-mines-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Mines Auto</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Mines auto-player with touch-friendly controls and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-mines-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Mines Auto</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Mines auto-player with touch-friendly controls.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-keno-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Keno Presets</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Keno preset manager — save and recall your picks + difficulty on the go.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-keno-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Keno Presets</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Keno preset manager. Shares presets with Stake Keno.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-autovault-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Auto-Vault</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Auto-Vault — auto-vaults a % of profits on Stake.com/us and mirrors.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-autovault-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Auto-Vault</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Auto-Vault — auto-vaults a % of play-balance profits.</span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <strong>This opens a Tampermonkey page — tap INSTALL.</strong>
+        </li>
+        <li>
+          <strong>Open the site the tool is designed for. Refresh the page once. The relevant tool should appear.</strong>
         </li>
       </ol>
     </section>
 
     <!-- ================= IPHONE ================= -->
     <section class="tab-panel" id="iphone">
-      <div class="notice">On iOS, userscripts run inside Safari via the free, open-source <strong>Userscripts</strong> app by Justin Wasack.</div>
+      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install the Userscripts app.</p>
+
       <ol class="steps">
         <li>
-          <strong>Open the App Store, search "userscripts"</strong>, and install <em>Userscripts</em> by Justin Wasack (icon: <code>&lt;/&gt;</code> on a light grey tile).
+          <strong>Open the App Store and search for Userscripts.</strong> Look for the <code>&lt;/&gt;</code> icon by Justin Wasack. Tap <em>GET</em> to install.
           <img src="assets/img/i10.png" alt="App Store showing Userscripts by Justin Wasack" />
         </li>
         <li>
-          <strong>Open the Settings app</strong> and search for <em>Safari</em>.
+          <strong>Open iPhone Settings → Apps → Safari → Extensions → Userscripts.</strong> (Or just search "Safari" in Settings.)
           <img src="assets/img/i9.png" alt="iOS Settings searching for Safari" />
-        </li>
-        <li>
-          <strong>Scroll to General → Extensions</strong> inside Safari settings.
           <img src="assets/img/i8.png" alt="Safari settings with Extensions row highlighted" />
-        </li>
-        <li>
-          <strong>Tap Userscripts and turn it On</strong> in the extensions list.
           <img src="assets/img/i7.png" alt="Safari extensions list with Userscripts turned On" />
         </li>
         <li>
-          <strong>Open the Userscripts extension page</strong> and enable <em>Allow Extension</em>. Grant website access — set <em>Other Websites</em> to <em>Allow</em> so scripts can run on Stake and Nuts.
-          <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension toggled on" />
+          <strong>Toggle Allow Extension to ON.</strong> Under <em>Other Websites</em>, select <em>Allow</em>.
+          <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension on and Other Websites set to Allow" />
         </li>
         <li>
-          <strong>Back in Safari, tap an install button</strong> on any tool page on this site. Safari will show the <code>.user.js</code> file — tap the <em>Share</em> icon at the bottom.
-          <img src="assets/img/i5.png" alt="Safari showing a .user.js download with Share button highlighted" />
+          <strong>Tap the download link for a tool from the Mobile Downloads pin.</strong> Safari opens and shows the raw script text, or it may just pop up the script icon.
+          <div class="downloads-pin" id="dl-iphone">
+            <div class="pin-label">Mobile Downloads</div>
+            <div class="dl-grid">
+              <a class="dl-item" data-script="Mobile/stake-shuffle-dice-tools-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Dice Tools (Stake + Shuffle)</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Full Dice Tools app (calculator, simulator, optimizer, one-tap strategy import) in a phone-friendly floating panel.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-iow-smart-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake IOW / Smart</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Dice/Limbo bet-sizing with Manual/IOW/Smart modes and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-iow-smart-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts IOW / Smart</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Dice/Target bet-sizing with Manual/IOW/Smart modes and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-mines-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Mines Auto</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Mines auto-player with touch-friendly controls and live stats.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-mines-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Mines Auto</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Mines auto-player with touch-friendly controls.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-keno-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Keno Presets</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Keno preset manager — save and recall your picks + difficulty on the go.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-keno-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Keno Presets</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Keno preset manager. Shares presets with Stake Keno.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/stake-autovault-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Stake Auto-Vault</span>
+                  <span class="dl-platform stake">Stake</span>
+                </div>
+                <span class="dl-desc">Mobile Stake Auto-Vault — auto-vaults a % of profits on Stake.com/us and mirrors.</span>
+              </a>
+              <a class="dl-item" data-script="Mobile/nuts-autovault-mobile.user.js">
+                <div class="dl-row">
+                  <span class="dl-title">Nuts Auto-Vault</span>
+                  <span class="dl-platform nuts">Nuts</span>
+                </div>
+                <span class="dl-desc">Mobile Nuts Auto-Vault — auto-vaults a % of play-balance profits.</span>
+              </a>
+            </div>
+          </div>
         </li>
         <li>
-          <strong>Pick the Userscripts folder</strong> from the save dialog — tap the dropdown and choose <em>Userscripts</em> (the folder the extension created).
+          <strong>At the bottom of the page tap the Share icon</strong> and then select <em>Save to Files</em>.
+          <img src="assets/img/i5.png" alt="Safari showing .user.js download page with Share button highlighted" />
+        </li>
+        <li>
+          <strong>If not already selected, from the drop-down select the Userscripts folder</strong> to save the script into.
           <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
         </li>
         <li>
-          <strong>Tap Save</strong> in the top-right.
+          <strong>Tap Save</strong> (disk icon, top-right).
           <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
         </li>
         <li>
-          <strong>Open the game page</strong> (e.g. stake.us/casino/games/keno). Tap the Userscripts icon in Safari's address bar to open the popover and confirm the script is listed and enabled.
-          <img src="assets/img/i2.png" alt="Safari page on stake.us with Userscripts popover open" />
+          <strong>Open Safari and go to the site the tool is designed for. Refresh the page once. The tool appears.</strong>
         </li>
         <li>
-          <strong>Done.</strong> The script now runs every time you open a matching page. Toggle individual scripts on/off from the Userscripts popover.
-          <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts on stake.us" />
+          <strong>To enable / disable scripts</strong>, tap the puzzle piece in your URL bar and select <em>Userscripts</em>. From there you can tap a script to enable or disable it.
+          <img src="assets/img/i2.png" alt="Safari on stake.us with Userscripts popover open" />
+          <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts" />
         </li>
       </ol>
     </section>
 
     <section class="section">
       <h2>Next step</h2>
-      <p><a href="index.html#tools" class="btn primary">Browse tools →</a></p>
+      <p><a href="index.html#tools" class="btn primary">Browse tool guides →</a></p>
     </section>
   </main>
 
