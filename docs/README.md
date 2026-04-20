@@ -5,7 +5,7 @@ GitHub Pages, Netlify, or Cloudflare Pages.
 
 ## 1. Wire up install links
 
-Open `site/assets/config.js` and fill in your GitHub username, repo name, and branch:
+Open `docs/assets/config.js` and fill in your GitHub username, repo name, and branch:
 
 ```js
 window.SITE_CONFIG = {
@@ -32,7 +32,7 @@ So your repo root should contain:
 ```
 /Desktop/    <-- all *-desktop.user.js files
 /Mobile/     <-- all *-mobile.user.js files
-/site/       <-- this site
+/docs/       <-- this site
 ```
 
 That matches what's already on disk — no moving required.
@@ -41,12 +41,12 @@ That matches what's already on disk — no moving required.
 
 1. Create a public repo on GitHub and push this folder.
 2. Repo → Settings → Pages → Source: **Deploy from a branch**.
-3. Branch: `main`, folder: `/site`. Save.
+3. Branch: `main`, folder: `/docs`. Save.
 4. Wait ~1 minute, your site will be at `https://<user>.github.io/<repo>/`.
 
 ## 4. (Optional) Custom domain
 
-Add a `CNAME` file in `site/` with your domain, then point a CNAME DNS record at
+Add a `CNAME` file in `docs/` with your domain, then point a CNAME DNS record at
 `<user>.github.io`.
 
 ## 5. Local preview
@@ -54,7 +54,7 @@ Add a `CNAME` file in `site/` with your domain, then point a CNAME DNS record at
 Any static server works. Simplest:
 
 ```bash
-cd site
+cd docs
 python -m http.server 8000
 # open http://localhost:8000
 ```
