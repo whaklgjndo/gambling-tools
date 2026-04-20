@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Keno Preset Manager — Gambling Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="../install.html">Install Tampermonkey</a>
+        <a href="../index.html#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-header">
+      <span class="icon">🎱</span>
+      <h1>Keno Preset Manager</h1>
+    </div>
+    <p class="tool-sub">Save and load Keno number + difficulty presets. No more clicking 10 tiles and re-picking risk every session.</p>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li>Save your current Keno tile selection + difficulty (classic/low/medium/high) as a named preset</li>
+        <li>Load any preset with one click — tiles and risk set automatically</li>
+        <li>Presets shared across Stake sites via localStorage</li>
+        <li>Rename, reorder, and delete presets from the compact panel</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Install</h2>
+      <div class="install-row">
+        <div class="platform">
+          <h4>Stake — Desktop</h4>
+          <p>Keno on stake.com / stake.us</p>
+          <a class="btn stake" data-script="Desktop/stake-keno-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Stake — Mobile</h4>
+          <p>Keno, mobile build</p>
+          <a class="btn stake" data-script="Mobile/stake-keno-mobile.user.js">Install for Mobile</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Desktop</h4>
+          <p>Keno on nuts.com</p>
+          <a class="btn nuts" data-script="Desktop/nuts-keno-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Mobile</h4>
+          <p>Keno, mobile build</p>
+          <a class="btn nuts" data-script="Mobile/nuts-keno-mobile.user.js">Install for Mobile</a>
+        </div>
+      </div>
+      <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>How to use</h2>
+      <ol class="steps">
+        <li><strong>Install the script</strong> for your platform.</li>
+        <li><strong>Open the Keno game</strong> on Stake or Nuts. A preset panel appears near the board.</li>
+        <li><strong>Pick your tiles and risk</strong> manually the first time.</li>
+        <li><strong>Click "Save preset"</strong>, give it a name (e.g. "Edge 5 Medium").</li>
+        <li><strong>Next time</strong>, click the preset name and the script selects all tiles + sets difficulty for you.</li>
+      </ol>
+    </section>
+
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+  </footer>
+
+  <script src="../assets/config.js"></script>
+</body>
+</html>

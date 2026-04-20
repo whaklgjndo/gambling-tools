@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IOW / Smart — Gambling Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="../install.html">Install Tampermonkey</a>
+        <a href="../index.html#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-header">
+      <span class="icon">🎯</span>
+      <h1>IOW / Smart</h1>
+    </div>
+    <p class="tool-sub">Manual, Increase-on-Win, and Smart bet-sizing modes for Dice and Limbo — with live stats and a compact HUD overlay.</p>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li><strong>Manual</strong> — bet a fixed base every round</li>
+        <li><strong>IOW (Increase on Win)</strong> — ramp up your bet by a configurable % after each win</li>
+        <li><strong>Smart</strong> — dynamic sizing with loss-streak reset, wins-before-reset, and min/max base caps</li>
+        <li>Live HUD: wagered, wins/losses, P/L, peak profit, current base bet</li>
+        <li>Auto-stop at a balance threshold to lock in gains</li>
+        <li>Real-time profit chart (up to 10,000 points)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Install</h2>
+      <div class="install-row">
+        <div class="platform">
+          <h4>Stake — Desktop</h4>
+          <p>Dice &amp; Limbo on stake.com / stake.us</p>
+          <a class="btn stake" data-script="Desktop/stake-iow-smart-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Stake — Mobile</h4>
+          <p>Dice &amp; Limbo, mobile build</p>
+          <a class="btn stake" data-script="Mobile/stake-iow-smart-mobile.user.js">Install for Mobile</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Desktop</h4>
+          <p>Dice &amp; Limbo on nuts.com</p>
+          <a class="btn nuts" data-script="Desktop/nuts-iow-smart-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Mobile</h4>
+          <p>Dice &amp; Limbo, mobile build</p>
+          <a class="btn nuts" data-script="Mobile/nuts-iow-smart-mobile.user.js">Install for Mobile</a>
+        </div>
+      </div>
+      <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>How to use</h2>
+      <ol class="steps">
+        <li><strong>Install the script</strong> for your platform.</li>
+        <li><strong>Open Dice or Limbo</strong> on the target site. The HUD appears in the corner.</li>
+        <li><strong>Pick a mode</strong> — Manual, IOW, or Smart — from the mode selector.</li>
+        <li><strong>Set your params:</strong> base bet, win-increase %, loss-streak reset, wins-before-reset, min/max base, auto-stop balance.</li>
+        <li><strong>Hit the site's own Autobet button.</strong> The script listens to bet results and resizes your next bet per the active mode.</li>
+        <li><strong>Watch the HUD and chart</strong> for live P/L. Auto-stop fires when your balance crosses the threshold.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Mode cheatsheet</h2>
+      <h3>Manual</h3>
+      <p>Every bet is your base bet. Useful for measuring variance without any sizing noise.</p>
+      <h3>IOW (Increase on Win)</h3>
+      <p>After each win, the next bet grows by <code>winIncreasePercent</code>. Resets to base on a loss. Classic positive-progression pattern.</p>
+      <h3>Smart</h3>
+      <p>Same as IOW, but also resets when you hit <code>winsBeforeReset</code> consecutive wins, and will reset progression if you hit <code>lossStreakReset</code> losses in a row. Clamped between <code>minBaseBet</code> and <code>maxBaseBet</code>.</p>
+    </section>
+
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+  </footer>
+
+  <script src="../assets/config.js"></script>
+</body>
+</html>

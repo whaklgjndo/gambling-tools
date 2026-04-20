@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gambling Tools — Userscripts for Stake & Nuts</title>
+  <meta name="description" content="A collection of Tampermonkey userscripts for Stake and Nuts: auto-vault, bet-sizing modes, Keno presets, Mines helper, and Dice tools. Desktop and mobile builds." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="install.html">Install Tampermonkey</a>
+        <a href="#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Userscripts for Stake &amp; Nuts</h1>
+      <p>A clean collection of Tampermonkey tools — auto-vault, smart bet-sizing, Keno presets, Mines helper, and Dice utilities. Desktop and mobile builds for every tool.</p>
+      <div class="cta">
+        <a href="install.html" class="btn primary">Install Tampermonkey →</a>
+        <a href="#tools" class="btn">Browse tools</a>
+      </div>
+    </section>
+
+    <section id="tools" class="section">
+      <h2>Tools</h2>
+
+      <div class="grid">
+        <a href="tools/autovault.html" class="card">
+          <div class="icon">🔒</div>
+          <h3>Auto-Vault</h3>
+          <p>Automatically sends a configurable percentage of your profits straight to the vault. Floating UI, per-currency limits.</p>
+          <div class="tags">
+            <span class="tag stake">Stake</span>
+            <span class="tag nuts">Nuts</span>
+          </div>
+          <div class="card-footer">
+            <span>Desktop + Mobile</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="tools/iow-smart.html" class="card">
+          <div class="icon">🎯</div>
+          <h3>IOW / Smart</h3>
+          <p>Manual, Increase-on-Win, and Smart bet-sizing modes for Dice and Limbo. Live stats, compact HUD, auto-stop limits.</p>
+          <div class="tags">
+            <span class="tag stake">Stake</span>
+            <span class="tag nuts">Nuts</span>
+          </div>
+          <div class="card-footer">
+            <span>Desktop + Mobile</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="tools/keno.html" class="card">
+          <div class="icon">🎱</div>
+          <h3>Keno Preset Manager</h3>
+          <p>Save and load Keno number + difficulty presets. Shared across Stake sites via localStorage.</p>
+          <div class="tags">
+            <span class="tag stake">Stake</span>
+            <span class="tag nuts">Nuts</span>
+          </div>
+          <div class="card-footer">
+            <span>Desktop + Mobile</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="tools/mines.html" class="card">
+          <div class="icon">💎</div>
+          <h3>Mines Auto + Helper</h3>
+          <p>Auto-plays Mines with weighted random tile picks. Live multiplier, payout, and next-gem probability stats.</p>
+          <div class="tags">
+            <span class="tag stake">Stake</span>
+            <span class="tag nuts">Nuts</span>
+          </div>
+          <div class="card-footer">
+            <span>Desktop + Mobile</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="tools/shuffle-dice.html" class="card">
+          <div class="icon">🎲</div>
+          <h3>Dice Tool</h3>
+          <p>On-site dice helper: win/loss counter, streak-based autoplay stopper, balance export, one-tap strategy import.</p>
+          <div class="tags">
+            <span class="tag stake">Stake</span>
+            <span class="tag shuffle">Shuffle</span>
+          </div>
+          <div class="card-footer">
+            <span>Desktop + Mobile</span>
+            <span>→</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Getting started</h2>
+      <ol class="steps">
+        <li><strong>Install Tampermonkey</strong> — the browser/mobile extension that runs userscripts. <a href="install.html">See the install guide →</a></li>
+        <li><strong>Pick a tool</strong> — each tool page has a one-click install button for desktop and mobile, per site.</li>
+        <li><strong>Open the site</strong> — Tampermonkey injects the script automatically on the matching URL.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="container">
+      Userscripts run client-side only. Use at your own risk — gamble responsibly.
+    </div>
+  </footer>
+
+  <script src="assets/config.js"></script>
+</body>
+</html>

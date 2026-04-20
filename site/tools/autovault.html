@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Auto-Vault — Gambling Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="../install.html">Install Tampermonkey</a>
+        <a href="../index.html#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-header">
+      <span class="icon">🔒</span>
+      <h1>Auto-Vault</h1>
+    </div>
+    <p class="tool-sub">Automatically send a percentage of your profits straight to the vault — so you can't lose them back.</p>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li>Watches your balance and deposits a configurable % of profit into the vault</li>
+        <li>Floating, draggable UI that stays out of the way</li>
+        <li>Per-currency support (BNB, SC, and more) with sensible defaults</li>
+        <li>Rate-limited and retry-aware — won't spam requests or fire during reconnects</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Install</h2>
+      <div class="install-row">
+        <div class="platform">
+          <h4>Stake — Desktop</h4>
+          <p>stake.com / stake.us and mirror domains</p>
+          <a class="btn stake" data-script="Desktop/stake-autovault-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Stake — Mobile</h4>
+          <p>For Tampermonkey on Firefox Android or iOS Userscripts</p>
+          <a class="btn stake" data-script="Mobile/stake-autovault-mobile.user.js">Install for Mobile</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Desktop</h4>
+          <p>nuts.com</p>
+          <a class="btn nuts" data-script="Desktop/nuts-autovault-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Mobile</h4>
+          <p>For Tampermonkey on Firefox Android or iOS Userscripts</p>
+          <a class="btn nuts" data-script="Mobile/nuts-autovault-mobile.user.js">Install for Mobile</a>
+        </div>
+      </div>
+      <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>How to use</h2>
+      <ol class="steps">
+        <li><strong>Install the script</strong> for your platform above.</li>
+        <li><strong>Open Stake or Nuts</strong>. A small floating Auto-Vault panel appears in the corner.</li>
+        <li><strong>Set your vault percentage</strong> — the default is 20% of profit per trigger. Drag the panel anywhere.</li>
+        <li><strong>Play normally.</strong> Whenever your balance grows past the threshold, the script sends the configured cut to the vault automatically.</li>
+        <li><strong>Check the log.</strong> The panel shows recent deposits and any errors.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Tips</h2>
+      <ul class="feature-list">
+        <li>Settings are saved to localStorage per site — Stake and Nuts keep separate configs.</li>
+        <li>If the panel doesn't appear, check that Tampermonkey shows the script is enabled on the current domain.</li>
+        <li>Start with a small percentage and raise it once you've confirmed it works on your account.</li>
+      </ul>
+    </section>
+
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+  </footer>
+
+  <script src="../assets/config.js"></script>
+</body>
+</html>

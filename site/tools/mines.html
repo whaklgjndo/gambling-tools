@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mines Auto + Helper — Gambling Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="../install.html">Install Tampermonkey</a>
+        <a href="../index.html#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-header">
+      <span class="icon">💎</span>
+      <h1>Mines Auto + Helper</h1>
+    </div>
+    <p class="tool-sub">Auto-plays Mines with weighted random tile picks, configurable speed, and live payout + next-gem probability stats.</p>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li>Random tile picker with configurable min/max picks per round</li>
+        <li>Adjustable click speed (slow → fast)</li>
+        <li>Live stats: current multiplier, payout, next-gem probability</li>
+        <li>Auto-cashout at your configured pick count</li>
+        <li>Draggable compact GUI</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Install</h2>
+      <div class="install-row">
+        <div class="platform">
+          <h4>Stake — Desktop</h4>
+          <p>Mines on stake.us</p>
+          <a class="btn stake" data-script="Desktop/stake-mines-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Stake — Mobile</h4>
+          <p>Mines, mobile build</p>
+          <a class="btn stake" data-script="Mobile/stake-mines-mobile.user.js">Install for Mobile</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Desktop</h4>
+          <p>Mines on nuts.com</p>
+          <a class="btn nuts" data-script="Desktop/nuts-mines-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Nuts — Mobile</h4>
+          <p>Mines, mobile build</p>
+          <a class="btn nuts" data-script="Mobile/nuts-mines-mobile.user.js">Install for Mobile</a>
+        </div>
+      </div>
+      <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>How to use</h2>
+      <ol class="steps">
+        <li><strong>Install the script</strong> for your platform.</li>
+        <li><strong>Open the Mines game</strong>. The helper GUI appears top-right (drag it anywhere).</li>
+        <li><strong>Set your mines count and bet</strong> in the Mines UI as normal.</li>
+        <li><strong>Set min/max picks and speed</strong> in the helper panel. Watch the next-gem probability update as conditions change.</li>
+        <li><strong>Click Start</strong>. The script will place bets, click random tiles, cash out, and repeat.</li>
+        <li><strong>Click Stop</strong> (or switch tabs) to halt between rounds.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Tips</h2>
+      <ul class="feature-list">
+        <li>High speed + high picks + high mine count = high variance. Start conservative.</li>
+        <li>The next-gem probability is exact given remaining tiles and mines — use it to calibrate your cashout target.</li>
+      </ul>
+    </section>
+
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+  </footer>
+
+  <script src="../assets/config.js"></script>
+</body>
+</html>

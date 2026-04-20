@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dice Tool — Gambling Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="../install.html">Install Tampermonkey</a>
+        <a href="../index.html#tools">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-header">
+      <span class="icon">🎲</span>
+      <h1>Dice Tool</h1>
+    </div>
+    <p class="tool-sub">On-site dice helper for Stake and Shuffle: win/loss counter, streak-based autoplay stopper, balance export, one-tap advanced strategy import.</p>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li>Live win/loss counter with session stats</li>
+        <li>Streak-based autoplay stopper (halt on N consecutive losses)</li>
+        <li>Balance export — snapshot your balance to clipboard/JSON</li>
+        <li>One-tap import of an advanced strategy (preset chain rules)</li>
+        <li>Works on Stake Dice, Primedice, and Shuffle.us Dice</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Install</h2>
+      <div class="install-row">
+        <div class="platform">
+          <h4>Stake / Shuffle — Desktop</h4>
+          <p>stake.com, stake.us (Dice + Primedice), shuffle.us</p>
+          <a class="btn stake" data-script="Desktop/stake-shuffle-dice-tool-desktop.user.js">Install for Desktop</a>
+        </div>
+        <div class="platform">
+          <h4>Stake / Shuffle — Mobile</h4>
+          <p>Mobile build for Firefox Android or iOS Userscripts</p>
+          <a class="btn stake" data-script="Mobile/stake-shuffle-dice-tools-mobile.user.js">Install for Mobile</a>
+        </div>
+      </div>
+      <div class="notice">This tool also supports Shuffle.us in addition to Stake — no separate Shuffle build needed.</div>
+      <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>How to use</h2>
+      <ol class="steps">
+        <li><strong>Install the script</strong> for your platform.</li>
+        <li><strong>Open Stake Dice, Primedice, or Shuffle.us Dice.</strong> The helper panel appears.</li>
+        <li><strong>Set the max loss streak</strong> at which autoplay should halt.</li>
+        <li><strong>Start the site's autobet</strong> as normal. The counter tracks W/L in real time.</li>
+        <li><strong>Streak trigger:</strong> when you hit N losses in a row, the script stops autoplay automatically.</li>
+        <li><strong>Export / Import:</strong> use the export button to snapshot state, or the one-tap import to apply an advanced strategy preset.</li>
+      </ol>
+    </section>
+
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+  </footer>
+
+  <script src="../assets/config.js"></script>
+</body>
+</html>
