@@ -20,7 +20,7 @@
   <main class="container">
     <section class="hero" style="text-align:left; padding: 32px 0 16px;">
       <h1 style="font-size: 2.2rem;">Install Tampermonkey</h1>
-      <p style="margin:0;">Tampermonkey runs these userscripts in your browser. Install it once, then open any tool page and click the install button. Pick your platform below.</p>
+      <p style="margin:0;">Install the userscript manager for your platform once. Then open any tool page and click an install button — you'll get prompted to install the script.</p>
     </section>
 
     <div class="tabs">
@@ -31,80 +31,100 @@
 
     <!-- ================= DESKTOP ================= -->
     <section class="tab-panel active" id="desktop">
-      <div class="notice">Works on Chrome, Edge, Brave, Firefox, Opera, and Safari.</div>
+      <div class="notice">Works on Chrome, Edge, Brave, Opera, Firefox, and Safari.</div>
       <ol class="steps">
         <li>
-          <strong>Go to the Tampermonkey site</strong> and click <em>Download</em> for your browser — <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">tampermonkey.net</a>.
-          <img src="assets/img/desktop-1.png" alt="Tampermonkey download page" />
+          <strong>Install Tampermonkey</strong> — go to <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">tampermonkey.net</a> and click <em>Download</em> for your browser. Add the extension from your browser's store and pin it to the toolbar.
         </li>
         <li>
-          <strong>Add the extension</strong> from your browser's store and confirm the install prompt.
-          <img src="assets/img/desktop-2.png" alt="Browser extension store" />
+          <strong>Right-click the Tampermonkey icon → Manage extension.</strong> This opens the extension's settings page where you can enable user scripts.
+          <img src="assets/img/desktop-5.png" alt="Right-click Tampermonkey icon with Manage extension highlighted" />
         </li>
         <li>
-          <strong>Pin the Tampermonkey icon</strong> to your toolbar (recommended) so you can manage scripts easily.
-          <img src="assets/img/desktop-3.png" alt="Pinned Tampermonkey icon" />
+          <strong>Enable "Allow User Scripts"</strong> on the extension page (required on Chrome/Edge/Brave on current versions — replaces the old Developer Mode toggle).
+          <img src="assets/img/desktop-4.png" alt="Chrome extension page with Allow User Scripts toggle turned on" />
         </li>
         <li>
-          <strong>Enable Developer Mode</strong> in your browser's extensions page (Chrome/Edge) — required for userscripts to run reliably.
-          <img src="assets/img/desktop-4.png" alt="Developer mode toggle" />
+          <strong>Click the Tampermonkey icon</strong> in the toolbar — the popup shows your scripts and options like <em>Create a new script</em> and <em>Find new scripts</em>.
+          <img src="assets/img/desktop-3.png" alt="Tampermonkey toolbar popup showing script options" />
         </li>
         <li>
-          <strong>Install a tool</strong> — open any tool page on this site, click <em>Install for Desktop</em>, and confirm the Tampermonkey prompt.
-          <img src="assets/img/desktop-5.png" alt="Tampermonkey install prompt" />
+          <strong>Install a tool</strong> — on any tool page on this site, click the <em>Install for Desktop</em> button. Tampermonkey will show a confirmation page with the script name and matched URLs. Click <em>Install</em>.
+          <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
         </li>
       </ol>
-      <div class="notice warn">If an install link opens as raw code instead of showing a prompt, make sure Tampermonkey is enabled and the URL ends in <code>.user.js</code>.</div>
+      <div class="notice">
+        <strong>Manual install (fallback):</strong> if a link ever opens as raw code, open Tampermonkey's dashboard, create a new empty script, and drag the <code>.user.js</code> file into the editor.
+        <img src="assets/img/desktop-2.png" alt="Tampermonkey editor with a userscript file being dragged in" style="margin-top:12px; max-width:100%; border-radius:6px; border:1px solid var(--border);" />
+      </div>
     </section>
 
     <!-- ================= ANDROID ================= -->
     <section class="tab-panel" id="android">
-      <div class="notice">On Android, Tampermonkey works inside <strong>Firefox for Android</strong>. Chrome on Android does not support extensions.</div>
+      <div class="notice">
+        Regular Chrome on Android does not support extensions. Use <strong>Kiwi Browser</strong> (a Chromium-based browser that supports Chrome Web Store extensions) — or any other Chromium-on-Android browser with extension support.
+      </div>
       <ol class="steps">
         <li>
-          <strong>Install Firefox for Android</strong> from the Play Store.
-          <img src="assets/img/Android.png" alt="Firefox for Android" />
+          <strong>Install Kiwi Browser</strong> from the Play Store. Open it, go to the Chrome Web Store, and search for <em>Tampermonkey</em>. Tap the Tampermonkey entry to add it to Kiwi.
+          <img src="assets/img/Android.png" alt="Searching Tampermonkey in the Chrome Web Store on Android" />
         </li>
         <li>
-          <strong>Open Firefox → menu → Add-ons</strong>, then search for and install <em>Tampermonkey</em>.
-          <img src="assets/img/android2.png" alt="Add Tampermonkey add-on" />
+          <strong>Open the browser menu (⋮) → Extensions</strong> to confirm Tampermonkey is enabled and to open its dashboard.
+          <img src="assets/img/android2.png" alt="Kiwi Browser menu with Extensions highlighted" />
         </li>
         <li>
-          <strong>Enable the add-on</strong> when prompted and grant permissions.
+          <strong>Enable Developer Mode</strong> in the extensions page if prompted (required for user scripts on newer Chromium versions).
         </li>
         <li>
-          <strong>Install a tool</strong> — open any tool page on this site in Firefox, tap <em>Install for Mobile</em>, and confirm the Tampermonkey prompt.
+          <strong>Install a tool</strong> — open any tool page on this site in Kiwi, tap <em>Install for Mobile</em>, and confirm the Tampermonkey install prompt.
         </li>
       </ol>
     </section>
 
     <!-- ================= IPHONE ================= -->
     <section class="tab-panel" id="iphone">
-      <div class="notice">On iOS, userscripts run inside Safari via the <strong>Userscripts</strong> app (a free, open-source Safari extension).</div>
+      <div class="notice">On iOS, userscripts run inside Safari via the free, open-source <strong>Userscripts</strong> app by Justin Wasack.</div>
       <ol class="steps">
         <li>
-          <strong>Install the Userscripts app</strong> from the App Store (search “Userscripts” by Justin Wasack).
-          <img src="assets/img/i1.png" alt="Userscripts app on App Store" />
+          <strong>Open the App Store, search "userscripts"</strong>, and install <em>Userscripts</em> by Justin Wasack (icon: <code>&lt;/&gt;</code> on a light grey tile).
+          <img src="assets/img/i10.png" alt="App Store showing Userscripts by Justin Wasack" />
         </li>
         <li>
-          <strong>Open Settings → Safari → Extensions</strong> and enable <em>Userscripts</em>.
-          <img src="assets/img/i2.png" alt="Enable Userscripts extension in Safari settings" />
+          <strong>Open the Settings app</strong> and search for <em>Safari</em>.
+          <img src="assets/img/i9.png" alt="iOS Settings searching for Safari" />
         </li>
         <li>
-          <strong>Grant access to All Websites</strong> (or at least to stake.com / stake.us / nuts.com) so scripts can run.
-          <img src="assets/img/i3.png" alt="Grant website access" />
+          <strong>Scroll to General → Extensions</strong> inside Safari settings.
+          <img src="assets/img/i8.png" alt="Safari settings with Extensions row highlighted" />
         </li>
         <li>
-          <strong>Open the Userscripts app</strong> and pick a folder for scripts (create one if prompted).
-          <img src="assets/img/i4.png" alt="Pick scripts folder" />
+          <strong>Tap Userscripts and turn it On</strong> in the extensions list.
+          <img src="assets/img/i7.png" alt="Safari extensions list with Userscripts turned On" />
         </li>
         <li>
-          <strong>Open a tool page</strong> on this site in Safari, tap <em>Install for Mobile</em>. The Userscripts extension will prompt you to save the script.
-          <img src="assets/img/i5.png" alt="Install userscript in Safari" />
+          <strong>Open the Userscripts extension page</strong> and enable <em>Allow Extension</em>. Grant website access — set <em>Other Websites</em> to <em>Allow</em> so scripts can run on Stake and Nuts.
+          <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension toggled on" />
         </li>
         <li>
-          <strong>Enable the script</strong> from the Userscripts popover in Safari (tap the <em>aA</em> menu → Userscripts icon).
-          <img src="assets/img/i6.png" alt="Enable userscript from Safari popover" />
+          <strong>Back in Safari, tap an install button</strong> on any tool page on this site. Safari will show the <code>.user.js</code> file — tap the <em>Share</em> icon at the bottom.
+          <img src="assets/img/i5.png" alt="Safari showing a .user.js download with Share button highlighted" />
+        </li>
+        <li>
+          <strong>Pick the Userscripts folder</strong> from the save dialog — tap the dropdown and choose <em>Userscripts</em> (the folder the extension created).
+          <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
+        </li>
+        <li>
+          <strong>Tap Save</strong> in the top-right.
+          <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
+        </li>
+        <li>
+          <strong>Open the game page</strong> (e.g. stake.us/casino/games/keno). Tap the Userscripts icon in Safari's address bar to open the popover and confirm the script is listed and enabled.
+          <img src="assets/img/i2.png" alt="Safari page on stake.us with Userscripts popover open" />
+        </li>
+        <li>
+          <strong>Done.</strong> The script now runs every time you open a matching page. Toggle individual scripts on/off from the Userscripts popover.
+          <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts on stake.us" />
         </li>
       </ol>
     </section>
