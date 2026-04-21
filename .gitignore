@@ -2,3 +2,10 @@
 node_modules/
 .DS_Store
 Thumbs.db
+
+# Ad-hoc screenshots pasted at the repo root (e.g. DevTools captures).
+# Guide/tool screenshots live under docs/assets/img/ and aren't affected.
+/Screenshot*.png
+/screenshot*.png
+/*.png
+!docs/**/*.png
