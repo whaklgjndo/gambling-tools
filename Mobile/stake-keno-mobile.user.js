@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Stake Keno Preset Manager (Mobile Userscripts)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Mobile Userscripts counterpart for Stake Keno presets. Save/load number + difficulty presets on stake.com and stake.us with touch-friendly controls.
 // @author       .
 // @match        https://stake.com/casino/games/keno*
@@ -35,12 +35,24 @@
     function getTiles() {
         return Array.from(document.querySelectorAll(TILE_SELECTOR));
     }
-    function getSelectedNumbers() {
+
+    // Picks are tracked from the user's own click events — Stake also sets
+    // data-selected="true" on game-drawn HIT tiles during a round, so reading
+    // that attribute reports hits as picks. Source of truth lives here.
+    const userPicks = new Set();
+
+    function readPicksFromDOM() {
         return getTiles()
             .filter(t => t.dataset.selected === 'true')
             .map(t => Number(t.dataset.index) + 1)
-            .filter(n => !isNaN(n))
-            .sort((a, b) => a - b);
+            .filter(n => !isNaN(n));
+    }
+    function syncPicksFromDOM() {
+        userPicks.clear();
+        for (const n of readPicksFromDOM()) userPicks.add(n);
+    }
+    function getSelectedNumbers() {
+        return Array.from(userPicks).sort((a, b) => a - b);
     }
     function getRisk() {
         const el = document.querySelector(RISK_SELECTOR);
@@ -160,6 +172,7 @@
             <div class="kp-btn-row">
                 <button class="kp-btn primary" id="kp-load">Load</button>
                 <button class="kp-btn" id="kp-save">Save As…</button>
+                <button class="kp-btn" id="kp-sync" title="Re-read current picks from the board">↻</button>
                 <button class="kp-btn danger" id="kp-delete">Delete</button>
             </div>
         </div>
@@ -170,6 +183,7 @@
     const currentEl = gui.querySelector('#kp-current');
     const loadBtn = gui.querySelector('#kp-load');
     const saveBtn = gui.querySelector('#kp-save');
+    const syncBtn = gui.querySelector('#kp-sync');
     const deleteBtn = gui.querySelector('#kp-delete');
     const closeBtn = gui.querySelector('#kp-close');
     const minBtn = gui.querySelector('#kp-min');
@@ -249,7 +263,22 @@
         renderPresets();
     };
 
+    syncBtn.onclick = () => { syncPicksFromDOM(); renderCurrent(); };
+
     closeBtn.onclick = () => gui.remove();
+
+    // Track user taps/clicks on tiles — our pick set is the source of truth.
+    document.addEventListener('click', (e) => {
+        const tile = e.target.closest(TILE_SELECTOR);
+        if (!tile) return;
+        const idx = Number(tile.dataset.index);
+        if (isNaN(idx)) return;
+        const n = idx + 1;
+        if (userPicks.has(n)) userPicks.delete(n);
+        else userPicks.add(n);
+        setTimeout(renderCurrent, 0);
+    }, true);
+
     minBtn.onclick = (e) => {
         e.stopPropagation();
         gui.classList.toggle('mini');
@@ -305,8 +334,9 @@
     let attachTries = 0;
     const attachTimer = setInterval(() => {
         const grid = document.querySelector('[data-testid="game-keno"]');
-        if (grid) {
+        if (grid && getTiles().length) {
             clearInterval(attachTimer);
+            syncPicksFromDOM();
             observer.observe(grid, { attributes: true, subtree: true, attributeFilter: ['data-selected', 'class'] });
             const risk = document.querySelector(RISK_SELECTOR);
             if (risk) risk.addEventListener('change', renderCurrent);

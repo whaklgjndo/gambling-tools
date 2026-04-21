@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Dice Tools (All-in-One Mobile)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Full Dice Tools app (Calculator, Simulator, Optimizer, Results) + strategy import/balance export, all in one userscript. Works on iOS Userscripts, Tampermonkey, Violentmonkey. No hosting, no PWA, no bookmarks needed.
+// @version      1.1
+// @description  Full Dice Tools app (Calculator, Simulator, Optimizer, Results) + Win/Loss Streak Counter with autoplay stopper + strategy import/balance export, all in one userscript. Works on iOS Userscripts, Tampermonkey, Violentmonkey. No hosting, no PWA, no bookmarks needed.
 // @author       .
 // @match        https://stake.com/casino/games/primedice*
 // @match        https://stake.us/casino/games/primedice*
@@ -36,7 +36,13 @@
         theme: 'original', large_fonts: false, keep_prev: false,
         worker_count: Math.max(1, Math.min(4, (navigator.hardwareConcurrency || 4))),
         panel_open: false,
-        results: []
+        results: [],
+        // Streak counter (win/loss tracking + autoplay stopper)
+        show_counter: true,
+        counter_target: 10,
+        counter_volume: 100,
+        counter_autostop: true,
+        counter_x: null, counter_y: null
     };
 
     let simWorker = null, simRunning = false;
@@ -63,6 +69,12 @@
             const lf = $('large_fonts'); if (lf) snap.large_fonts = lf.checked;
             const kp = $('keep_prev'); if (kp) snap.keep_prev = kp.checked;
             const wc = $('worker_count'); if (wc) snap.worker_count = parseInt(wc.value) || 1;
+            const sc = $('show_counter'); if (sc) snap.show_counter = sc.checked;
+            const cas = $('counter_autostop'); if (cas) snap.counter_autostop = cas.checked;
+            snap.counter_target = state.counter_target;
+            snap.counter_volume = state.counter_volume;
+            snap.counter_x = state.counter_x;
+            snap.counter_y = state.counter_y;
             snap.panel_open = state.panel_open;
             snap.results = optResults.slice();
             Object.assign(state, snap);
@@ -83,6 +95,7 @@
        ========================================================= */
     const PANEL_ID = 'dt-aio-panel';
     const BUTTON_ID = 'dt-aio-button';
+    const COUNTER_ID = 'dt-aio-counter';
     const $ = (id) => document.getElementById('dt-' + id);
     const $$ = (sel) => document.querySelectorAll('#' + PANEL_ID + ' ' + sel);
 
@@ -369,33 +382,33 @@ self.onmessage = async (e) => {
        ========================================================= */
     const CSS = `
 #${PANEL_ID}, #${BUTTON_ID} {
-  --dt-bg: #3f3f3f;
-  --dt-fg: #17c7b8;
-  --dt-label-fg: #249f87;
-  --dt-field-bg: #2d2d2d;
+  --dt-bg: #161616;
+  --dt-fg: #e6fffb;
+  --dt-label-fg: #17c7b8;
+  --dt-field-bg: #050505;
   --dt-select-bg: #17c7b8;
   --dt-select-fg: #000;
-  --dt-button-bg: #333;
-  --dt-border: #249f87;
-  --dt-danger: #e74c3c;
+  --dt-button-bg: #0a0a0a;
+  --dt-border: #17c7b8;
+  --dt-danger: #ff5a44;
   --dt-progress: #00ff80;
-  --dt-trough: #555;
-  --dt-row-even: #2d2d2d;
-  --dt-row-odd: #383838;
+  --dt-trough: #2a2a2a;
+  --dt-row-even: #1c1c1c;
+  --dt-row-odd: #252525;
   --dt-font-scale: 1;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 #${PANEL_ID}[data-theme="stake"], #${BUTTON_ID}[data-theme="stake"] {
-  --dt-bg: #162a35; --dt-fg: #c9d1d9; --dt-label-fg: #c9d1d9;
-  --dt-field-bg: #071824; --dt-select-bg: #1f333e; --dt-select-fg: #c9d1d9;
-  --dt-button-bg: #071824; --dt-border: #249f87; --dt-progress: #00ff80;
+  --dt-bg: #0b1a22; --dt-fg: #ffffff; --dt-label-fg: #17c7b8;
+  --dt-field-bg: #030a0f; --dt-select-bg: #1f333e; --dt-select-fg: #ffffff;
+  --dt-button-bg: #030a0f; --dt-border: #17c7b8; --dt-progress: #00ff80;
   --dt-row-even: #0f212e; --dt-row-odd: #162a35;
 }
 #${PANEL_ID}[data-theme="shuffle"], #${BUTTON_ID}[data-theme="shuffle"] {
-  --dt-bg: #131313; --dt-fg: #fff; --dt-label-fg: #a855f7;
-  --dt-field-bg: #363636; --dt-select-bg: #a855f7; --dt-select-fg: #131313;
-  --dt-button-bg: #363636; --dt-border: #a855f7; --dt-progress: #a855f7;
-  --dt-row-even: #1f1f1f; --dt-row-odd: #2a2a2a;
+  --dt-bg: #0c0c0c; --dt-fg: #ffffff; --dt-label-fg: #c084fc;
+  --dt-field-bg: #050505; --dt-select-bg: #a855f7; --dt-select-fg: #ffffff;
+  --dt-button-bg: #1a1a1a; --dt-border: #a855f7; --dt-progress: #c084fc;
+  --dt-row-even: #171717; --dt-row-odd: #202020;
 }
 #${PANEL_ID}[data-large-fonts="true"] { --dt-font-scale: 1.2; }
 
@@ -448,11 +461,13 @@ self.onmessage = async (e) => {
   pointer-events: auto;
 }
 
-/* The panel itself — bottom sheet */
+/* The panel itself — bottom sheet.
+   NOTE: z-index is intentionally one lower than #dt-tooltip / #dt-toast
+   so tooltips pop in front of the panel instead of behind it. */
 #${PANEL_ID} {
   position: fixed;
   left: 0; right: 0; bottom: 0;
-  z-index: 2147483647;
+  z-index: 2147483646;
   background: var(--dt-bg);
   color: var(--dt-fg);
   border-top: 2px solid var(--dt-border);
@@ -530,14 +545,15 @@ self.onmessage = async (e) => {
 #${PANEL_ID} .dt-panel.active { display: block; }
 @keyframes dt-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Cards */
+/* Cards — clearly elevated from the darker panel surface. */
 #${PANEL_ID} .dt-card {
-  background: color-mix(in srgb, var(--dt-bg) 88%, white 12%);
+  background: color-mix(in srgb, var(--dt-bg) 78%, white 22%);
   border: 2px solid var(--dt-border);
   border-radius: 10px;
   padding: 14px 12px 12px;
   margin-bottom: 14px;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 #${PANEL_ID} .dt-card-title {
   position: absolute;
@@ -559,7 +575,8 @@ self.onmessage = async (e) => {
   margin: 6px 0;
   gap: 8px;
 }
-#${PANEL_ID} .dt-field label {
+#${PANEL_ID} .dt-field label,
+#${PANEL_ID} .dt-field .dt-label {
   flex: 1;
   color: var(--dt-label-fg);
   font-weight: 600;
@@ -569,10 +586,10 @@ self.onmessage = async (e) => {
   gap: 6px;
 }
 #${PANEL_ID} .dt-help {
-  width: 18px; height: 18px;
+  width: 20px; height: 20px;
   border: 1px solid var(--dt-border);
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -581,7 +598,13 @@ self.onmessage = async (e) => {
   cursor: help;
   font-weight: 700;
   flex-shrink: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
 }
+#${PANEL_ID} .dt-help:active { background: var(--dt-label-fg); color: var(--dt-bg); }
 #${PANEL_ID} .dt-field input[type="text"],
 #${PANEL_ID} .dt-field input[type="number"],
 #${PANEL_ID} input.dt-text-input {
@@ -812,6 +835,131 @@ self.onmessage = async (e) => {
 }
 #dt-tooltip.show { display: block; }
 #dt-tooltip .dt-tt-title { color: var(--dt-label-fg, #249f87); font-weight: 700; margin: 0 0 4px; }
+
+/* Streak Counter HUD — always-visible floating pill */
+#${COUNTER_ID} {
+  --dt-bg: #1a1a1a;
+  --dt-fg: #ffffff;
+  --dt-label-fg: #17c7b8;
+  --dt-border: #249f87;
+  --dt-danger: #e74c3c;
+  position: fixed;
+  top: 70px;
+  right: 8px;
+  z-index: 2147483644;
+  background: var(--dt-bg);
+  color: var(--dt-fg);
+  border: 2px solid var(--dt-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  padding: 6px 8px;
+  min-width: 120px;
+  max-width: 180px;
+  display: none;
+}
+#${COUNTER_ID}[data-theme="stake"] { --dt-bg: #0f212e; --dt-border: #249f87; --dt-label-fg: #17c7b8; }
+#${COUNTER_ID}[data-theme="shuffle"] { --dt-bg: #131313; --dt-border: #a855f7; --dt-label-fg: #a855f7; }
+#${COUNTER_ID}.show { display: block; }
+#${COUNTER_ID} .dt-ctr-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+#${COUNTER_ID} .dt-ctr-row + .dt-ctr-row { margin-top: 4px; }
+#${COUNTER_ID} .dt-ctr-w {
+  color: var(--dt-label-fg);
+  font-weight: 700;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.3s;
+  min-width: 28px;
+  text-align: center;
+}
+#${COUNTER_ID} .dt-ctr-l {
+  color: var(--dt-fg);
+  font-weight: 600;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.3s, color 0.3s;
+  min-width: 22px;
+  text-align: center;
+}
+#${COUNTER_ID} .dt-ctr-l.has-loss { color: var(--dt-danger); }
+#${COUNTER_ID} .dt-ctr-lbl {
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+#${COUNTER_ID} .dt-ctr-target {
+  background: transparent;
+  color: var(--dt-fg);
+  border: 1px solid var(--dt-border);
+  border-radius: 4px;
+  width: 38px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-family: inherit;
+  text-align: center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+#${COUNTER_ID} .dt-ctr-btn {
+  background: var(--dt-border);
+  color: var(--dt-bg);
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 3px 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+#${COUNTER_ID} .dt-ctr-btn:active { opacity: 0.75; }
+#${COUNTER_ID} .dt-ctr-btn:disabled { opacity: 0.5; cursor: progress; }
+#${COUNTER_ID} .dt-ctr-btn-wide { flex: 1; padding: 5px 10px; }
+#${COUNTER_ID} .dt-ctr-vol {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 3px;
+  background: var(--dt-border);
+  border-radius: 2px;
+  flex: 1;
+}
+#${COUNTER_ID} .dt-ctr-vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  background: var(--dt-label-fg);
+  border-radius: 50%;
+  cursor: pointer;
+}
+#${COUNTER_ID} .dt-ctr-vol::-moz-range-thumb {
+  width: 12px; height: 12px;
+  background: var(--dt-label-fg);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+#${COUNTER_ID} .dt-ctr-drag {
+  color: var(--dt-label-fg);
+  opacity: 0.55;
+  font-size: 10px;
+  cursor: move;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
 `;
 
 
@@ -873,6 +1021,9 @@ self.onmessage = async (e) => {
         tt.id = 'dt-tooltip';
         document.body.appendChild(tt);
 
+        // Streak counter HUD (hidden until applyStateToUI runs)
+        buildCounterHUD();
+
         // Panel
         const panel = document.createElement('div');
         panel.id = PANEL_ID;
@@ -897,23 +1048,27 @@ self.onmessage = async (e) => {
         document.body.appendChild(panel);
     }
 
-    /* ---- Helper: field with ? tooltip ---- */
-    function fieldHTML(label, id, value, type = 'text', inputmode = 'decimal') {
+    /* ---- Helper: field with ? tooltip ----
+       NOTE: we use <span class="dt-label"> instead of <label> to avoid an iOS
+       Safari quirk where tapping an interactive child of a <label> still
+       forwards focus to the associated <input>, triggering a virtual-keyboard
+       scroll that immediately hides the tooltip. */
+    function helpBtn(label) {
         const gl = GLOSSARY[label];
-        const help = gl ? `<button type="button" class="dt-help" data-tooltip="${label}" aria-label="Help">?</button>` : '';
+        return gl ? `<button type="button" class="dt-help" data-tooltip="${label}" aria-label="Help about ${label}">?</button>` : '';
+    }
+    function fieldHTML(label, id, value, type = 'text', inputmode = 'decimal') {
         return `
           <div class="dt-field">
-            <label for="dt-${id}">${label}${help}</label>
+            <span class="dt-label">${label}${helpBtn(label)}</span>
             <input type="${type}" inputmode="${inputmode}" id="dt-${id}" value="${value}">
           </div>`;
     }
     function fieldWideHTML(label, id, value, hint = '') {
-        const gl = GLOSSARY[label];
-        const help = gl ? `<button type="button" class="dt-help" data-tooltip="${label}" aria-label="Help">?</button>` : '';
         const hintHTML = hint ? `<div class="dt-hint">${hint}</div>` : '';
         return `
           <div class="dt-field dt-field-wide">
-            <label for="dt-${id}">${label}${help}</label>
+            <span class="dt-label">${label}${helpBtn(label)}</span>
             <input type="text" id="dt-${id}" class="dt-text-input" value="${value}">
             ${hintHTML}
           </div>`;
@@ -935,22 +1090,22 @@ self.onmessage = async (e) => {
             <div class="dt-card">
               <div class="dt-card-title">Calculated Values</div>
               <div class="dt-field">
-                <label>Multiplier<button type="button" class="dt-help" data-tooltip="Multiplier">?</button></label>
+                <span class="dt-label">Multiplier${helpBtn('Multiplier')}</span>
                 <input type="text" id="dt-out_mult" readonly>
                 <button class="dt-btn dt-btn-small" data-copy="out_mult">Copy</button>
               </div>
               <div class="dt-field">
-                <label>Bet Size<button type="button" class="dt-help" data-tooltip="Bet Size">?</button></label>
+                <span class="dt-label">Bet Size${helpBtn('Bet Size')}</span>
                 <input type="text" id="dt-out_bet" readonly>
                 <button class="dt-btn dt-btn-small" data-copy="out_bet">Copy</button>
               </div>
               <div class="dt-field">
-                <label>Profit Stop<button type="button" class="dt-help" data-tooltip="Profit Stop">?</button></label>
+                <span class="dt-label">Profit Stop${helpBtn('Profit Stop')}</span>
                 <input type="text" id="dt-out_profit" readonly>
                 <button class="dt-btn dt-btn-small" data-copy="out_profit">Copy</button>
               </div>
               <div class="dt-field">
-                <label>Balance Target<button type="button" class="dt-help" data-tooltip="Balance Target">?</button></label>
+                <span class="dt-label">Balance Target${helpBtn('Balance Target')}</span>
                 <input type="text" id="dt-out_target" readonly>
                 <button class="dt-btn dt-btn-small" data-copy="out_target">Copy</button>
               </div>
@@ -977,10 +1132,9 @@ self.onmessage = async (e) => {
             </div>
             <div class="dt-card">
               <div class="dt-card-title">Game Integration</div>
-              <button class="dt-btn dt-btn-primary dt-btn-block" id="dt-game_export">Export Balance</button>
-              <button class="dt-btn dt-btn-block" id="dt-game_update">Update Existing Strategy</button>
+              <button class="dt-btn dt-btn-primary dt-btn-block" id="dt-game_sync">Export Balance &amp; Update Strategy</button>
               <button class="dt-btn dt-btn-block" id="dt-game_import">Import New Strategy</button>
-              <div class="dt-hint" style="margin-top:8px;">Export reads your in-game balance. Import/Update writes the current calculated values into the game's advanced strategy UI.</div>
+              <div class="dt-hint" style="margin-top:8px;">Sync reads your in-game balance, recalculates, then writes the new bet size + profit stop into your existing strategy. Import creates a fresh strategy from scratch.</div>
             </div>
           </section>
         `;
@@ -1077,10 +1231,27 @@ self.onmessage = async (e) => {
               </div>
             </div>
             <div class="dt-card">
+              <div class="dt-card-title">Streak Counter</div>
+              <div class="dt-setting-row">
+                <div>
+                  <div class="dt-setting-label">Show Counter HUD</div>
+                  <div class="dt-setting-desc">Draggable floating widget tracking win/loss streaks from the live dice results.</div>
+                </div>
+                <label class="dt-switch"><input type="checkbox" id="dt-show_counter"><span class="dt-slider"></span></label>
+              </div>
+              <div class="dt-setting-row">
+                <div>
+                  <div class="dt-setting-label">Auto-Stop Autoplay</div>
+                  <div class="dt-setting-desc">Automatically click "Stop Autoplay" once win streak reaches the target.</div>
+                </div>
+                <label class="dt-switch"><input type="checkbox" id="dt-counter_autostop"><span class="dt-slider"></span></label>
+              </div>
+            </div>
+            <div class="dt-card">
               <div class="dt-card-title">About</div>
               <div class="dt-setting-row">
                 <div class="dt-setting-label">Version</div>
-                <div style="opacity:0.7;">AiO 1.0</div>
+                <div style="opacity:0.7;">AiO 1.1</div>
               </div>
               <button class="dt-btn dt-btn-block dt-btn-small" id="dt-reset_state">Reset All Saved Data</button>
             </div>
@@ -1438,6 +1609,20 @@ self.onmessage = async (e) => {
        Mirrors the desktop userscript exactly, per-site selectors.
        ========================================================= */
 
+    /* ---- Close the strategy popup after updating. Just clicks the X. ---- */
+    async function closeStrategyPopup_shuffle() {
+        await sleep(400);
+        const btn = document.querySelector('button[aria-label*="close" i]');
+        if (btn) { btn.click(); return true; }
+        return false;
+    }
+    async function closeStrategyPopup_stake() {
+        await sleep(400);
+        const btn = document.querySelector('button[data-testid="game-modal-close"]');
+        if (btn) { btn.click(); return true; }
+        return false;
+    }
+
     /* ---- Shuffle.us ---- */
     async function shuffle_exportBalance() {
         const activeBtn = document.querySelector('button.TabView_active__G842W p');
@@ -1473,6 +1658,7 @@ self.onmessage = async (e) => {
             const conditionDiv = cond4.closest('.AdvancedDiceCondition_root__CaIQo');
             const inputs = conditionDiv ? conditionDiv.querySelectorAll('input[type="number"]') : [];
             if (inputs[0]) setNativeValue(inputs[0], profitStop);
+            await closeStrategyPopup_shuffle();
             toast('Existing strategy updated.');
         } catch (err) { toast('Update failed: ' + err); console.error(err); }
     }
@@ -1599,6 +1785,7 @@ self.onmessage = async (e) => {
             if (editBtn) { editBtn.click(); await sleep(600); }
             const profitInput = await waitFor('input[data-testid="condition-profit-amount-input"]');
             profitInput.value = profitStop; trigger(profitInput);
+            await closeStrategyPopup_stake();
             toast('Existing strategy updated.');
         } catch (err) { toast('Update failed: ' + err); console.error(err); }
     }
@@ -1696,6 +1883,292 @@ self.onmessage = async (e) => {
         if (location.hostname.includes('shuffle.us')) return shuffle_importNew();
         return stake_importNew();
     }
+    /* Combined one-tap flow: scrape balance → recompute → push new bet size
+       and profit stop into the existing in-game strategy. */
+    async function gameSync() {
+        await gameExport();
+        // Let the calculator settle before reading its outputs
+        await sleep(150);
+        await gameUpdate();
+    }
+
+
+    /* =========================================================
+       STREAK COUNTER HUD — win/loss tracking + autoplay stopper.
+       Site-aware DOM observers ported from the desktop userscript.
+       ========================================================= */
+    let _winStreak = 0, _lossStreak = 0;
+    let _counterObservers = [];
+    let _counterInitPoll = null;
+
+    function buildCounterHUD() {
+        const host = document.createElement('div');
+        host.id = COUNTER_ID;
+        host.innerHTML = `
+          <div class="dt-ctr-row" data-ctr-drag="true">
+            <div>
+              <div class="dt-ctr-lbl">Wins</div>
+              <div class="dt-ctr-w" id="dt-ctr_w">0</div>
+            </div>
+            <div>
+              <div class="dt-ctr-lbl">Losses</div>
+              <div class="dt-ctr-l" id="dt-ctr_l">0</div>
+            </div>
+            <span class="dt-ctr-drag" title="Drag">⠿</span>
+          </div>
+          <div class="dt-ctr-row">
+            <span class="dt-ctr-lbl">Stop @</span>
+            <input type="number" min="0" class="dt-ctr-target" id="dt-ctr_target" value="10">
+            <button class="dt-ctr-btn" id="dt-ctr_reset">Reset</button>
+          </div>
+          <div class="dt-ctr-row">
+            <span id="dt-ctr_vol_icon" style="font-size:13px;">🔊</span>
+            <input type="range" min="0" max="100" value="100" class="dt-ctr-vol" id="dt-ctr_vol">
+          </div>
+          <div class="dt-ctr-row">
+            <button class="dt-ctr-btn dt-ctr-btn-wide" id="dt-ctr_update">Update</button>
+          </div>
+        `;
+        document.body.appendChild(host);
+        return host;
+    }
+
+    function setCounterVisible(visible) {
+        const host = document.getElementById(COUNTER_ID);
+        if (!host) return;
+        host.classList.toggle('show', !!visible);
+    }
+    function applyCounterTheme() {
+        const host = document.getElementById(COUNTER_ID);
+        if (!host) return;
+        const panel = document.getElementById(PANEL_ID);
+        const val = panel ? (panel.getAttribute('data-theme') || '') : '';
+        host.setAttribute('data-theme', val);
+    }
+    function animateSpan(el) {
+        if (!el) return;
+        el.style.transform = 'scale(1.25)';
+        setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+    }
+    function updateCounterDisplay() {
+        const w = document.getElementById('dt-ctr_w');
+        const l = document.getElementById('dt-ctr_l');
+        if (w) w.textContent = _winStreak;
+        if (l) { l.textContent = _lossStreak; l.classList.toggle('has-loss', _lossStreak > 0); }
+    }
+    function playBeep() {
+        const vol = state.counter_volume / 100;
+        if (!vol) return;
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, ctx.currentTime);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            gain.gain.value = vol * 0.35;
+            osc.start();
+            setTimeout(() => { osc.stop(); try { ctx.close(); } catch {} }, 200);
+        } catch {}
+    }
+    function stopAutoplay_shuffle() {
+        const stopText = document.querySelector('button[data-testid="bet-button"] span.ButtonVariants_buttonContent__mRPrs');
+        if (stopText && stopText.innerText.includes('Stop Autoplay')) {
+            const btn = stopText.closest('button');
+            if (btn && !btn.disabled) btn.click();
+        }
+    }
+    function stopAutoplay_stake() {
+        const btn = document.querySelector('button[data-testid="auto-bet-button"][data-autobet-status="stop"]');
+        if (btn && !btn.disabled) btn.click();
+    }
+    function stopAutoplayAction() {
+        if (location.hostname.includes('shuffle.us')) return stopAutoplay_shuffle();
+        return stopAutoplay_stake();
+    }
+    function onWinDetected() {
+        _winStreak++;
+        _lossStreak = 0;
+        updateCounterDisplay();
+        animateSpan(document.getElementById('dt-ctr_w'));
+        playBeep();
+        if (state.counter_autostop && _winStreak >= (state.counter_target || 0) && state.counter_target > 0) {
+            stopAutoplayAction();
+        }
+    }
+    function onLossDetected() {
+        _lossStreak++;
+        updateCounterDisplay();
+        animateSpan(document.getElementById('dt-ctr_l'));
+    }
+
+    /* ---- Shuffle observer ---- */
+    let _sh_prev3Active = false, _sh_lastSeenText = '';
+    function initCounter_shuffle() {
+        const conditionContainer = document.querySelector('.AdvancedDiceBet_conditionContainer__6o_z9');
+        const resultsWrapper = document.querySelector('.OriginalGameRecentResult_originalGameResultsWrapper__aCNPr');
+        if (!conditionContainer || !resultsWrapper) return false;
+        const initialNewest = resultsWrapper.children[0];
+        if (initialNewest) {
+            const initialButton = initialNewest.querySelector('button');
+            if (initialButton) _sh_lastSeenText = initialButton.innerText;
+        }
+        function checkCondition3() {
+            const buttons = conditionContainer.querySelectorAll('button.AdvancedDiceConditionTag_condition__8L8IB');
+            let cond3Btn = null;
+            buttons.forEach(b => { if (b.innerText.trim() === '3') cond3Btn = b; });
+            if (!cond3Btn) return;
+            const tagDiv = cond3Btn.querySelector('div.AdvancedDiceConditionTag_tag__gdVMG');
+            if (!tagDiv) return;
+            const current3Active = tagDiv.classList.contains('AdvancedDiceConditionTag_active__7Rex1');
+            if (current3Active && !_sh_prev3Active) { _winStreak = 0; updateCounterDisplay(); }
+            _sh_prev3Active = current3Active;
+        }
+        const resultsObs = new MutationObserver(() => {
+            const newest = resultsWrapper.children[0];
+            if (!newest) return;
+            const button = newest.querySelector('button');
+            if (!button) return;
+            const currentText = button.innerText;
+            if (currentText === _sh_lastSeenText) return;
+            _sh_lastSeenText = currentText;
+            const isWin = button.style.backgroundColor === 'rgb(61, 209, 121)';
+            if (isWin) onWinDetected(); else onLossDetected();
+        });
+        resultsObs.observe(resultsWrapper, { childList: true, subtree: true, attributes: true });
+        const condObs = new MutationObserver(checkCondition3);
+        condObs.observe(conditionContainer, { attributes: true, attributeFilter: ['class'], childList: true, subtree: true });
+        checkCondition3();
+        _counterObservers.push(resultsObs, condObs);
+        return true;
+    }
+
+    /* ---- Stake observer ---- */
+    let _st_prev3Success = false, _st_lastSeenBetId = null;
+    function initCounter_stake() {
+        const container = document.querySelector('div[class*="condition-list-wrap"]');
+        const pastBets = document.querySelector('.past-bets');
+        if (!container || !pastBets) return false;
+        function checkButton3() {
+            const smallBlocks = container.querySelectorAll('div[class*="small-block"]');
+            let b3div = null;
+            smallBlocks.forEach(div => {
+                const b = div.querySelector('button');
+                if (b && b.innerText.trim() === '3') b3div = div;
+            });
+            if (!b3div) return;
+            const curr = b3div.classList.contains('success');
+            if (curr && !_st_prev3Success) { _winStreak = 0; updateCounterDisplay(); }
+            _st_prev3Success = curr;
+        }
+        const betObs = new MutationObserver(() => {
+            const newest = pastBets.querySelector('button[data-last-bet-index="0"]');
+            if (!newest) return;
+            const betId = newest.getAttribute('data-past-bet-id');
+            if (betId === _st_lastSeenBetId) return;
+            _st_lastSeenBetId = betId;
+            const isWin = newest.classList.contains('variant-positive');
+            if (isWin) onWinDetected(); else onLossDetected();
+        });
+        betObs.observe(pastBets, { childList: true, subtree: true });
+        const condObs = new MutationObserver(checkButton3);
+        condObs.observe(container, { attributes: true, attributeFilter: ['class'], childList: true, subtree: true });
+        checkButton3();
+        _counterObservers.push(betObs, condObs);
+        return true;
+    }
+
+    function initStreakCounter() {
+        const initFn = location.hostname.includes('shuffle.us') ? initCounter_shuffle : initCounter_stake;
+        if (initFn()) return;
+        _counterInitPoll = setInterval(() => {
+            if (initFn()) { clearInterval(_counterInitPoll); _counterInitPoll = null; }
+        }, 500);
+    }
+
+    function setupCounterDrag(host) {
+        let dragging = false, startX = 0, startY = 0, offsetX = 0, offsetY = 0;
+        const begin = (x, y, ev) => {
+            const target = ev && ev.target;
+            if (target && target.matches('input, button, .dt-ctr-vol')) return false;
+            dragging = true;
+            const r = host.getBoundingClientRect();
+            offsetX = x - r.left; offsetY = y - r.top;
+            startX = x; startY = y;
+            return true;
+        };
+        const move = (x, y) => {
+            if (!dragging) return;
+            const w = host.offsetWidth, h = host.offsetHeight;
+            let nx = Math.max(4, Math.min(x - offsetX, window.innerWidth - w - 4));
+            let ny = Math.max(4, Math.min(y - offsetY, window.innerHeight - h - 4));
+            host.style.left = nx + 'px';
+            host.style.top = ny + 'px';
+            host.style.right = 'auto';
+            state.counter_x = nx; state.counter_y = ny;
+        };
+        const end = () => {
+            if (!dragging) return;
+            dragging = false;
+            saveState();
+        };
+        host.addEventListener('mousedown', e => {
+            if (!begin(e.clientX, e.clientY, e)) return;
+        });
+        host.addEventListener('touchstart', e => {
+            const t = e.touches[0];
+            if (t && begin(t.clientX, t.clientY, e)) e.preventDefault();
+        }, { passive: false });
+        document.addEventListener('mousemove', e => move(e.clientX, e.clientY));
+        document.addEventListener('touchmove', e => {
+            const t = e.touches[0]; if (t) move(t.clientX, t.clientY);
+        }, { passive: true });
+        document.addEventListener('mouseup', end);
+        document.addEventListener('touchend', end);
+    }
+
+    function wireCounterControls() {
+        const tInput = document.getElementById('dt-ctr_target');
+        const reset = document.getElementById('dt-ctr_reset');
+        const update = document.getElementById('dt-ctr_update');
+        const vol = document.getElementById('dt-ctr_vol');
+        const volIcon = document.getElementById('dt-ctr_vol_icon');
+        if (tInput) {
+            tInput.value = state.counter_target;
+            tInput.addEventListener('change', () => {
+                state.counter_target = Math.max(0, parseInt(tInput.value) || 0);
+                saveState();
+            });
+        }
+        if (reset) reset.addEventListener('click', () => {
+            _winStreak = 0; _lossStreak = 0; updateCounterDisplay();
+        });
+        if (update) update.addEventListener('click', async () => {
+            const original = update.textContent;
+            update.disabled = true;
+            update.textContent = '…';
+            try { await gameSync(); }
+            finally {
+                update.disabled = false;
+                update.textContent = original;
+            }
+        });
+        const updateVolIcon = () => {
+            const v = state.counter_volume / 100;
+            if (!volIcon) return;
+            volIcon.textContent = v === 0 ? '🔇' : v < 0.33 ? '🔈' : v < 0.66 ? '🔉' : '🔊';
+        };
+        if (vol) {
+            vol.value = state.counter_volume;
+            updateVolIcon();
+            vol.addEventListener('input', () => {
+                state.counter_volume = parseInt(vol.value) || 0;
+                updateVolIcon();
+                saveState();
+            });
+        }
+    }
 
 
     /* =========================================================
@@ -1730,23 +2203,27 @@ self.onmessage = async (e) => {
     /* =========================================================
        TOOLTIPS (? helpers)
        ========================================================= */
+    let _ttCurrentTarget = null;
     function showTooltip(target) {
         const term = target.dataset.tooltip;
         const def = GLOSSARY[term];
         if (!def) return;
         const tt = document.getElementById('dt-tooltip');
+        if (!tt) return;
+        // Toggle off if tapping the same ? again
+        if (_ttCurrentTarget === target && tt.classList.contains('show')) {
+            hideTooltip();
+            return;
+        }
+        _ttCurrentTarget = target;
         tt.innerHTML = `<div class="dt-tt-title">${term}</div>${def}`;
-        tt.className = 'show';
-        // Inherit theme from panel
-        const panelTheme = document.getElementById(PANEL_ID).getAttribute('data-theme') || '';
-        tt.setAttribute('data-theme', panelTheme);
-
-        // Position above the ? button, centered
-        const rect = target.getBoundingClientRect();
         tt.style.visibility = 'hidden';
         tt.style.top = '0px';
         tt.style.left = '0px';
+        tt.classList.add('show');
+        // Force layout then measure
         const ttRect = tt.getBoundingClientRect();
+        const rect = target.getBoundingClientRect();
         let left = rect.left + rect.width / 2 - ttRect.width / 2;
         left = Math.max(8, Math.min(left, window.innerWidth - ttRect.width - 8));
         let top = rect.top - ttRect.height - 8;
@@ -1757,7 +2234,8 @@ self.onmessage = async (e) => {
     }
     function hideTooltip() {
         const tt = document.getElementById('dt-tooltip');
-        tt.classList.remove('show');
+        if (tt) tt.classList.remove('show');
+        _ttCurrentTarget = null;
     }
 
     /* =========================================================
@@ -1789,6 +2267,7 @@ self.onmessage = async (e) => {
         document.getElementById(PANEL_ID).setAttribute('data-theme', val);
         document.getElementById(BUTTON_ID).setAttribute('data-theme', val);
         document.getElementById('dt-tooltip').setAttribute('data-theme', val);
+        applyCounterTheme();
     }
     function applyFontScale() {
         document.getElementById(PANEL_ID).setAttribute('data-large-fonts', $('large_fonts').checked ? 'true' : 'false');
@@ -1805,8 +2284,18 @@ self.onmessage = async (e) => {
         $('large_fonts').checked = !!state.large_fonts;
         $('keep_prev').checked = !!state.keep_prev;
         $('worker_count').value = state.worker_count || Math.max(1, Math.min(4, navigator.hardwareConcurrency || 4));
+        $('show_counter').checked = state.show_counter !== false;
+        $('counter_autostop').checked = state.counter_autostop !== false;
         applyTheme();
         applyFontScale();
+        setCounterVisible(state.show_counter !== false);
+        // Restore counter position if previously dragged
+        const host = document.getElementById(COUNTER_ID);
+        if (host && state.counter_x != null && state.counter_y != null) {
+            host.style.left = state.counter_x + 'px';
+            host.style.top = state.counter_y + 'px';
+            host.style.right = 'auto';
+        }
         if (Array.isArray(state.results) && state.results.length) {
             optResults = state.results.slice();
             renderResults();
@@ -1894,15 +2383,26 @@ self.onmessage = async (e) => {
         tabsNav.addEventListener('click', onTab);
         tabsNav.addEventListener('touchend', onTab, { passive: false });
 
-        // Tooltip helpers
-        document.getElementById(PANEL_ID).addEventListener('click', (e) => {
-            const help = e.target.closest('.dt-help');
-            if (help) { e.preventDefault(); e.stopPropagation(); showTooltip(help); return; }
-            // Tapping elsewhere in the panel closes the tooltip
-            const tt = document.getElementById('dt-tooltip');
-            if (tt.classList.contains('show')) hideTooltip();
+        // Tooltip helpers — direct listeners on each ? button for iOS reliability,
+        // plus a panel-wide handler so tapping elsewhere in the panel closes the tooltip.
+        const panelEl = document.getElementById(PANEL_ID);
+        panelEl.querySelectorAll('.dt-help').forEach(btn => {
+            const handle = (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                showTooltip(btn);
+            };
+            btn.addEventListener('click', handle);
+            btn.addEventListener('touchend', handle, { passive: false });
         });
-        document.addEventListener('scroll', hideTooltip, { passive: true });
+        panelEl.addEventListener('click', (e) => {
+            if (e.target.closest('.dt-help')) return;
+            const tt = document.getElementById('dt-tooltip');
+            if (tt && tt.classList.contains('show')) hideTooltip();
+        });
+        // Only hide on scroll of the panel body (not document, which can fire
+        // from unrelated casino-page scrolls and kill the tooltip instantly).
+        panelEl.querySelector('.dt-body').addEventListener('scroll', hideTooltip, { passive: true });
 
         // Simulator
         $('sim_run').addEventListener('click', startSimulation);
@@ -1923,15 +2423,24 @@ self.onmessage = async (e) => {
         $('large_fonts').addEventListener('change', () => { applyFontScale(); saveState(); });
         $('keep_prev').addEventListener('change', saveState);
         $('worker_count').addEventListener('change', saveState);
+        $('show_counter').addEventListener('change', () => {
+            setCounterVisible($('show_counter').checked);
+            saveState();
+        });
+        $('counter_autostop').addEventListener('change', saveState);
         $('reset_state').addEventListener('click', () => {
             if (!confirm('Reset all saved data?')) return;
             localStorage.removeItem(STORE_KEY);
             location.reload();
         });
 
+        // Streak counter: wire controls, drag, and site observers
+        wireCounterControls();
+        setupCounterDrag(document.getElementById(COUNTER_ID));
+        initStreakCounter();
+
         // Game buttons
-        $('game_export').addEventListener('click', gameExport);
-        $('game_update').addEventListener('click', gameUpdate);
+        $('game_sync').addEventListener('click', gameSync);
         $('game_import').addEventListener('click', gameImport);
 
         // Panel close (X + backdrop)

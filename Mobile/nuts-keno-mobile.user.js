@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nuts.gg Keno Preset Manager (Mobile Userscripts)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Mobile Userscripts counterpart for Nuts.gg Keno presets. Save/load number + risk presets with touch-friendly controls. Shares preset storage with the Stake Keno script.
 // @author       .
 // @match        https://nuts.gg/keno*
@@ -48,7 +48,14 @@
         return out;
     }
 
-    function getSelectedNumbers() {
+    // Picks are tracked from the user's own click events. Reading selection
+    // state from the DOM is unreliable on Nuts: the inner cover <div> class
+    // isn't the state marker (the outer button class is), and after a round
+    // the board has 3+ visual states (unselected / picked / hit / revealed).
+    const userPicks = new Set();
+
+    // Best-effort DOM seed — works while the board is IDLE (only 2 classes).
+    function readPicksFromDOM() {
         const tiles = getTiles();
         if (!tiles.length) return [];
         const freq = {};
@@ -66,6 +73,13 @@
             .map((t, i) => ({ n: i + 1, selected: (t.children[1]?.className || '') === selectedClass }))
             .filter(x => x.selected)
             .map(x => x.n);
+    }
+    function syncPicksFromDOM() {
+        userPicks.clear();
+        for (const n of readPicksFromDOM()) userPicks.add(n);
+    }
+    function getSelectedNumbers() {
+        return Array.from(userPicks).sort((a, b) => a - b);
     }
 
     function clickTile(number) {
@@ -212,6 +226,7 @@
             <div class="kp-btn-row">
                 <button class="kp-btn primary" id="kp-load">Load</button>
                 <button class="kp-btn" id="kp-save">Save As…</button>
+                <button class="kp-btn" id="kp-sync" title="Re-read current picks from the board">↻</button>
                 <button class="kp-btn danger" id="kp-delete">Delete</button>
             </div>
         </div>
@@ -222,6 +237,7 @@
     const currentEl = gui.querySelector('#kp-current');
     const loadBtn = gui.querySelector('#kp-load');
     const saveBtn = gui.querySelector('#kp-save');
+    const syncBtn = gui.querySelector('#kp-sync');
     const deleteBtn = gui.querySelector('#kp-delete');
     const closeBtn = gui.querySelector('#kp-close');
     const minBtn = gui.querySelector('#kp-min');
@@ -301,7 +317,25 @@
         renderPresets();
     };
 
+    syncBtn.onclick = () => { syncPicksFromDOM(); renderCurrent(); };
+
     closeBtn.onclick = () => gui.remove();
+
+    // Track user taps/clicks on tiles — our pick set is the source of truth.
+    // Tiles are identified by content (number in a span), so we map the
+    // clicked button back to its index via getTiles().
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const tiles = getTiles();
+        if (!tiles.length) return;
+        const idx = tiles.indexOf(btn);
+        if (idx === -1) return;
+        const n = idx + 1;
+        if (userPicks.has(n)) userPicks.delete(n);
+        else userPicks.add(n);
+        setTimeout(renderCurrent, 0);
+    }, true);
     minBtn.onclick = (e) => {
         e.stopPropagation();
         gui.classList.toggle('mini');
@@ -357,6 +391,7 @@
     function attachWatchers() {
         const tiles = getTiles();
         if (!tiles.length) return false;
+        syncPicksFromDOM();
         const gridParent = tiles[0].parentElement;
         if (gridParent) {
             if (tilesObserver) tilesObserver.disconnect();
