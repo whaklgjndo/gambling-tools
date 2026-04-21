@@ -22,16 +22,27 @@
       <span class="icon">🔒</span>
       <h1>Auto-Vault</h1>
     </div>
-    <p class="tool-sub">Automatically send a percentage of your profits straight to the vault — so you can't lose them back.</p>
+    <p class="tool-sub">Auto-vaults a configurable % of your profits so you can't lose them back. Stake + Nuts, with big-win boosts.</p>
+
+    <div class="tool-desc">
+      <p class="credit">Credit to <strong>Ruby</strong> (of StakeStats) for the Stake autovaulter. The Nuts version is basically a direct port over.</p>
+      <p>Set your <strong>Save %</strong> (the cut of profit to send to the vault) and hit <strong>Start</strong> — the script quietly moves that percentage to the vault at every <strong>Check Interval</strong>, so you literally can't lose those gains back to the site. Runs headless in a small draggable panel with a live <strong>Activity</strong> log so you can see exactly what it's doing, when.</p>
+      <p>Got a spike? The <strong>Big-win Threshold (x)</strong> defines when a win counts as a big win (anything at or above that multiplier), and the <strong>Big-win Multiplier</strong> boosts the vault % on those hits — so when you actually stack a big multi, you lock in proportionally more of it instead of letting the base % do the same job for a 100x as a 2x.</p>
+      <p>Rate-limited to 50 actions/hour (won't get you flagged for spammy requests), idle-aware (won't fire during reconnects), and respects a <strong>Min Deposit</strong> threshold to avoid dust transfers. Settings are saved per site, so Stake and Nuts keep their own independent configs. Works on stake.com, stake.us, all Stake mirror domains, and Nuts.gg.</p>
+    </div>
 
     <section class="section">
-      <h2>What it does</h2>
-      <ul class="feature-list">
-        <li>Watches your balance and deposits a configurable % of profit into the vault</li>
-        <li>Floating, draggable UI that stays out of the way</li>
-        <li>Per-currency support (BNB, SC, and more) with sensible defaults</li>
-        <li>Rate-limited and retry-aware — won't spam requests or fire during reconnects</li>
-      </ul>
+      <h2>Screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/tool-autovault-stake.png" alt="Stake Auto-Vault panel" />
+          <figcaption>Stake Auto-Vault — Save %, thresholds, activity log.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/tool-autovault-nuts.png" alt="Nuts Auto-Vault panel" />
+          <figcaption>Nuts Auto-Vault — same controls, Nuts.gg styling.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section">
@@ -59,26 +70,6 @@
         </div>
       </div>
       <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
-    </section>
-
-    <section class="section">
-      <h2>How to use</h2>
-      <ol class="steps">
-        <li><strong>Install the script</strong> for your platform above.</li>
-        <li><strong>Open Stake or Nuts</strong>. A small floating Auto-Vault panel appears in the corner.</li>
-        <li><strong>Set your vault percentage</strong> — the default is 20% of profit per trigger. Drag the panel anywhere.</li>
-        <li><strong>Play normally.</strong> Whenever your balance grows past the threshold, the script sends the configured cut to the vault automatically.</li>
-        <li><strong>Check the log.</strong> The panel shows recent deposits and any errors.</li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <h2>Tips</h2>
-      <ul class="feature-list">
-        <li>Settings are saved to localStorage per site — Stake and Nuts keep separate configs.</li>
-        <li>If the panel doesn't appear, check that Tampermonkey shows the script is enabled on the current domain.</li>
-        <li>Start with a small percentage and raise it once you've confirmed it works on your account.</li>
-      </ul>
     </section>
 
     <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>

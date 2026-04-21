@@ -22,18 +22,29 @@
       <span class="icon">🎯</span>
       <h1>IOW / Smart</h1>
     </div>
-    <p class="tool-sub">Manual, Increase-on-Win, and Smart bet-sizing modes for Dice/Limbo (Stake) and Dice/Target (Nuts) — with live stats and a compact HUD overlay.</p>
+    <p class="tool-sub">Three playstyle modes for Stake &amp; Nuts, Limbo &amp; Dice — with a compact HUD and a big live profit graph baked right into the game.</p>
+
+    <div class="tool-desc">
+      <p>This script features <strong>3 playstyle modes</strong> for Stake and Nuts, Limbo and Dice. <strong>Manual</strong>, <strong>IOW</strong> (Increase on Win), and <strong>Smart</strong>.</p>
+      <p><strong>Manual</strong> mode is self-explanatory, only it allows the user to run Dice or Limbo on auto using the script-injected <em>Start</em> button.</p>
+      <p><strong>IOW</strong> mode allows you to set an increase percentage to your bet after a win, and a number of losses in a row before resetting back to base bet. You can also set the number of wins needed (before the loss reset occurs) to reset back to base bet. If you hit the win-reset value, the HUD will flash letting you know you hit the win reset each time.</p>
+      <p><strong>Smart</strong> mode is a different beast. This mode automatically sets the bet size based on these factors: <strong>Balance</strong>, <strong>Multiplier</strong>, and <strong>Aggression</strong> value (the sliding bar). Just set these three values to your liking, and send it.</p>
+      <p>Oh yeah, did I mention you can have very detailed statistics of your session and a large built-in graph right into the game's UI?</p>
+    </div>
+
+    <div class="tool-important">
+      <span class="label">IMPORTANT</span>
+      You must be in Stake's native <strong>Manual</strong> mode to use all three injected modes.
+    </div>
 
     <section class="section">
-      <h2>What it does</h2>
-      <ul class="feature-list">
-        <li><strong>Manual</strong> — bet a fixed base every round</li>
-        <li><strong>IOW (Increase on Win)</strong> — ramp up your bet by a configurable % after each win</li>
-        <li><strong>Smart</strong> — dynamic sizing with loss-streak reset, wins-before-reset, and min/max base caps</li>
-        <li>Live HUD: wagered, wins/losses, P/L, peak profit, current base bet</li>
-        <li>Auto-stop at a balance threshold to lock in gains</li>
-        <li>Real-time profit chart (up to 10,000 points)</li>
-      </ul>
+      <h2>Screenshot</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/tool-iow-stake.png" alt="IOW / Smart HUD and profit graph on Stake Dice" />
+          <figcaption>Live session on Stake Dice — HUD, stats, and the full profit graph.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section">
@@ -61,28 +72,6 @@
         </div>
       </div>
       <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
-    </section>
-
-    <section class="section">
-      <h2>How to use</h2>
-      <ol class="steps">
-        <li><strong>Install the script</strong> for your platform.</li>
-        <li><strong>Open Dice or Limbo</strong> on the target site. The HUD appears in the corner.</li>
-        <li><strong>Pick a mode</strong> — Manual, IOW, or Smart — from the mode selector.</li>
-        <li><strong>Set your params:</strong> base bet, win-increase %, loss-streak reset, wins-before-reset, min/max base, auto-stop balance.</li>
-        <li><strong>Hit the site's own Autobet button.</strong> The script listens to bet results and resizes your next bet per the active mode.</li>
-        <li><strong>Watch the HUD and chart</strong> for live P/L. Auto-stop fires when your balance crosses the threshold.</li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <h2>Mode cheatsheet</h2>
-      <h3>Manual</h3>
-      <p>Every bet is your base bet. Useful for measuring variance without any sizing noise.</p>
-      <h3>IOW (Increase on Win)</h3>
-      <p>After each win, the next bet grows by <code>winIncreasePercent</code>. Resets to base on a loss. Classic positive-progression pattern.</p>
-      <h3>Smart</h3>
-      <p>Same as IOW, but also resets when you hit <code>winsBeforeReset</code> consecutive wins, and will reset progression if you hit <code>lossStreakReset</code> losses in a row. Clamped between <code>minBaseBet</code> and <code>maxBaseBet</code>.</p>
     </section>
 
     <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>

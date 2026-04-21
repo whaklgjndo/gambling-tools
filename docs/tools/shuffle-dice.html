@@ -22,17 +22,31 @@
       <span class="icon">🎲</span>
       <h1>Dice Tool</h1>
     </div>
-    <p class="tool-sub">On-site dice helper for Stake and Shuffle: win/loss counter, streak-based autoplay stopper, balance export, one-tap advanced strategy import.</p>
+    <p class="tool-sub">Build your own SWALD-style 8.47 dice strategies — with a full calculator, simulator, and a range-based optimizer. Stake + Shuffle, .com + .us.</p>
+
+    <div class="tool-desc">
+      <p>Inspired by <strong>SWALD's</strong> (of StakeStats) 8.47 strategy. This script gives you the ability to easily create your own 8.47 style of strategy on Stake's or Shuffle's Dice original. Works for both <strong>.us</strong> sites and <strong>.com</strong> sites.</p>
+      <p>Equipped with <strong>2 separate simulators</strong>. The main simulator is for testing your own inputted values. The optimizer simulator allows you to enter value <em>ranges</em> for each parameter — a simulation with each value combination within your set ranges will be run a number of times depending on how many "Trials per combo" you have set.</p>
+      <p>The results of these trial runs will be on the <strong>Results</strong> tab. From there you can examine the stats of each combination. You can sort the results by any category, or you can see which combination was best overall by sorting by <strong>Score</strong> (the default sorting method). When you find a combination you like, you can apply that selected strategy to the Calculator (first tab) for further testing of that individual strategy using your own balance with <strong>Simulation Controls</strong>.</p>
+      <p>If you want to use that strategy for real, you can import it into the game by selecting <strong>Import New Strategy</strong> at the bottom of the Calculator page. This will create the strategy in your game. Be sure to always click <strong>Update</strong> on the little tool before a run, and after each profit stop. Or if you have chosen to disable the little tool, you will need to use the <strong>Export Balance &amp; Update Strategy</strong> button at the bottom of the Calculator tab.</p>
+    </div>
 
     <section class="section">
-      <h2>What it does</h2>
-      <ul class="feature-list">
-        <li>Live win/loss counter with session stats</li>
-        <li>Streak-based autoplay stopper (halt on N consecutive losses)</li>
-        <li>Balance export — snapshot your balance to clipboard/JSON</li>
-        <li>One-tap import of an advanced strategy (preset chain rules)</li>
-        <li>Works on Stake Dice, Primedice, and Shuffle.us Dice</li>
-      </ul>
+      <h2>Screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/tool-dice-calculator.png" alt="Dice Tool calculator panel open on Stake Dice" />
+          <figcaption>Calculator tab — parameters + calculated values (Stake).</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/tool-dice-optimizer.png" alt="Dice Tool optimizer results on Shuffle Dice" />
+          <figcaption>Optimizer Results — hundreds of runs, sorted by Score (Shuffle).</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/tool-dice-shuffle.png" alt="Dice Tool running on Shuffle.us" />
+          <figcaption>Live session with the profit graph — phone-friendly panel.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section">
@@ -40,7 +54,7 @@
       <div class="install-row">
         <div class="platform">
           <h4>Stake / Shuffle — Desktop</h4>
-          <p>Win-streak counter, autoplay stopper, balance export, strategy import. Install both: script + app.</p>
+          <p>Full Dice Tool (calculator, simulator, optimizer, strategy import). Install both: script + app.</p>
           <a class="btn stake" data-script="Desktop/stake-shuffle-dice-tool-desktop.user.js">Download for Desktop</a>
         </div>
         <div class="platform">
@@ -51,18 +65,6 @@
       </div>
       <div class="notice">This tool also supports Shuffle.us in addition to Stake — no separate Shuffle build needed.</div>
       <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
-    </section>
-
-    <section class="section">
-      <h2>How to use</h2>
-      <ol class="steps">
-        <li><strong>Install the script</strong> for your platform.</li>
-        <li><strong>Open Stake Dice, Primedice, or Shuffle.us Dice.</strong> The helper panel appears.</li>
-        <li><strong>Set the max loss streak</strong> at which autoplay should halt.</li>
-        <li><strong>Start the site's autobet</strong> as normal. The counter tracks W/L in real time.</li>
-        <li><strong>Streak trigger:</strong> when you hit N losses in a row, the script stops autoplay automatically.</li>
-        <li><strong>Export / Import:</strong> use the export button to snapshot state, or the one-tap import to apply an advanced strategy preset.</li>
-      </ol>
     </section>
 
     <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>

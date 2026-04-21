@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Keno Preset Manager — Gambling Tools</title>
+  <title>Keno Presets — Gambling Tools</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -20,18 +20,29 @@
   <main class="container">
     <div class="tool-header">
       <span class="icon">🎱</span>
-      <h1>Keno Preset Manager</h1>
+      <h1>Keno Presets</h1>
     </div>
-    <p class="tool-sub">Save and load Keno number + difficulty presets. No more clicking 10 tiles and re-picking risk every session.</p>
+    <p class="tool-sub">Save your Keno tile + risk combos once, load them back in one click — on Stake or Nuts.</p>
+
+    <div class="tool-desc">
+      <p>Tired of clicking 10 tiles and re-picking your risk every single round? Pick your numbers, set your difficulty, hit <strong>Save As…</strong> and give the preset a name.</p>
+      <p>Next time you want that exact board, select the preset from the dropdown and hit <strong>Load</strong> — tiles and risk snap into place automatically. The panel shows your current picks live, so you know exactly what's on the board before you hit Play.</p>
+      <p>Presets are stored in localStorage and <strong>shared between Stake and Nuts</strong>. Save a preset on Stake, load it on Nuts, or vice-versa — same names, same setups, both sites. Works on Stake.com, Stake.us (and all mirrors), and Nuts.gg.</p>
+      <p>Delete a preset from the same dropdown when you're done with it. The compact panel is out-of-the-way and stays out of your face while you play.</p>
+    </div>
 
     <section class="section">
-      <h2>What it does</h2>
-      <ul class="feature-list">
-        <li>Save your current Keno tile selection + difficulty (classic/low/medium/high) as a named preset</li>
-        <li>Load any preset with one click — tiles and risk set automatically</li>
-        <li>Presets shared across Stake sites via localStorage</li>
-        <li>Rename, reorder, and delete presets from the compact panel</li>
-      </ul>
+      <h2>Screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/tool-keno-picks.png" alt="Keno Presets panel showing current picks on Stake" />
+          <figcaption>Current: 7 picks · risk medium — preset loaded and ready.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/tool-keno-nopicks.png" alt="Keno Presets panel with no picks selected" />
+          <figcaption>Empty board state — pick a preset and click Load.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section">
@@ -59,17 +70,6 @@
         </div>
       </div>
       <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
-    </section>
-
-    <section class="section">
-      <h2>How to use</h2>
-      <ol class="steps">
-        <li><strong>Install the script</strong> for your platform.</li>
-        <li><strong>Open the Keno game</strong> on Stake or Nuts. A preset panel appears near the board.</li>
-        <li><strong>Pick your tiles and risk</strong> manually the first time.</li>
-        <li><strong>Click "Save preset"</strong>, give it a name (e.g. "Edge 5 Medium").</li>
-        <li><strong>Next time</strong>, click the preset name and the script selects all tiles + sets difficulty for you.</li>
-      </ol>
     </section>
 
     <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>

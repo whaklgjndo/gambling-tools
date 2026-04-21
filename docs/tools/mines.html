@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mines Auto + Helper — Gambling Tools</title>
+  <title>Mines Auto — Gambling Tools</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -20,19 +20,29 @@
   <main class="container">
     <div class="tool-header">
       <span class="icon">💎</span>
-      <h1>Mines Auto + Helper</h1>
+      <h1>Mines Auto</h1>
     </div>
-    <p class="tool-sub">Auto-plays Mines with weighted random tile picks, configurable speed, and live payout + next-gem probability stats.</p>
+    <p class="tool-sub">Auto-plays Mines on Stake and Nuts — random picks, adjustable speed, and exact next-gem odds right in the panel.</p>
+
+    <div class="tool-desc">
+      <p>Two flavors of the same core engine, themed per site. Stake runs <strong>Mines Auto + Helper</strong>; Nuts runs <strong>Mines Burst</strong> (Hologlass theme). Same behavior, different vibe.</p>
+      <p>Set <strong>Min Tiles</strong> and <strong>Max Tiles</strong> and the script will randomly pick somewhere in that range every round, auto-cash out, and fire the next bet. The <strong>Speed</strong> slider controls how fast it goes — dial it low for a calm grind, crank it to 85+ for rapid-fire burst mode.</p>
+      <p>Live stats right in the panel: current <strong>Multiplier</strong>, <strong>Payout</strong>, and <strong>Next Gem Chance</strong> — the exact probability of the next tile being a gem, computed from how many mines and how many tiles are left on the board. Use it to calibrate your cash-out target before you start.</p>
+      <p>Set your mine count and bet in the game as normal, set Min/Max + Speed in the panel, and hit <strong>Start</strong> (or <strong>Engage</strong> on Nuts). Draggable panel, tuck it wherever it fits best.</p>
+    </div>
 
     <section class="section">
-      <h2>What it does</h2>
-      <ul class="feature-list">
-        <li>Random tile picker with configurable min/max picks per round</li>
-        <li>Adjustable click speed (slow → fast)</li>
-        <li>Live stats: current multiplier, payout, next-gem probability</li>
-        <li>Auto-cashout at your configured pick count</li>
-        <li>Draggable compact GUI</li>
-      </ul>
+      <h2>Screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/tool-mines-stake.png" alt="Mines Auto + Helper panel on Stake" />
+          <figcaption>Mines Auto + Helper — Stake.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/tool-mines-nuts.png" alt="Mines Burst panel on Nuts" />
+          <figcaption>Mines Burst — Nuts (Hologlass theme).</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section">
@@ -60,26 +70,6 @@
         </div>
       </div>
       <p style="margin-top:12px;"><a href="../install.html">Don't have Tampermonkey yet? →</a></p>
-    </section>
-
-    <section class="section">
-      <h2>How to use</h2>
-      <ol class="steps">
-        <li><strong>Install the script</strong> for your platform.</li>
-        <li><strong>Open the Mines game</strong>. The helper GUI appears top-right (drag it anywhere).</li>
-        <li><strong>Set your mines count and bet</strong> in the Mines UI as normal.</li>
-        <li><strong>Set min/max picks and speed</strong> in the helper panel. Watch the next-gem probability update as conditions change.</li>
-        <li><strong>Click Start</strong>. The script will place bets, click random tiles, cash out, and repeat.</li>
-        <li><strong>Click Stop</strong> (or switch tabs) to halt between rounds.</li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <h2>Tips</h2>
-      <ul class="feature-list">
-        <li>High speed + high picks + high mine count = high variance. Start conservative.</li>
-        <li>The next-gem probability is exact given remaining tiles and mines — use it to calibrate your cashout target.</li>
-      </ul>
     </section>
 
     <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
