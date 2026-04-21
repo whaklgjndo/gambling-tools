@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name Stake.us Mines Auto + Helper (Manual Random Tile Clicks → Cashout)
 // @namespace https://github.com/userscripts
-// @version 1.0
+// @version 1.1
 // @description Auto-plays Mines on Stake.us with weighted random tile picks, configurable speed, and live multiplier / payout / next-gem chance stats.
 // @author .
 // @match https://stake.us/casino/games/mines*
+// @match https://stake.com/casino/games/mines*
 // @grant none
 // @run-at document-end
 // ==/UserScript==

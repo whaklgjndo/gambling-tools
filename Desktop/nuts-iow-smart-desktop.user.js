@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name IOW / Smart - Nuts
 // @namespace http://tampermonkey.net/
-// @version 3.5
+// @version 3.6
 // @description Adds Manual, IOW (Increase on Win), and Smart bet-sizing modes to Nuts.gg Dice and Target with live stats and dynamic progression.
 // @author .
 // @match https://nuts.gg/target*
 // @match https://nuts.gg/dice*
+// @match https://*.nuts.gg/target*
+// @match https://*.nuts.gg/dice*
 // @grant GM_addStyle
 // @run-at document-start
 // ==/UserScript==
