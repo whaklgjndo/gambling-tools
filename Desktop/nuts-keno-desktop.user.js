@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nuts.gg Keno Preset Manager
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Save and load Keno number + risk presets on nuts.gg. Shares preset storage with the Stake Keno script.
 // @author       .
 // @match        https://nuts.gg/keno*
@@ -214,7 +214,6 @@
             <div class="kp-btn-row">
                 <button class="kp-btn primary" id="kp-load">Load</button>
                 <button class="kp-btn" id="kp-save">Save As…</button>
-                <button class="kp-btn" id="kp-sync" title="Re-read current picks from the board">↻</button>
                 <button class="kp-btn danger" id="kp-delete">Delete</button>
             </div>
         </div>
@@ -225,7 +224,6 @@
     const currentEl = gui.querySelector('#kp-current');
     const loadBtn = gui.querySelector('#kp-load');
     const saveBtn = gui.querySelector('#kp-save');
-    const syncBtn = gui.querySelector('#kp-sync');
     const deleteBtn = gui.querySelector('#kp-delete');
     const closeBtn = gui.querySelector('#kp-close');
     const header = gui.querySelector('.kp-header');
@@ -303,8 +301,6 @@
         savePresets(list);
         renderPresets();
     };
-
-    syncBtn.onclick = () => { syncPicksFromDOM(); renderCurrent(); };
 
     closeBtn.onclick = () => gui.remove();
 
