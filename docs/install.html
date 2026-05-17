@@ -20,7 +20,7 @@
   <main class="container">
     <section class="hero" style="text-align:left; padding: 32px 0 16px;">
       <h1 style="font-size: 2.2rem;">Install Guide + Tool Downloads</h1>
-      <p style="margin:0;">Pick your platform. Every tab has step-by-step instructions and a pinned download list with all the tools.</p>
+      <p style="margin:0;">Pick your platform. Every tab has step-by-step instructions and a pinned download for the unified script — one install gives you every tool, with an in-page panel to enable/disable each one.</p>
     </section>
 
     <div class="tabs">
@@ -49,72 +49,18 @@
           <img src="assets/img/desktop-4.png" alt="Chrome extension page with Allow User Scripts toggle turned on" />
         </li>
         <li>
-          <strong>Download a tool from the Desktop Downloads pin.</strong>
+          <strong>Download the Unified Desktop script from the Desktop Downloads pin.</strong>
           <div class="downloads-pin" id="dl-desktop">
             <div class="pin-label">Desktop Downloads</div>
             <div class="dl-grid">
-              <a class="dl-item" data-script="Desktop/stake-shuffle-dice-tool-desktop.user.js">
+              <a class="dl-item" data-script="Desktop/unified-desktop.user.js">
                 <div class="dl-row">
-                  <span class="dl-title">Dice Tool (Stake + Shuffle)</span>
+                  <span class="dl-title">Unified Desktop — All Tools</span>
                   <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Win-streak counter, autoplay stopper, balance export, strategy import. Install both: script + app.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/stake-iow-smart-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake IOW / Smart</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Manual/IOW/Smart bet-sizing for Stake Dice + Limbo, live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/nuts-iow-smart-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts IOW / Smart</span>
                   <span class="dl-platform nuts">Nuts</span>
+                  <span class="dl-platform shuffle">Shuffle</span>
                 </div>
-                <span class="dl-desc">Manual/IOW/Smart bet-sizing for Nuts Dice + Target, live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/stake-mines-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Mines Auto</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Auto-plays Stake Mines with random picks, adjustable speed, live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/nuts-mines-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Mines Auto</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Auto-plays Nuts Mines with rapid picks, auto-cashout, adjustable speed.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/stake-keno-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Keno Presets</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Save + recall Keno picks + difficulty on Stake.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/nuts-keno-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Keno Presets</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Save + recall Keno picks + risk on Nuts. Shares presets with Stake Keno.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/stake-autovault-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Auto-Vault</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Auto-vaults a % of profits on Stake.com/us and mirrors.</span>
-              </a>
-              <a class="dl-item" data-script="Desktop/nuts-autovault-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Auto-Vault</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Auto-vaults a % of play-balance profits on Nuts.gg.</span>
+                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
               </a>
             </div>
           </div>
@@ -132,7 +78,7 @@
           <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
         </li>
         <li>
-          <strong>Open the site the tool is designed for. Refresh the page once. The tool appears.</strong>
+          <strong>Open a supported site (Stake, Nuts.gg, or Shuffle). Refresh the page once. The control panel and any enabled tools appear.</strong>
         </li>
       </ol>
     </section>
@@ -163,72 +109,18 @@
           <strong>This opens Tampermonkey's dashboard</strong> with Installed Userscripts / Settings / Utilities tabs. This is where you manage all your scripts.
         </li>
         <li>
-          <strong>Long-press a download link from the Mobile Downloads pin, copy the link, and paste it into Firefox's URL bar.</strong>
+          <strong>Long-press the Unified Mobile download link, copy the link, and paste it into Firefox's URL bar.</strong>
           <div class="downloads-pin" id="dl-android">
             <div class="pin-label">Mobile Downloads</div>
             <div class="dl-grid">
-              <a class="dl-item" data-script="Mobile/stake-shuffle-dice-tools-mobile.user.js">
+              <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
                 <div class="dl-row">
-                  <span class="dl-title">Dice Tools (Stake + Shuffle)</span>
+                  <span class="dl-title">Unified Mobile — All Tools</span>
                   <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Full Dice Tools app (calculator, simulator, optimizer, one-tap strategy import) in a phone-friendly floating panel.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-iow-smart-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake IOW / Smart</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Dice/Limbo bet-sizing with Manual/IOW/Smart modes and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-iow-smart-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts IOW / Smart</span>
                   <span class="dl-platform nuts">Nuts</span>
+                  <span class="dl-platform shuffle">Shuffle</span>
                 </div>
-                <span class="dl-desc">Mobile Nuts Dice/Target bet-sizing with Manual/IOW/Smart modes and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-mines-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Mines Auto</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Mines auto-player with touch-friendly controls and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-mines-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Mines Auto</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Mines auto-player with touch-friendly controls.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-keno-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Keno Presets</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Keno preset manager — save and recall your picks + difficulty on the go.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-keno-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Keno Presets</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Keno preset manager. Shares presets with Stake Keno.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-autovault-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Auto-Vault</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Auto-Vault — auto-vaults a % of profits on Stake.com/us and mirrors.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-autovault-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Auto-Vault</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Auto-Vault — auto-vaults a % of play-balance profits.</span>
+                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
               </a>
             </div>
           </div>
@@ -237,7 +129,7 @@
           <strong>This opens a Tampermonkey page — tap INSTALL.</strong>
         </li>
         <li>
-          <strong>Open the site the tool is designed for. Refresh the page once. The relevant tool should appear.</strong>
+          <strong>Open the site the tool is designed for. Refresh the page once. The control panel and any enabled tools appear.</strong>
         </li>
       </ol>
     </section>
@@ -262,72 +154,18 @@
           <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension on and Other Websites set to Allow" />
         </li>
         <li>
-          <strong>Tap the download link for a tool from the Mobile Downloads pin.</strong> Safari opens and shows the raw script text, or it may just pop up the script icon.
+          <strong>Tap the Unified Mobile download link from the Mobile Downloads pin.</strong> Safari opens and shows the raw script text, or it may just pop up the script icon.
           <div class="downloads-pin" id="dl-iphone">
             <div class="pin-label">Mobile Downloads</div>
             <div class="dl-grid">
-              <a class="dl-item" data-script="Mobile/stake-shuffle-dice-tools-mobile.user.js">
+              <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
                 <div class="dl-row">
-                  <span class="dl-title">Dice Tools (Stake + Shuffle)</span>
+                  <span class="dl-title">Unified Mobile — All Tools</span>
                   <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Full Dice Tools app (calculator, simulator, optimizer, one-tap strategy import) in a phone-friendly floating panel.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-iow-smart-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake IOW / Smart</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Dice/Limbo bet-sizing with Manual/IOW/Smart modes and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-iow-smart-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts IOW / Smart</span>
                   <span class="dl-platform nuts">Nuts</span>
+                  <span class="dl-platform shuffle">Shuffle</span>
                 </div>
-                <span class="dl-desc">Mobile Nuts Dice/Target bet-sizing with Manual/IOW/Smart modes and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-mines-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Mines Auto</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Mines auto-player with touch-friendly controls and live stats.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-mines-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Mines Auto</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Mines auto-player with touch-friendly controls.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-keno-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Keno Presets</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Keno preset manager — save and recall your picks + difficulty on the go.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-keno-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Keno Presets</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Keno preset manager. Shares presets with Stake Keno.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/stake-autovault-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Stake Auto-Vault</span>
-                  <span class="dl-platform stake">Stake</span>
-                </div>
-                <span class="dl-desc">Mobile Stake Auto-Vault — auto-vaults a % of profits on Stake.com/us and mirrors.</span>
-              </a>
-              <a class="dl-item" data-script="Mobile/nuts-autovault-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Nuts Auto-Vault</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Mobile Nuts Auto-Vault — auto-vaults a % of play-balance profits.</span>
+                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
               </a>
             </div>
           </div>
@@ -345,7 +183,7 @@
           <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
         </li>
         <li>
-          <strong>Open Safari and go to the site the tool is designed for. Refresh the page once. The tool appears.</strong>
+          <strong>Open Safari and go to a supported site (Stake, Nuts.gg, or Shuffle). Refresh the page once. The control panel and any enabled tools appear.</strong>
         </li>
         <li>
           <strong>To enable / disable scripts</strong>, tap the puzzle piece in your URL bar and select <em>Userscripts</em>. From there you can tap a script to enable or disable it.

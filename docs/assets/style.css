@@ -463,6 +463,7 @@ main { padding: 48px 0 32px; }
 
 .downloads-pin .dl-item .dl-platform.stake { color: var(--stake); border-color: rgba(31, 255, 32, 0.3); }
 .downloads-pin .dl-item .dl-platform.nuts { color: var(--nuts); border-color: rgba(255, 176, 32, 0.3); }
+.downloads-pin .dl-item .dl-platform.shuffle { color: #a78bfa; border-color: rgba(167, 139, 250, 0.3); }
 
 /* ---------- Tool-page description block ---------- */
 .tool-desc {

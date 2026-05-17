@@ -1,7 +1,11 @@
 # Gambling Tools — Site
 
-Static site for the Tampermonkey userscripts (Stake + Nuts). Free to host on
-GitHub Pages, Netlify, or Cloudflare Pages.
+Static site for the Tampermonkey userscripts (Stake + Nuts + Shuffle). Free to
+host on GitHub Pages, Netlify, or Cloudflare Pages.
+
+The site now ships a single **Unified Desktop** and **Unified Mobile** script
+that bundles every tool with an in-page control panel — install once, toggle
+each tool on or off from the page.
 
 ## 1. Wire up install links
 
@@ -23,19 +27,21 @@ only edit this file once.
 Push this to GitHub as-is. The buttons point at:
 
 ```
-https://raw.githubusercontent.com/<user>/<repo>/<branch>/Desktop/<file>.user.js
-https://raw.githubusercontent.com/<user>/<repo>/<branch>/Mobile/<file>.user.js
+https://raw.githubusercontent.com/<user>/<repo>/<branch>/Desktop/unified-desktop.user.js
+https://raw.githubusercontent.com/<user>/<repo>/<branch>/Mobile/unified-mobile.user.js
 ```
 
 So your repo root should contain:
 
 ```
-/Desktop/    <-- all *-desktop.user.js files
-/Mobile/     <-- all *-mobile.user.js files
-/docs/       <-- this site
+/Desktop/unified-desktop.user.js   <-- single bundled desktop build
+/Mobile/unified-mobile.user.js     <-- single bundled mobile build
+/docs/                              <-- this site
 ```
 
-That matches what's already on disk — no moving required.
+Every tool (Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, Dice Tool) lives
+inside those two bundles. The site only links to those two files; each tool
+page on the site is documentation, not a separate download.
 
 ## 3. Deploy to GitHub Pages
 
