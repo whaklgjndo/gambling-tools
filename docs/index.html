@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tools — Gambling Tools</title>
-  <meta name="description" content="The five tools bundled into the unified userscript for Stake, Nuts.gg, and Shuffle — Auto-Vault, IOW/Smart bet-sizing, Keno presets, Mines auto-player, and the Dice strategy tool. Available on Desktop and Mobile." />
+  <meta name="description" content="The five tools bundled into the unified Desktop userscript for Stake, Nuts.gg, and Shuffle — Auto-Vault, IOW/Smart bet-sizing, Keno presets, Mines auto-player, and the Dice strategy tool." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -23,183 +23,86 @@
 
     <section class="hero" style="padding: 40px 0 16px;">
       <h1>Tools</h1>
-      <p>Five tools bundled into one userscript per platform. Pick a tab to see what's in the Desktop or Mobile build.</p>
+      <p>Five tools bundled into one unified Desktop userscript. Install once in Tampermonkey, then toggle individual tools from the in-page control panel.</p>
     </section>
 
-    <div class="tabs" role="tablist">
-      <button class="tab-btn active" data-tab="tools-desktop">Desktop</button>
-      <button class="tab-btn" data-tab="tools-mobile">Mobile</button>
+    <div class="grid">
+      <a href="tools/autovault.html" class="card">
+        <div class="icon">🔒</div>
+        <h3>Auto-Vault</h3>
+        <p>Watches your balance and sweeps a configurable percentage of profits to the vault. Big-win multiplier locks in more on spikes, rate-limited to 50 actions/hour.</p>
+        <div class="tags">
+          <span class="tag stake">Stake</span>
+          <span class="tag shuffle">Shuffle</span>
+          <span class="tag nuts">Nuts</span>
+        </div>
+        <div class="card-footer">
+          <span>Site-wide</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a href="tools/iow-smart.html" class="card">
+        <div class="icon">🎯</div>
+        <h3>IOW / Smart</h3>
+        <p>Manual, Increase-on-Win, and Smart bet-sizing for Dice and Limbo. Live profit graph, streak tracking, stop-loss / take-profit, rapid-fire engine with stall protection.</p>
+        <div class="tags">
+          <span class="tag stake">Stake</span>
+          <span class="tag shuffle">Shuffle</span>
+          <span class="tag nuts">Nuts</span>
+        </div>
+        <div class="card-footer">
+          <span>Dice · Limbo · Target</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a href="tools/keno.html" class="card">
+        <div class="icon">🎱</div>
+        <h3>Keno Presets</h3>
+        <p>Save number selections and risk level as named presets, reload in one click. Presets are shared across Stake, Shuffle, and Nuts via a common storage key.</p>
+        <div class="tags">
+          <span class="tag stake">Stake</span>
+          <span class="tag shuffle">Shuffle</span>
+          <span class="tag nuts">Nuts</span>
+        </div>
+        <div class="card-footer">
+          <span>Keno only</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a href="tools/mines.html" class="card">
+        <div class="icon">💎</div>
+        <h3>Mines Auto</h3>
+        <p>Auto-plays Mines with weighted random tile picks in a Min/Max range. Live multiplier, payout, next-gem probability, and projected min/max payout. Auto-cashout when the board clears.</p>
+        <div class="tags">
+          <span class="tag stake">Stake</span>
+          <span class="tag shuffle">Shuffle</span>
+          <span class="tag nuts">Nuts</span>
+        </div>
+        <div class="card-footer">
+          <span>Mines only</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a href="tools/shuffle-dice.html" class="card">
+        <div class="icon">🎲</div>
+        <h3>Dice Tool</h3>
+        <p>SWALD-style strategy builder. Calculator, parallel Web Worker grid-search optimizer, sortable results table, CSV export, one-click strategy import. Stitches into the IOW/Smart HUD as the "Advanced IOW" tab on Dice pages.</p>
+        <div class="tags">
+          <span class="tag stake">Stake</span>
+          <span class="tag shuffle">Shuffle</span>
+        </div>
+        <div class="card-footer">
+          <span>Dice only (.com + .us)</span>
+          <span>→</span>
+        </div>
+      </a>
     </div>
 
-    <!-- ================= DESKTOP TOOLS ================= -->
-    <section class="tab-panel active" id="tools-desktop">
-      <p style="color:var(--text-dim); margin: 0 0 16px;">
-        Everything below ships in <strong>Desktop/unified-desktop.user.js</strong>. One install in Tampermonkey, then toggle individual tools from the in-page control panel.
-      </p>
-
-      <div class="grid">
-        <a href="tools/autovault.html" class="card">
-          <div class="icon">🔒</div>
-          <h3>Auto-Vault</h3>
-          <p>Watches your balance and sweeps a configurable percentage of profits to the vault. Big-win multiplier locks in more on spikes, rate-limited to 50 actions/hour.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Site-wide</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/iow-smart.html" class="card">
-          <div class="icon">🎯</div>
-          <h3>IOW / Smart</h3>
-          <p>Manual, Increase-on-Win, and Smart bet-sizing for Dice and Limbo. Live profit graph, streak tracking, stop-loss / take-profit, rapid-fire engine with stall protection.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Dice · Limbo · Target</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/keno.html" class="card">
-          <div class="icon">🎱</div>
-          <h3>Keno Presets</h3>
-          <p>Save number selections and risk level as named presets, reload in one click. Presets are shared across Stake, Shuffle, and Nuts via a common storage key.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Keno only</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/mines.html" class="card">
-          <div class="icon">💎</div>
-          <h3>Mines Auto</h3>
-          <p>Auto-plays Mines with weighted random tile picks in a Min/Max range. Live multiplier, payout, next-gem probability, and projected min/max payout. Auto-cashout when the board clears.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Mines only</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/shuffle-dice.html" class="card">
-          <div class="icon">🎲</div>
-          <h3>Dice Tool</h3>
-          <p>SWALD-style strategy builder. Calculator, parallel Web Worker grid-search optimizer, sortable results table, CSV export, one-click strategy import. Stitches into the IOW/Smart HUD as the "Advanced IOW" tab on Dice pages.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-          </div>
-          <div class="card-footer">
-            <span>Dice only (.com + .us)</span>
-            <span>→</span>
-          </div>
-        </a>
-      </div>
-
-      <p style="margin-top: 20px;"><a href="install-tampermonkey.html" class="btn">Install Tampermonkey →</a> <a href="install.html" class="btn primary">Install the tool →</a></p>
-    </section>
-
-    <!-- ================= MOBILE TOOLS ================= -->
-    <section class="tab-panel" id="tools-mobile">
-      <p style="color:var(--text-dim); margin: 0 0 16px;">
-        Everything below ships in <strong>Mobile/unified-mobile.user.js</strong> — same five tools, mobile-friendly UI shims for the iOS Userscripts app and Firefox + Tampermonkey on Android.
-      </p>
-
-      <div class="grid">
-        <a href="tools/autovault.html" class="card">
-          <div class="icon">🔒</div>
-          <h3>Auto-Vault</h3>
-          <p>Watches your balance and sweeps a configurable percentage of profits to the vault. Big-win multiplier locks in more on spikes, rate-limited to 50 actions/hour.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Site-wide</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/iow-smart.html" class="card">
-          <div class="icon">🎯</div>
-          <h3>IOW / Smart</h3>
-          <p>Manual / IOW / Smart bet-sizing with a touch-friendly HUD, live profit graph, and rapid-fire engine. Works on Stake, Shuffle, and Nuts dice pages.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Dice · Limbo · Target</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/keno.html" class="card">
-          <div class="icon">🎱</div>
-          <h3>Keno Presets</h3>
-          <p>Save and recall picks + risk in a tap-friendly panel. Same shared preset storage as the Desktop build — your Stake presets show up on Nuts and vice-versa.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Keno only</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/mines.html" class="card">
-          <div class="icon">💎</div>
-          <h3>Mines Auto</h3>
-          <p>Touch-friendly auto-player for Mines. Same weighted random picker, same live stats, same auto-cashout behavior. Branded as "Mines Burst" on Nuts (Hologlass theme).</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-          </div>
-          <div class="card-footer">
-            <span>Mines only</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a href="tools/shuffle-dice.html" class="card">
-          <div class="icon">🎲</div>
-          <h3>Dice Tool</h3>
-          <p>Full Calculator / Optimizer / Results tabs in a phone-friendly floating panel. Web Worker simulator runs the same way as Desktop.</p>
-          <div class="tags">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-          </div>
-          <div class="card-footer">
-            <span>Dice only (.com + .us)</span>
-            <span>→</span>
-          </div>
-        </a>
-      </div>
-
-      <p style="margin-top: 20px;"><a href="install-tampermonkey.html" class="btn">Install Tampermonkey →</a> <a href="install.html" class="btn primary">Install the tool →</a></p>
-    </section>
+    <p style="margin-top: 24px;"><a href="install-tampermonkey.html" class="btn">Install Tampermonkey →</a> <a href="install.html" class="btn primary">Install the tool →</a></p>
 
   </main>
 
@@ -210,14 +113,5 @@
   </footer>
 
   <script src="assets/config.js"></script>
-  <script>
-    document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const tab = btn.dataset.tab;
-        document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
-        document.querySelectorAll("body > main > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
-      });
-    });
-  </script>
 </body>
 </html>

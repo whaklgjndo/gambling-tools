@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tool Install Guide — Gambling Tools</title>
-  <meta name="description" content="Install the unified userscript on Desktop, iOS, or Android. One download per platform — covers every tool in the bundle." />
+  <meta name="description" content="Install the unified Desktop userscript. One download — covers every tool in the bundle." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -26,134 +26,42 @@
       <p>The second install — the actual unified script. Need to set up the userscript host first? <a href="install-tampermonkey.html">Tampermonkey Install Guide →</a></p>
     </section>
 
-    <div class="tabs" role="tablist">
-      <button class="tab-btn active" data-tab="ti-desktop">Desktop</button>
-      <button class="tab-btn" data-tab="ti-mobile">Mobile</button>
-    </div>
+    <p style="color:var(--text-dim); margin: 0 0 16px;">One download. Drag it into the Tampermonkey editor. Done.</p>
 
-    <!-- ================= DESKTOP ================= -->
-    <section class="tab-panel active" id="ti-desktop">
-      <p style="color:var(--text-dim); margin: 0 0 16px;">One download. Drag it into the Tampermonkey editor. Done.</p>
-
-      <ol class="steps">
-        <li>
-          <strong>Download the unified userscript.</strong>
-          <div class="downloads-pin">
-            <div class="pin-label">Desktop Download</div>
-            <div class="dl-grid">
-              <a class="dl-item" data-script="Desktop/unified-desktop.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Unified Desktop — all five tools</span>
-                  <span class="dl-platform stake">Stake</span>
-                  <span class="dl-platform shuffle">Shuffle</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                </div>
-                <span class="dl-desc">Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool, bundled with an in-page control panel.</span>
-              </a>
-            </div>
+    <ol class="steps">
+      <li>
+        <strong>Download the unified userscript.</strong>
+        <div class="downloads-pin">
+          <div class="pin-label">Desktop Download</div>
+          <div class="dl-grid">
+            <a class="dl-item" data-script="Desktop/unified-desktop.user.js">
+              <div class="dl-row">
+                <span class="dl-title">Unified Desktop — all five tools</span>
+                <span class="dl-platform stake">Stake</span>
+                <span class="dl-platform shuffle">Shuffle</span>
+                <span class="dl-platform nuts">Nuts</span>
+              </div>
+              <span class="dl-desc">Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool, bundled with an in-page control panel.</span>
+            </a>
           </div>
-        </li>
-        <li>
-          <strong>Click the Tampermonkey icon → Create a new script…</strong>
-          <img src="assets/img/desktop-3.png" alt="Tampermonkey popup with Create a new script highlighted" />
-        </li>
-        <li>
-          <strong>Drag the downloaded .user.js from your file explorer into the editor.</strong>
-          <img src="assets/img/desktop-2.png" alt="Dragging a .user.js file from File Explorer into the Tampermonkey editor" />
-        </li>
-        <li>
-          <strong>Click Install on the confirmation page that appears.</strong>
-          <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
-        </li>
-        <li>
-          <strong>Open Stake, Nuts.gg, or Shuffle and refresh once.</strong> The ⚙ control panel appears in the bottom-left — flip on the tools you want.
-        </li>
-      </ol>
-    </section>
-
-    <!-- ================= MOBILE ================= -->
-    <section class="tab-panel" id="ti-mobile">
-      <p style="color:var(--text-dim); margin: 0 0 16px;">Pick your phone OS — the install gesture is different on iOS vs Android.</p>
-
-      <div class="tabs nested" role="tablist">
-        <button class="tab-btn active" data-tab="ti-mobile-ios">iOS</button>
-        <button class="tab-btn" data-tab="ti-mobile-android">Android</button>
-      </div>
-
-      <section class="tab-panel active" id="ti-mobile-ios">
-        <p style="color:var(--text-dim); margin: 8px 0 16px;">Tap the link → Share → Save to Files → Userscripts folder.</p>
-
-        <ol class="steps">
-          <li>
-            <strong>Tap the download link below.</strong> Safari opens the raw script (or pops the script icon).
-            <div class="downloads-pin">
-              <div class="pin-label">Mobile Download</div>
-              <div class="dl-grid">
-                <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
-                  <div class="dl-row">
-                    <span class="dl-title">Unified Mobile — all five tools</span>
-                    <span class="dl-platform stake">Stake</span>
-                    <span class="dl-platform shuffle">Shuffle</span>
-                    <span class="dl-platform nuts">Nuts</span>
-                  </div>
-                  <span class="dl-desc">Same bundle as Desktop, with mobile UI shims for the iOS Userscripts app.</span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <strong>Tap the Share icon at the bottom → Save to Files.</strong>
-            <img src="assets/img/i5.png" alt="Safari showing .user.js download page with Share button highlighted" />
-          </li>
-          <li>
-            <strong>Pick the Userscripts folder</strong> as the save location.
-            <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
-          </li>
-          <li>
-            <strong>Tap Save</strong> (disk icon, top-right).
-            <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
-          </li>
-          <li>
-            <strong>Open Safari and visit a supported site. Refresh once.</strong> The ⚙ control panel appears in the bottom-left.
-          </li>
-          <li>
-            <strong>To enable / disable scripts at any time</strong>, tap the puzzle-piece icon in the URL bar and choose Userscripts.
-            <img src="assets/img/i2.png" alt="Safari on stake.us with Userscripts popover open" />
-            <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts" />
-          </li>
-        </ol>
-      </section>
-
-      <section class="tab-panel" id="ti-mobile-android">
-        <p style="color:var(--text-dim); margin: 8px 0 16px;">Long-press the link → Copy → paste into Firefox's URL bar → tap INSTALL.</p>
-
-        <ol class="steps">
-          <li>
-            <strong>Long-press the download link, copy it, then paste it into Firefox's URL bar.</strong>
-            <div class="downloads-pin">
-              <div class="pin-label">Mobile Download</div>
-              <div class="dl-grid">
-                <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
-                  <div class="dl-row">
-                    <span class="dl-title">Unified Mobile — all five tools</span>
-                    <span class="dl-platform stake">Stake</span>
-                    <span class="dl-platform shuffle">Shuffle</span>
-                    <span class="dl-platform nuts">Nuts</span>
-                  </div>
-                  <span class="dl-desc">Same bundle as Desktop, with mobile UI shims for Firefox + Tampermonkey on Android.</span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <strong>Firefox opens a Tampermonkey install page — tap INSTALL.</strong>
-          </li>
-          <li>
-            <strong>Open a supported site (Stake, Nuts.gg, or Shuffle) and refresh once.</strong> The ⚙ control panel appears in the bottom-left.
-          </li>
-        </ol>
-      </section>
-    </section>
+        </div>
+      </li>
+      <li>
+        <strong>Click the Tampermonkey icon → Create a new script…</strong>
+        <img src="assets/img/desktop-3.png" alt="Tampermonkey popup with Create a new script highlighted" />
+      </li>
+      <li>
+        <strong>Drag the downloaded .user.js from your file explorer into the editor.</strong>
+        <img src="assets/img/desktop-2.png" alt="Dragging a .user.js file from File Explorer into the Tampermonkey editor" />
+      </li>
+      <li>
+        <strong>Click Install on the confirmation page that appears.</strong>
+        <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
+      </li>
+      <li>
+        <strong>Open Stake, Nuts.gg, or Shuffle and refresh once.</strong> The ⚙ control panel appears in the bottom-left — flip on the tools you want.
+      </li>
+    </ol>
 
     <section class="section">
       <h2>Browse the tools</h2>
@@ -167,25 +75,5 @@
   </footer>
 
   <script src="assets/config.js"></script>
-  <script>
-    // Top-level tabs (Desktop / Mobile)
-    document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const tab = btn.dataset.tab;
-        document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
-        document.querySelectorAll("body > main > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
-      });
-    });
-    // Nested tabs (iOS / Android inside Mobile)
-    document.querySelectorAll(".tabs.nested > .tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const tab = btn.dataset.tab;
-        const group = btn.closest(".tabs.nested");
-        group.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
-        const parent = group.parentElement;
-        parent.querySelectorAll(":scope > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
-      });
-    });
-  </script>
 </body>
 </html>
