@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mines Auto — Gambling Tools</title>
+  <meta name="description" content="Auto-plays Mines with a weighted random tile picker, live multiplier + next-gem probability stats, projected min/max payout range, and auto-cashout when the board clears." />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -11,51 +12,149 @@
     <div class="container">
       <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="../install.html">Install Tampermonkey</a>
         <a href="../index.html#tools">Tools</a>
+        <a href="../install.html">Install</a>
+        <a href="../index.html#how">How it works</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="tool-header">
-      <span class="icon">💎</span>
-      <h1>Mines Auto</h1>
-    </div>
-    <p class="tool-sub">Auto-plays Mines on Stake and Nuts — random picks, adjustable speed, and exact next-gem odds right in the panel.</p>
 
-    <div class="tool-desc">
-      <p>Two flavors of the same core engine, themed per site. Stake runs <strong>Mines Auto + Helper</strong>; Nuts runs <strong>Mines Burst</strong> (Hologlass theme). Same behavior, different vibe.</p>
-      <p>Set <strong>Min Tiles</strong> and <strong>Max Tiles</strong> and the script will randomly pick somewhere in that range every round, auto-cash out, and fire the next bet. The <strong>Speed</strong> slider controls how fast it goes — dial it low for a calm grind, crank it to 85+ for rapid-fire burst mode.</p>
-      <p>Live stats right in the panel: current <strong>Multiplier</strong>, <strong>Payout</strong>, and <strong>Next Gem Chance</strong> — the exact probability of the next tile being a gem, computed from how many mines and how many tiles are left on the board. Use it to calibrate your cash-out target before you start.</p>
-      <p>Set your mine count and bet in the game as normal, set Min/Max + Speed in the panel, and hit <strong>Start</strong> (or <strong>Engage</strong> on Nuts). Draggable panel, tuck it wherever it fits best.</p>
+    <div class="tool-detail-head">
+      <div class="row">
+        <div class="icon-lg">💎</div>
+        <div>
+          <h1>Mines Auto</h1>
+          <div class="head-meta">
+            <span class="tag stake">Stake</span>
+            <span class="tag shuffle">Shuffle</span>
+            <span class="tag nuts">Nuts</span>
+            <span class="tag">Mines only</span>
+          </div>
+        </div>
+      </div>
+      <p class="tagline">
+        Set a Min/Max picks range and let it grind. Weighted random tile selection, live multiplier
+        and next-gem probability, projected min/max payout range, and auto-cashout when the board
+        clears. On Nuts it ships under the Hologlass-themed "Mines Burst" branding.
+      </p>
+    </div>
+
+    <div class="tool-spec">
+      <div class="spec">
+        <div class="k">Games</div>
+        <div class="v">Mines only</div>
+      </div>
+      <div class="spec">
+        <div class="k">Picks per round</div>
+        <div class="v">User-set Min/Max range (1–24)</div>
+      </div>
+      <div class="spec">
+        <div class="k">Tile distribution</div>
+        <div class="v">Geometric weight (base 1.5) — favors lower tiles</div>
+      </div>
+      <div class="spec">
+        <div class="k">Poll cadence</div>
+        <div class="v">15 ms loop, 600 ms per-tile timeout</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>Set Min and Max picks. Each round the bot rolls a random count in that range, clicks tiles one at a time (waiting for each to flip before the next), and auto-cashes when there are no idle tiles left. If it hits a mine, the round ends and the next bet fires.</p>
+      <p>Live stats show the <strong>Multiplier</strong>, current <strong>Payout</strong>, and exact <strong>Next Gem %</strong> based on how many mines and tiles are still on the board. The projected range card shows your guaranteed <em>minimum</em> and theoretical <em>maximum</em> payouts if you cashed now vs. cleared everything.</p>
     </div>
 
     <section class="section">
       <h2>Screenshots</h2>
       <div class="gallery">
         <figure>
-          <img src="../assets/img/tool-mines-stake.png" alt="Mines Auto + Helper panel on Stake" />
-          <figcaption>Mines Auto + Helper — Stake.</figcaption>
+          <img src="../assets/img/tool-mines-stake.png" alt="Mines Auto panel on Stake" />
+          <figcaption>Stake — top-right floating panel, draggable, status line shows current state.</figcaption>
         </figure>
         <figure>
-          <img src="../assets/img/tool-mines-nuts.png" alt="Mines Burst panel on Nuts" />
-          <figcaption>Mines Burst — Nuts (Hologlass theme).</figcaption>
+          <img src="../assets/img/tool-mines-nuts.png" alt="Mines Burst panel on Nuts (Hologlass theme)" />
+          <figcaption>Nuts — themed as "Mines Burst" on Hologlass; identical engine.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="section">
-      <h2>Install</h2>
-      <p>Mines Auto ships inside the unified bundle. Head to the install guide, pick your platform, and grab the one download link. After install, toggle Mines Auto on from the in-page control panel.</p>
-      <p><a href="../install.html" class="btn primary">Go to install guide →</a></p>
+      <h2>Controls</h2>
+      <ul class="list-tight">
+        <li><span class="k">Min Picks</span><span class="v">1–24 (default <strong>3</strong>) — minimum tiles to click per round.</span></li>
+        <li><span class="k">Max Picks</span><span class="v">1–24 (default <strong>8</strong>) — maximum tiles to click per round.</span></li>
+        <li><span class="k">Start / Stop</span><span class="v">Toggle the engine. Inputs lock while running so you can't change the range mid-round.</span></li>
+        <li><span class="k">Status line</span><span class="v">Plain-text current state — <em>Ready</em>, <em>Clicking…</em>, <em>Waiting…</em>, or the last error.</span></li>
+      </ul>
     </section>
 
-    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+    <section class="section">
+      <h2>Live stats</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="ficon">×</div>
+          <h4>Multiplier</h4>
+          <p>Current round's payout multiplier — what your bet pays right now if you cash out.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">💰</div>
+          <h4>Payout</h4>
+          <p>Potential win amount at the current multiplier. Updates per tile flip.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">💎</div>
+          <h4>Next Gem %</h4>
+          <p>Exact probability the next tile is a gem, computed from mines and tiles remaining.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">📉</div>
+          <h4>Min Multiplier / Payout</h4>
+          <p>Guaranteed floor if you cashed out right now.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">📈</div>
+          <h4>Max Multiplier / Payout</h4>
+          <p>Theoretical ceiling if every remaining tile turned out to be a gem.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Engineering notes</h2>
+      <ul class="list-tight">
+        <li><span class="k">Weighted tile picker</span><span class="v">Geometric distribution with base 1.5 — biases toward lower-numbered tiles to mimic human picking patterns.</span></li>
+        <li><span class="k">Click serialization</span><span class="v">One tile at a time. Waits for <code>data-game-tile-status</code> to flip before the next click; 600 ms per-tile timeout prevents React stalls from hanging the engine.</span></li>
+        <li><span class="k">Cashout logic</span><span class="v">Auto-cashes when there are no idle tiles left. On a mine hit the round just ends — the loss round triggers Play instantly.</span></li>
+        <li><span class="k">Post-win cooldown</span><span class="v">500 ms pause after each successful cashout so you can see the final multiplier before the next round starts.</span></li>
+        <li><span class="k">Button detection</span><span class="v">Reads <code>[data-testid="bet-button"]</code> / <code>[data-testid="cashout-button"]</code> for ready-state; respects <code>disabled</code> and <code>aria-disabled</code>.</span></li>
+        <li><span class="k">Nuts (Hologlass)</span><span class="v">"Mines Burst" branding wrapper — same engine, tighter visual loop for the SPL-token denominated mines variant.</span></li>
+      </ul>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <h2>Install Mines Auto</h2>
+      <p class="section-sub" style="margin-left:auto; margin-right:auto;">Ships in the unified bundle. Toggle on per-site from the control panel — the floating Mines panel appears top-right.</p>
+      <div class="cta">
+        <a href="../install.html" class="btn primary">Go to install guide <span class="arrow">→</span></a>
+        <a href="../index.html#tools" class="btn ghost">Other tools</a>
+      </div>
+    </section>
+
+    <div class="back-row">
+      <a href="../index.html#tools" class="btn">← Back to all tools</a>
+    </div>
   </main>
 
   <footer class="site">
-    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+    <div class="container">
+      <div class="foot-credit"><strong>Userscripts run client-side only.</strong> No telemetry, no external services. Use at your own risk &mdash; gamble responsibly.</div>
+      <div class="foot-links">
+        <a href="../index.html">Home</a>
+        <a href="../install.html">Install</a>
+        <a href="../index.html#tools">Tools</a>
+      </div>
+    </div>
   </footer>
 
   <script src="../assets/config.js"></script>

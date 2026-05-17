@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dice Tool — Gambling Tools</title>
+  <meta name="description" content="SWALD-style Dice strategy builder with a Kelly-flavored calculator, parallel Web Worker simulator, grid-search optimizer, results table with CSV export, and one-click strategy import — for Stake and Shuffle." />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -11,52 +12,185 @@
     <div class="container">
       <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="../install.html">Install Tampermonkey</a>
         <a href="../index.html#tools">Tools</a>
+        <a href="../install.html">Install</a>
+        <a href="../index.html#how">How it works</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="tool-header">
-      <span class="icon">🎲</span>
-      <h1>Dice Tool</h1>
-    </div>
-    <p class="tool-sub">Build your own SWALD-style 8.47 dice strategies — with a full calculator, simulator, and a range-based optimizer. Stake + Shuffle, .com + .us.</p>
 
-    <div class="tool-desc">
-      <p>Inspired by <strong>SWALD's</strong> (of StakeStats) 8.47 strategy. This script gives you the ability to easily create your own 8.47 style of strategy on Stake's or Shuffle's Dice original. Works for both <strong>.us</strong> sites and <strong>.com</strong> sites.</p>
-      <p>Equipped with <strong>2 separate simulators</strong>. The main simulator is for testing your own inputted values. The optimizer simulator allows you to enter value <em>ranges</em> for each parameter — a simulation with each value combination within your set ranges will be run a number of times depending on how many "Trials per combo" you have set.</p>
-      <p>The results of these trial runs will be on the <strong>Results</strong> tab. From there you can examine the stats of each combination. You can sort the results by any category, or you can see which combination was best overall by sorting by <strong>Score</strong> (the default sorting method). When you find a combination you like, you can apply that selected strategy to the Calculator (first tab) for further testing of that individual strategy using your own balance with <strong>Simulation Controls</strong>.</p>
-      <p>If you want to use that strategy for real, you can import it into the game by selecting <strong>Import New Strategy</strong> at the bottom of the Calculator page. This will create the strategy in your game. Be sure to always click <strong>Update</strong> on the little tool before a run, and after each profit stop. Or if you have chosen to disable the little tool, you will need to use the <strong>Export Balance &amp; Update Strategy</strong> button at the bottom of the Calculator tab.</p>
+    <div class="tool-detail-head">
+      <div class="row">
+        <div class="icon-lg">🎲</div>
+        <div>
+          <h1>Dice Tool</h1>
+          <div class="head-meta">
+            <span class="tag stake">Stake</span>
+            <span class="tag shuffle">Shuffle</span>
+            <span class="tag">Dice only (.com + .us)</span>
+          </div>
+        </div>
+      </div>
+      <p class="tagline">
+        Design your own SWALD-style Dice strategies with a Kelly-flavored calculator, grid-search the
+        parameter space in parallel Web Workers, sort the results, then import the best one straight into
+        the game with a single click.
+      </p>
+    </div>
+
+    <div class="tool-spec">
+      <div class="spec">
+        <div class="k">Sites</div>
+        <div class="v">Stake.com · Stake.us · Shuffle.com · Shuffle.us</div>
+      </div>
+      <div class="spec">
+        <div class="k">Game</div>
+        <div class="v">Dice only (Original)</div>
+      </div>
+      <div class="spec">
+        <div class="k">Sim engine</div>
+        <div class="v">Web Workers (auto-detected, up to 4)</div>
+      </div>
+      <div class="spec">
+        <div class="k">Stitching</div>
+        <div class="v">Mounts inside IOW/Smart HUD as "Advanced IOW"</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>Inspired by <strong>SWALD's 8.47</strong> dice strategy (StakeStats). The Dice Tool gives you everything you need to design, test, optimize, and run your own version of that style of strategy on Stake or Shuffle Original Dice — both <strong>.com</strong> and <strong>.us</strong>.</p>
+      <p>Three tabs: <strong>Calculator</strong> (enter one strategy, see all derived values), <strong>Optimizer</strong> (grid-search ranges in parallel Web Workers and rank the results), and <strong>Results</strong> (the optimizer's table, sortable, exportable to CSV).</p>
+      <p>On Stake and Shuffle Dice pages the tool's panel is <em>stitched into the IOW/Smart HUD</em> as an "Advanced IOW" tab — no second floating window.</p>
     </div>
 
     <section class="section">
       <h2>Screenshots</h2>
       <div class="gallery">
         <figure>
-          <img src="../assets/img/tool-dice-calculator.png" alt="Dice Tool calculator panel open on Stake Dice" />
-          <figcaption>Calculator tab — parameters + calculated values (Stake).</figcaption>
+          <img src="../assets/img/tool-dice-calculator.png" alt="Dice Tool Calculator on Stake" />
+          <figcaption>Calculator — your inputs and every derived value (bet size, profit stop, balance target, multiplier).</figcaption>
         </figure>
         <figure>
-          <img src="../assets/img/tool-dice-optimizer.png" alt="Dice Tool optimizer results on Shuffle Dice" />
-          <figcaption>Optimizer Results — hundreds of runs, sorted by Score (Shuffle).</figcaption>
+          <img src="../assets/img/tool-dice-optimizer.png" alt="Dice Tool Optimizer Results on Shuffle" />
+          <figcaption>Optimizer Results — hundreds of trial combinations, sorted by Score (default).</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="section">
-      <h2>Install</h2>
-      <p>The Dice Tool ships inside the unified bundle. Head to the install guide, pick your platform, and grab the one download link. After install, toggle the Dice Tool on from the in-page control panel — on the Dice game page it stitches itself into the IOW/Smart HUD as the "Advanced IOW" tab.</p>
-      <div class="notice">Supports Stake.com, Stake.us, Shuffle.com, and Shuffle.us.</div>
-      <p><a href="../install.html" class="btn primary">Go to install guide →</a></p>
+      <h2>Calculator tab</h2>
+      <p class="section-sub">Enter one strategy. The tool shows every derived value and a single-strategy simulation.</p>
+      <ul class="list-tight">
+        <li><span class="k">Balance</span><span class="v">Bankroll to test. Default <strong>20</strong>.</span></li>
+        <li><span class="k">Win Increase %</span><span class="v">Bet multiplier applied on each win. Default <strong>78</strong>.</span></li>
+        <li><span class="k">Loss Reset Streak</span><span class="v">Losses before resetting to base. Default <strong>5</strong>.</span></li>
+        <li><span class="k">Bet Divisor</span><span class="v">Balance / divisor = base bet. Default <strong>500</strong>.</span></li>
+        <li><span class="k">Profit Multiple</span><span class="v">Base bet × this = per-cycle profit stop. Default <strong>100</strong>.</span></li>
+        <li><span class="k">Buffer %</span><span class="v">Safety margin for RNG variance. Default <strong>25</strong>.</span></li>
+        <li><span class="k">Trials</span><span class="v">Simulations to run for the single-strategy case. Default <strong>100</strong>.</span></li>
+        <li><span class="k">Derived outputs</span><span class="v">Bet Size · Profit Stop · Balance Target · fair Multiplier — all calculated live.</span></li>
+        <li><span class="k">Import New Strategy</span><span class="v">Writes the current Calculator strategy into the game's native autobet UI.</span></li>
+        <li><span class="k">Export Balance &amp; Update Strategy</span><span class="v">Reads your in-game balance and re-applies the strategy with the new bet size — for post-run resets.</span></li>
+      </ul>
     </section>
 
-    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
+    <section class="section">
+      <h2>Optimizer tab</h2>
+      <p class="section-sub">Test every combination of parameter ranges in parallel and rank the results.</p>
+      <ul class="list-tight">
+        <li><span class="k">Starting Balance</span><span class="v">Preset list: 20, 50, 100 (or custom).</span></li>
+        <li><span class="k">Trials per combo</span><span class="v">10 (quick) or 100 (full).</span></li>
+        <li><span class="k">Bet Divisor</span><span class="v">256 or 500 (dropdown).</span></li>
+        <li><span class="k">Profit Multiplier</span><span class="v">50 or 100.</span></li>
+        <li><span class="k">Win %</span><span class="v">50–100, step 5.</span></li>
+        <li><span class="k">Loss Streak</span><span class="v">3–5, step 1.</span></li>
+        <li><span class="k">Buffer %</span><span class="v">25, 30, or 40.</span></li>
+        <li><span class="k">Worker count</span><span class="v">1–4 (auto-detected from <code>navigator.hardwareConcurrency</code>, capped at 4).</span></li>
+        <li><span class="k">Run Optimizer</span><span class="v">Spawns the workers, shows a progress bar, drops results into the Results tab.</span></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Results tab</h2>
+      <p class="section-sub">Every optimization run lands here. Sortable, exportable, re-importable.</p>
+      <ul class="list-tight">
+        <li><span class="k">Columns</span><span class="v">Starting Balance · Trials · Bet Div · Profit Mult · Win % · Loss · Buffer % · Avg High · Std Dev · Max High · Avg Cycles · Avg Rounds · Cycle Success % · Bust % · Score.</span></li>
+        <li><span class="k">Score</span><span class="v">Kelly-like metric: (Avg High − Starting Balance) / Std Dev. Default sort, descending.</span></li>
+        <li><span class="k">Sort by any column</span><span class="v">Click the column header to re-sort.</span></li>
+        <li><span class="k">Export CSV</span><span class="v">Download the full results history for spreadsheet work.</span></li>
+        <li><span class="k">Import Strategy</span><span class="v">Load a row's parameters back into the Calculator.</span></li>
+        <li><span class="k">Keep Previous</span><span class="v">Optional toggle — append new runs instead of replacing the table.</span></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Engineering notes</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="ficon">🧪</div>
+          <h4>Provably-fair RNG</h4>
+          <p>The Web Worker runs Stake's verified HMAC-SHA256 RNG — the same algorithm used by the actual game — so simulations match real behavior.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">⚙️</div>
+          <h4>Compounded trials</h4>
+          <p>Each trial runs cycles (profit targets) until bust or success, tracking peak balance, cycle count, and rounds.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">🧮</div>
+          <h4>Grid-search optimizer</h4>
+          <p>Generates every parameter combination, distributes them across Web Workers, then aggregates avg/std/max peaks, cycle success %, and bust rate.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">💾</div>
+          <h4>Persistent results</h4>
+          <p>All optimizer results saved in <code>dice_tool_aio_desktop_state_v1</code> (localStorage) and re-loadable across sessions. CSV export for backup.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">🎨</div>
+          <h4>Themes</h4>
+          <p>Original (dark cyan), Stake (dark blue), Shuffle (purple). Colors adapt to the host site automatically.</p>
+        </div>
+        <div class="feature">
+          <div class="ficon">🔢</div>
+          <h4>Streak Counter widget</h4>
+          <p>Floating counter shows current win/loss streak, with a Target value and an audio chime when hit. Optional auto-stop when target reached.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Stats tab (Dice pages only)</h2>
+      <p>On Stake and Shuffle Dice pages the Dice Tool's Stats tab subscribes to the IOW/Smart HUD via a public window callback (<code>__iow_smart_on_publish__</code>) and renders session balance, profit, peak, and streak data without doing its own bookkeeping. One source of truth, real-time updates per bet — not on a 500 ms tick.</p>
+    </section>
+
+    <div class="notice">Supports Stake.com, Stake.us, Shuffle.com, and Shuffle.us — no separate Shuffle build needed.</div>
+
+    <section class="section" style="text-align:center;">
+      <h2>Install Dice Tool</h2>
+      <p class="section-sub" style="margin-left:auto; margin-right:auto;">Ships in the unified bundle. Enable the matching <em>Stake Dice</em> or <em>Shuffle Dice</em> tool from the control panel — the Dice Tool stitches itself into the IOW/Smart HUD as the "Advanced IOW" tab.</p>
+      <div class="cta">
+        <a href="../install.html" class="btn primary">Go to install guide <span class="arrow">→</span></a>
+        <a href="../index.html#tools" class="btn ghost">Other tools</a>
+      </div>
+    </section>
+
+    <div class="back-row">
+      <a href="../index.html#tools" class="btn">← Back to all tools</a>
+    </div>
   </main>
 
   <footer class="site">
-    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+    <div class="container">
+      <div class="foot-credit"><strong>Userscripts run client-side only.</strong> No telemetry, no external services. Use at your own risk &mdash; gamble responsibly.</div>
+      <div class="foot-links">
+        <a href="../index.html">Home</a>
+        <a href="../install.html">Install</a>
+        <a href="../index.html#tools">Tools</a>
+      </div>
+    </div>
   </footer>
 
   <script src="../assets/config.js"></script>
