@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tampermonkey Install Guide — Gambling Tools</title>
+  <meta name="description" content="How to install the userscript host on Desktop, iOS, and Android. Step one of two — after this you're ready to install the actual tool." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="index.html">Tools</a>
+        <a href="install-tampermonkey.html" class="active">Tampermonkey Install</a>
+        <a href="install.html">Tool Install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero" style="padding: 40px 0 16px;">
+      <h1>Tampermonkey Install Guide</h1>
+      <p>The first install — the userscript host. Once Tampermonkey (or the iOS Userscripts app) is running, head to the <a href="install.html">Tool Install Guide</a> for the actual unified script.</p>
+    </section>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="tm-desktop">Desktop</button>
+      <button class="tab-btn" data-tab="tm-mobile">Mobile</button>
+    </div>
+
+    <!-- ================= DESKTOP ================= -->
+    <section class="tab-panel active" id="tm-desktop">
+      <p style="color:var(--text-dim); margin: 0 0 16px;">For Chrome, Edge, Brave, Opera, and any other Chromium-based browser. Firefox desktop also works — install Tampermonkey from <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank" rel="noopener">addons.mozilla.org</a> instead of the Chrome Web Store.</p>
+
+      <ol class="steps">
+        <li>
+          <strong>Open Tampermonkey on the Chrome Web Store and click Add to Chrome.</strong>
+          <div style="margin-top:8px;">
+            <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener" class="btn primary">Open Chrome Web Store →</a>
+          </div>
+        </li>
+        <li>
+          <strong>Right-click the Tampermonkey icon</strong> near the address bar → select <em>Manage extension</em>.
+          <img src="assets/img/desktop-5.png" alt="Right-click Tampermonkey icon with Manage extension highlighted" />
+        </li>
+        <li>
+          <strong>On the extension page, turn on “Allow User Scripts.”</strong> Chrome requires this — without it Tampermonkey refuses to inject any userscript.
+          <img src="assets/img/desktop-4.png" alt="Chrome extension page with Allow User Scripts toggle turned on" />
+        </li>
+        <li>
+          <strong>That's it for Tampermonkey.</strong> Head to the <a href="install.html">Tool Install Guide</a> next to grab the unified script.
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= MOBILE ================= -->
+    <section class="tab-panel" id="tm-mobile">
+      <p style="color:var(--text-dim); margin: 0 0 16px;">Pick your phone OS — the host is different on iOS vs Android.</p>
+
+      <div class="tabs nested" role="tablist">
+        <button class="tab-btn active" data-tab="tm-mobile-ios">iOS</button>
+        <button class="tab-btn" data-tab="tm-mobile-android">Android</button>
+      </div>
+
+      <section class="tab-panel active" id="tm-mobile-ios">
+        <p style="color:var(--text-dim); margin: 8px 0 16px;">iOS uses the free <strong>Userscripts</strong> app by Justin Wasack. It plugs into Safari as an extension and runs scripts just like Tampermonkey does on desktop.</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Open the App Store and search for Userscripts.</strong> Look for the <code>&lt;/&gt;</code> icon by Justin Wasack. Tap <em>GET</em>.
+            <img src="assets/img/i10.png" alt="App Store showing Userscripts by Justin Wasack" />
+          </li>
+          <li>
+            <strong>Open Settings → Apps → Safari → Extensions → Userscripts.</strong> (Search “Safari” in Settings if it's faster.)
+            <img src="assets/img/i9.png" alt="iOS Settings searching for Safari" />
+            <img src="assets/img/i8.png" alt="Safari settings with Extensions row highlighted" />
+            <img src="assets/img/i7.png" alt="Safari extensions list with Userscripts turned On" />
+          </li>
+          <li>
+            <strong>Toggle Allow Extension to ON.</strong> Under <em>Other Websites</em>, choose <em>Allow</em>.
+            <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension on and Other Websites set to Allow" />
+          </li>
+          <li>
+            <strong>That's it for the host.</strong> Head to the <a href="install.html">Tool Install Guide</a> → Mobile → iOS next.
+          </li>
+        </ol>
+      </section>
+
+      <section class="tab-panel" id="tm-mobile-android">
+        <p style="color:var(--text-dim); margin: 8px 0 16px;">Android Chrome doesn't support extensions. You need <strong>Firefox</strong> + Tampermonkey — the only browser/extension combo that works on Android.</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Install Firefox Browser by Mozilla from the Play Store.</strong> Not Firefox Focus, not Firefox Beta — only the regular Firefox supports extensions.
+          </li>
+          <li>
+            <strong>Open Firefox → ⋮ menu → Extensions.</strong>
+          </li>
+          <li>
+            <strong>Scroll to the bottom of the Extensions page and tap “Find more extensions.”</strong>
+          </li>
+          <li>
+            <strong>Search “Tampermonkey,”</strong> open the first result, then tap <em>Add to Firefox</em> on the addons.mozilla.org page.
+            <img src="assets/img/Android.png" alt="Tampermonkey shown in Firefox add-ons search results on Android" />
+          </li>
+          <li>
+            <strong>Back in Firefox, open the ⋮ menu and tap the Tampermonkey icon near the top.</strong>
+            <img src="assets/img/android2.png" alt="Firefox ⋮ menu with Extensions highlighted" />
+          </li>
+          <li>
+            <strong>That's it for the host.</strong> Head to the <a href="install.html">Tool Install Guide</a> → Mobile → Android next.
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <section class="section">
+      <h2>Next step</h2>
+      <p><a href="install.html" class="btn primary">Tool Install Guide →</a></p>
+    </section>
+
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk &mdash; gamble responsibly.</div>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script>
+    // Top-level tabs (Desktop / Mobile)
+    document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        document.querySelectorAll("body > main > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
+      });
+    });
+    // Nested tabs (iOS / Android inside Mobile)
+    document.querySelectorAll(".tabs.nested > .tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        const group = btn.closest(".tabs.nested");
+        group.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        // Find the nested panels (siblings of the .tabs.nested element)
+        const parent = group.parentElement;
+        parent.querySelectorAll(":scope > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
+      });
+    });
+  </script>
+</body>
+</html>

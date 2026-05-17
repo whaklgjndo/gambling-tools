@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Install Guide — Gambling Tools</title>
+  <title>Tool Install Guide — Gambling Tools</title>
+  <meta name="description" content="Install the unified userscript on Desktop, iOS, or Android. One download per platform — covers every tool in the bundle." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -11,56 +12,43 @@
     <div class="container">
       <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="install.html">Install Guide</a>
-        <a href="index.html#tools">Tools</a>
+        <a href="index.html">Tools</a>
+        <a href="install-tampermonkey.html">Tampermonkey Install</a>
+        <a href="install.html" class="active">Tool Install</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero" style="text-align:left; padding: 32px 0 16px;">
-      <h1 style="font-size: 2.2rem;">Install Guide + Tool Downloads</h1>
-      <p style="margin:0;">Pick your platform. Every tab has step-by-step instructions and a pinned download for the unified script — one install gives you every tool, with an in-page panel to enable/disable each one.</p>
+
+    <section class="hero" style="padding: 40px 0 16px;">
+      <h1>Tool Install Guide</h1>
+      <p>The second install — the actual unified script. Need to set up the userscript host first? <a href="install-tampermonkey.html">Tampermonkey Install Guide →</a></p>
     </section>
 
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="desktop">Desktop</button>
-      <button class="tab-btn" data-tab="android">Android</button>
-      <button class="tab-btn" data-tab="iphone">iPhone / iPad</button>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="ti-desktop">Desktop</button>
+      <button class="tab-btn" data-tab="ti-mobile">Mobile</button>
     </div>
 
     <!-- ================= DESKTOP ================= -->
-    <section class="tab-panel active" id="desktop">
-      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install Tampermonkey.</p>
+    <section class="tab-panel active" id="ti-desktop">
+      <p style="color:var(--text-dim); margin: 0 0 16px;">One download. Drag it into the Tampermonkey editor. Done.</p>
 
       <ol class="steps">
         <li>
-          <strong>Go to Tampermonkey's site and click Add to Chrome.</strong>
-          <div style="margin-top:8px;">
-            <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener" class="btn primary">Open Chrome Web Store →</a>
-          </div>
-        </li>
-        <li>
-          <strong>Right-click the Tampermonkey icon</strong> near your address bar → select <em>Manage extension</em>.
-          <img src="assets/img/desktop-5.png" alt="Right-click Tampermonkey icon with Manage extension highlighted" />
-        </li>
-        <li>
-          <strong>On the extension page, find Allow User Scripts and turn it on.</strong> This is required by Chrome — without it, no userscript can run.
-          <img src="assets/img/desktop-4.png" alt="Chrome extension page with Allow User Scripts toggle turned on" />
-        </li>
-        <li>
-          <strong>Download the Unified Desktop script from the Desktop Downloads pin.</strong>
-          <div class="downloads-pin" id="dl-desktop">
-            <div class="pin-label">Desktop Downloads</div>
+          <strong>Download the unified userscript.</strong>
+          <div class="downloads-pin">
+            <div class="pin-label">Desktop Download</div>
             <div class="dl-grid">
               <a class="dl-item" data-script="Desktop/unified-desktop.user.js">
                 <div class="dl-row">
-                  <span class="dl-title">Unified Desktop — All Tools</span>
+                  <span class="dl-title">Unified Desktop — all five tools</span>
                   <span class="dl-platform stake">Stake</span>
-                  <span class="dl-platform nuts">Nuts</span>
                   <span class="dl-platform shuffle">Shuffle</span>
+                  <span class="dl-platform nuts">Nuts</span>
                 </div>
-                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
+                <span class="dl-desc">Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool, bundled with an in-page control panel.</span>
               </a>
             </div>
           </div>
@@ -70,146 +58,132 @@
           <img src="assets/img/desktop-3.png" alt="Tampermonkey popup with Create a new script highlighted" />
         </li>
         <li>
-          <strong>Drag the downloaded .user.js file from your file explorer into the Tampermonkey editor.</strong>
+          <strong>Drag the downloaded .user.js from your file explorer into the editor.</strong>
           <img src="assets/img/desktop-2.png" alt="Dragging a .user.js file from File Explorer into the Tampermonkey editor" />
         </li>
         <li>
-          <strong>Click Install on the page that appears.</strong>
+          <strong>Click Install on the confirmation page that appears.</strong>
           <img src="assets/img/desktop-1.png" alt="Tampermonkey install confirmation page with Install button circled" />
         </li>
         <li>
-          <strong>Open a supported site (Stake, Nuts.gg, or Shuffle). Refresh the page once. The control panel and any enabled tools appear.</strong>
+          <strong>Open Stake, Nuts.gg, or Shuffle and refresh once.</strong> The ⚙ control panel appears in the bottom-left — flip on the tools you want.
         </li>
       </ol>
     </section>
 
-    <!-- ================= ANDROID ================= -->
-    <section class="tab-panel" id="android">
-      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install Firefox + Tampermonkey. Chrome on Android doesn't support extensions.</p>
+    <!-- ================= MOBILE ================= -->
+    <section class="tab-panel" id="ti-mobile">
+      <p style="color:var(--text-dim); margin: 0 0 16px;">Pick your phone OS — the install gesture is different on iOS vs Android.</p>
 
-      <ol class="steps">
-        <li>
-          <strong>Install Firefox Browser by Mozilla from the Play Store.</strong> Not Firefox Focus, not Firefox Beta — only the regular Firefox supports extensions.
-        </li>
-        <li>
-          <strong>Open Firefox → tap the ⋮ menu → Extensions.</strong>
-        </li>
-        <li>
-          <strong>On the Extensions page, scroll to the bottom, and tap Find more extensions.</strong>
-        </li>
-        <li>
-          <strong>Search for Tampermonkey</strong>, tap the first result, then tap <em>Add to Firefox</em> on the addons.mozilla.org page that opens.
-          <img src="assets/img/Android.png" alt="Tampermonkey shown in Firefox add-ons search results on Android" />
-        </li>
-        <li>
-          <strong>Back in Firefox, open the ⋮ menu → tap the Tampermonkey icon near the top.</strong>
-          <img src="assets/img/android2.png" alt="Firefox ⋮ menu with Extensions highlighted" />
-        </li>
-        <li>
-          <strong>This opens Tampermonkey's dashboard</strong> with Installed Userscripts / Settings / Utilities tabs. This is where you manage all your scripts.
-        </li>
-        <li>
-          <strong>Long-press the Unified Mobile download link, copy the link, and paste it into Firefox's URL bar.</strong>
-          <div class="downloads-pin" id="dl-android">
-            <div class="pin-label">Mobile Downloads</div>
-            <div class="dl-grid">
-              <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Unified Mobile — All Tools</span>
-                  <span class="dl-platform stake">Stake</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                  <span class="dl-platform shuffle">Shuffle</span>
-                </div>
-                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
-              </a>
+      <div class="tabs nested" role="tablist">
+        <button class="tab-btn active" data-tab="ti-mobile-ios">iOS</button>
+        <button class="tab-btn" data-tab="ti-mobile-android">Android</button>
+      </div>
+
+      <section class="tab-panel active" id="ti-mobile-ios">
+        <p style="color:var(--text-dim); margin: 8px 0 16px;">Tap the link → Share → Save to Files → Userscripts folder.</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Tap the download link below.</strong> Safari opens the raw script (or pops the script icon).
+            <div class="downloads-pin">
+              <div class="pin-label">Mobile Download</div>
+              <div class="dl-grid">
+                <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
+                  <div class="dl-row">
+                    <span class="dl-title">Unified Mobile — all five tools</span>
+                    <span class="dl-platform stake">Stake</span>
+                    <span class="dl-platform shuffle">Shuffle</span>
+                    <span class="dl-platform nuts">Nuts</span>
+                  </div>
+                  <span class="dl-desc">Same bundle as Desktop, with mobile UI shims for the iOS Userscripts app.</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <strong>This opens a Tampermonkey page — tap INSTALL.</strong>
-        </li>
-        <li>
-          <strong>Open the site the tool is designed for. Refresh the page once. The control panel and any enabled tools appear.</strong>
-        </li>
-      </ol>
-    </section>
+          </li>
+          <li>
+            <strong>Tap the Share icon at the bottom → Save to Files.</strong>
+            <img src="assets/img/i5.png" alt="Safari showing .user.js download page with Share button highlighted" />
+          </li>
+          <li>
+            <strong>Pick the Userscripts folder</strong> as the save location.
+            <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
+          </li>
+          <li>
+            <strong>Tap Save</strong> (disk icon, top-right).
+            <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
+          </li>
+          <li>
+            <strong>Open Safari and visit a supported site. Refresh once.</strong> The ⚙ control panel appears in the bottom-left.
+          </li>
+          <li>
+            <strong>To enable / disable scripts at any time</strong>, tap the puzzle-piece icon in the URL bar and choose Userscripts.
+            <img src="assets/img/i2.png" alt="Safari on stake.us with Userscripts popover open" />
+            <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts" />
+          </li>
+        </ol>
+      </section>
 
-    <!-- ================= IPHONE ================= -->
-    <section class="tab-panel" id="iphone">
-      <p style="color:var(--text-dim); margin:0 0 20px;">Before using any tools, you must install the Userscripts app.</p>
+      <section class="tab-panel" id="ti-mobile-android">
+        <p style="color:var(--text-dim); margin: 8px 0 16px;">Long-press the link → Copy → paste into Firefox's URL bar → tap INSTALL.</p>
 
-      <ol class="steps">
-        <li>
-          <strong>Open the App Store and search for Userscripts.</strong> Look for the <code>&lt;/&gt;</code> icon by Justin Wasack. Tap <em>GET</em> to install.
-          <img src="assets/img/i10.png" alt="App Store showing Userscripts by Justin Wasack" />
-        </li>
-        <li>
-          <strong>Open iPhone Settings → Apps → Safari → Extensions → Userscripts.</strong> (Or just search "Safari" in Settings.)
-          <img src="assets/img/i9.png" alt="iOS Settings searching for Safari" />
-          <img src="assets/img/i8.png" alt="Safari settings with Extensions row highlighted" />
-          <img src="assets/img/i7.png" alt="Safari extensions list with Userscripts turned On" />
-        </li>
-        <li>
-          <strong>Toggle Allow Extension to ON.</strong> Under <em>Other Websites</em>, select <em>Allow</em>.
-          <img src="assets/img/i6.png" alt="Userscripts extension settings with Allow Extension on and Other Websites set to Allow" />
-        </li>
-        <li>
-          <strong>Tap the Unified Mobile download link from the Mobile Downloads pin.</strong> Safari opens and shows the raw script text, or it may just pop up the script icon.
-          <div class="downloads-pin" id="dl-iphone">
-            <div class="pin-label">Mobile Downloads</div>
-            <div class="dl-grid">
-              <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
-                <div class="dl-row">
-                  <span class="dl-title">Unified Mobile — All Tools</span>
-                  <span class="dl-platform stake">Stake</span>
-                  <span class="dl-platform nuts">Nuts</span>
-                  <span class="dl-platform shuffle">Shuffle</span>
-                </div>
-                <span class="dl-desc">Every tool in one script: Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool — for Stake, Nuts.gg, and Shuffle. Each tool can be enabled/disabled from the in-page control panel.</span>
-              </a>
+        <ol class="steps">
+          <li>
+            <strong>Long-press the download link, copy it, then paste it into Firefox's URL bar.</strong>
+            <div class="downloads-pin">
+              <div class="pin-label">Mobile Download</div>
+              <div class="dl-grid">
+                <a class="dl-item" data-script="Mobile/unified-mobile.user.js">
+                  <div class="dl-row">
+                    <span class="dl-title">Unified Mobile — all five tools</span>
+                    <span class="dl-platform stake">Stake</span>
+                    <span class="dl-platform shuffle">Shuffle</span>
+                    <span class="dl-platform nuts">Nuts</span>
+                  </div>
+                  <span class="dl-desc">Same bundle as Desktop, with mobile UI shims for Firefox + Tampermonkey on Android.</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <strong>At the bottom of the page tap the Share icon</strong> and then select <em>Save to Files</em>.
-          <img src="assets/img/i5.png" alt="Safari showing .user.js download page with Share button highlighted" />
-        </li>
-        <li>
-          <strong>If not already selected, from the drop-down select the Userscripts folder</strong> to save the script into.
-          <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
-        </li>
-        <li>
-          <strong>Tap Save</strong> (disk icon, top-right).
-          <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
-        </li>
-        <li>
-          <strong>Open Safari and go to a supported site (Stake, Nuts.gg, or Shuffle). Refresh the page once. The control panel and any enabled tools appear.</strong>
-        </li>
-        <li>
-          <strong>To enable / disable scripts</strong>, tap the puzzle piece in your URL bar and select <em>Userscripts</em>. From there you can tap a script to enable or disable it.
-          <img src="assets/img/i2.png" alt="Safari on stake.us with Userscripts popover open" />
-          <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts" />
-        </li>
-      </ol>
+          </li>
+          <li>
+            <strong>Firefox opens a Tampermonkey install page — tap INSTALL.</strong>
+          </li>
+          <li>
+            <strong>Open a supported site (Stake, Nuts.gg, or Shuffle) and refresh once.</strong> The ⚙ control panel appears in the bottom-left.
+          </li>
+        </ol>
+      </section>
     </section>
 
     <section class="section">
-      <h2>Next step</h2>
-      <p><a href="index.html#tools" class="btn primary">Browse tool guides →</a></p>
+      <h2>Browse the tools</h2>
+      <p><a href="index.html" class="btn primary">All tools →</a></p>
     </section>
+
   </main>
 
   <footer class="site">
-    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
+    <div class="container">Userscripts run client-side only. Use at your own risk &mdash; gamble responsibly.</div>
   </footer>
 
   <script src="assets/config.js"></script>
   <script>
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
+    // Top-level tabs (Desktop / Mobile)
+    document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const tab = btn.dataset.tab;
-        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
-        document.querySelectorAll(".tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
+        document.querySelectorAll(".tabs:not(.nested) > .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        document.querySelectorAll("body > main > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
+      });
+    });
+    // Nested tabs (iOS / Android inside Mobile)
+    document.querySelectorAll(".tabs.nested > .tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        const group = btn.closest(".tabs.nested");
+        group.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        const parent = group.parentElement;
+        parent.querySelectorAll(":scope > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
       });
     });
   </script>

@@ -579,6 +579,36 @@ main { padding: 48px 0 32px; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
+/* Nested tabs (inside a tab-panel) */
+.tabs.nested {
+  margin-top: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.tabs.nested .tab-btn {
+  font-size: 0.88rem;
+  padding: 10px 14px;
+}
+.tabs.nested .tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Section-card wrapper for "Mobile" group containing nested tabs */
+.platform-group {
+  padding: 0;
+}
+.platform-group .group-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 8px 0 4px;
+}
+.platform-group .group-sub {
+  color: var(--text-dim);
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+}
+
 .notice {
   background: var(--accent-dim);
   border: 1px solid rgba(34, 197, 94, 0.3);
