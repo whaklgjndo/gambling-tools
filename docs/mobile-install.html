@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tool Install (Mobile) — Gambling Tools</title>
+  <meta name="description" content="How to install the individual mobile userscripts on iOS (Userscripts app) and Android (Firefox + Tampermonkey)." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="desktop.html">Desktop</a>
+        <a href="mobile.html" class="active">Mobile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="crumbs">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="mobile.html">Mobile</a>
+      <span class="sep">›</span>
+      <span class="here">Tool Install</span>
+    </div>
+
+    <section class="hero" style="padding: 24px 0 12px;">
+      <h1>Tool Install Guide</h1>
+      <p>The second install — the actual userscripts. Need to set up the host first? <a href="mobile-tampermonkey.html">Tampermonkey Install Guide →</a></p>
+    </section>
+
+    <p style="color:var(--text-dim); margin: 0 0 16px;">
+      Mobile uses per-tool scripts. Grab the ones you want from the <a href="mobile-tools.html">Tools Download Page</a>, then follow the install steps for your phone OS below.
+    </p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="ti-ios">iOS</button>
+      <button class="tab-btn" data-tab="ti-android">Android</button>
+    </div>
+
+    <section class="tab-panel active" id="ti-ios">
+      <p style="color:var(--text-dim); margin: 8px 0 16px;">Tap the script link → Share → Save to Files → Userscripts folder.</p>
+
+      <ol class="steps">
+        <li>
+          <strong>Open the <a href="mobile-tools.html">Tools Download Page</a> and tap the script you want.</strong> Safari opens the raw script (or pops the script icon).
+        </li>
+        <li>
+          <strong>Tap the Share icon at the bottom → Save to Files.</strong>
+          <img src="assets/img/i5.png" alt="Safari showing .user.js download page with Share button highlighted" />
+        </li>
+        <li>
+          <strong>Pick the Userscripts folder</strong> as the save location.
+          <img src="assets/img/i4.png" alt="Save dialog with Userscripts folder being selected" />
+        </li>
+        <li>
+          <strong>Tap Save</strong> (disk icon, top-right).
+          <img src="assets/img/i3.png" alt="Save dialog with Save button highlighted" />
+        </li>
+        <li>
+          <strong>Open Safari and visit the relevant site (Stake, Nuts.gg, etc.). Refresh once.</strong> The tool's UI appears.
+        </li>
+        <li>
+          <strong>To enable / disable scripts at any time</strong>, tap the puzzle-piece icon in the URL bar and choose Userscripts.
+          <img src="assets/img/i2.png" alt="Safari on stake.us with Userscripts popover open" />
+          <img src="assets/img/i1.png" alt="Userscripts popover showing installed scripts" />
+        </li>
+        <li>
+          <strong>Repeat for each tool you want.</strong> Install only the scripts you actually need.
+        </li>
+      </ol>
+    </section>
+
+    <section class="tab-panel" id="ti-android">
+      <p style="color:var(--text-dim); margin: 8px 0 16px;">Long-press the script link → Copy → paste into Firefox's URL bar → tap INSTALL.</p>
+
+      <ol class="steps">
+        <li>
+          <strong>Open the <a href="mobile-tools.html">Tools Download Page</a> in Firefox.</strong>
+        </li>
+        <li>
+          <strong>Long-press the download link for the script you want, copy it, then paste it into Firefox's URL bar.</strong>
+        </li>
+        <li>
+          <strong>Firefox opens a Tampermonkey install page — tap INSTALL.</strong>
+        </li>
+        <li>
+          <strong>Open the relevant site (Stake, Nuts.gg, etc.) and refresh once.</strong> The tool's UI appears.
+        </li>
+        <li>
+          <strong>Repeat for each tool you want.</strong> Install only the scripts you actually need.
+        </li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Next step</h2>
+      <p><a href="mobile-tools.html" class="btn primary">Tools Download Page →</a></p>
+    </section>
+
+  </main>
+
+  <footer class="site">
+    <div class="container">Userscripts run client-side only. Use at your own risk &mdash; gamble responsibly.</div>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script>
+    document.querySelectorAll(".tabs .tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll(".tabs .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        document.querySelectorAll("body > main > .tab-panel").forEach((p) => p.classList.toggle("active", p.id === tab));
+      });
+    });
+  </script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tool Install Guide — Gambling Tools</title>
-  <meta name="description" content="Install the unified Desktop userscript. One download — covers every tool in the bundle." />
+  <title>Tool Install (Desktop) — Gambling Tools</title>
+  <meta name="description" content="How to install the unified Desktop userscript inside Tampermonkey." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -12,38 +12,36 @@
     <div class="container">
       <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="index.html">Tools</a>
-        <a href="install-tampermonkey.html">Tampermonkey Install</a>
-        <a href="install.html" class="active">Tool Install</a>
+        <a href="index.html">Home</a>
+        <a href="desktop.html" class="active">Desktop</a>
+        <a href="mobile.html">Mobile</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
 
-    <section class="hero" style="padding: 40px 0 16px;">
+    <div class="crumbs">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="desktop.html">Desktop</a>
+      <span class="sep">›</span>
+      <span class="here">Tool Install</span>
+    </div>
+
+    <section class="hero" style="padding: 24px 0 12px;">
       <h1>Tool Install Guide</h1>
-      <p>The second install — the actual unified script. Need to set up the userscript host first? <a href="install-tampermonkey.html">Tampermonkey Install Guide →</a></p>
+      <p>The second install — the actual userscript. Need to set up Tampermonkey first? <a href="desktop-tampermonkey.html">Tampermonkey Install Guide →</a></p>
     </section>
 
-    <p style="color:var(--text-dim); margin: 0 0 16px;">One download. Drag it into the Tampermonkey editor. Done.</p>
+    <p style="color:var(--text-dim); margin: 0 0 16px;">Drag the downloaded .user.js into the Tampermonkey editor and click Install.</p>
 
     <ol class="steps">
       <li>
-        <strong>Download the unified userscript.</strong>
-        <div class="downloads-pin">
-          <div class="pin-label">Desktop Download</div>
-          <div class="dl-grid">
-            <a class="dl-item" data-script="Desktop/unified-desktop.user.js">
-              <div class="dl-row">
-                <span class="dl-title">Unified Desktop — all five tools</span>
-                <span class="dl-platform stake">Stake</span>
-                <span class="dl-platform shuffle">Shuffle</span>
-                <span class="dl-platform nuts">Nuts</span>
-              </div>
-              <span class="dl-desc">Auto-Vault, IOW/Smart, Keno Presets, Mines Auto, and the Dice Tool, bundled with an in-page control panel.</span>
-            </a>
-          </div>
+        <strong>Download the unified Desktop userscript.</strong>
+        <div style="margin-top:10px;">
+          <a class="btn primary" data-script="Desktop/unified-desktop.user.js">Download unified-desktop.user.js</a>
+          <a href="desktop-tools.html" class="btn">See download page →</a>
         </div>
       </li>
       <li>
@@ -64,8 +62,8 @@
     </ol>
 
     <section class="section">
-      <h2>Browse the tools</h2>
-      <p><a href="index.html" class="btn primary">All tools →</a></p>
+      <h2>What's inside</h2>
+      <p><a href="desktop-tools.html" class="btn primary">Tools Download →</a> <a href="index.html" class="btn">Home</a></p>
     </section>
 
   </main>
