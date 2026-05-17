@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>IOW / Smart — Gambling Tools</title>
-  <meta name="description" content="Manual, Increase-on-Win, and Smart bet-sizing modes for Dice, Limbo, and Target — with a live profit graph, streak tracking, stop-loss / take-profit, and rapid-fire automation." />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -12,184 +11,57 @@
     <div class="container">
       <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
+        <a href="../install.html">Install Tampermonkey</a>
         <a href="../index.html#tools">Tools</a>
-        <a href="../install.html">Install</a>
-        <a href="../index.html#how">How it works</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
+    <div class="tool-header">
+      <span class="icon">🎯</span>
+      <h1>IOW / Smart</h1>
+    </div>
+    <p class="tool-sub">Three playstyle modes for Stake &amp; Nuts, Limbo &amp; Dice — with a compact HUD and a big live profit graph baked right into the game.</p>
 
-    <div class="tool-detail-head">
-      <div class="row">
-        <div class="icon-lg">🎯</div>
-        <div>
-          <h1>IOW / Smart</h1>
-          <div class="head-meta">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-            <span class="tag">Dice · Limbo · Target</span>
-          </div>
-        </div>
-      </div>
-      <p class="tagline">
-        A full-screen HUD that replaces the native betting sidebar with three bet-sizing modes,
-        a live profit graph, streak analytics, stop-loss / take-profit, and a rapid-fire automation
-        engine with stall protection.
-      </p>
+    <div class="tool-desc">
+      <p>This script features <strong>3 playstyle modes</strong> for Stake and Nuts, Limbo and Dice. <strong>Manual</strong>, <strong>IOW</strong> (Increase on Win), and <strong>Smart</strong>.</p>
+      <p><strong>Manual</strong> mode is self-explanatory, only it allows the user to run Dice or Limbo on auto using the script-injected <em>Start</em> button.</p>
+      <p><strong>IOW</strong> mode allows you to set an increase percentage to your bet after a win, and a number of losses in a row before resetting back to base bet. You can also set the number of wins needed (before the loss reset occurs) to reset back to base bet. If you hit the win-reset value, the HUD will flash letting you know you hit the win reset each time.</p>
+      <p><strong>Smart</strong> mode is a different beast. This mode automatically sets the bet size based on these factors: <strong>Balance</strong>, <strong>Multiplier</strong>, and <strong>Aggression</strong> value (the sliding bar). Just set these three values to your liking, and send it.</p>
+      <p>Oh yeah, did I mention you can have very detailed statistics of your session and a large built-in graph right into the game's UI?</p>
     </div>
 
-    <div class="tool-spec">
-      <div class="spec">
-        <div class="k">Games</div>
-        <div class="v">Stake/Shuffle Dice + Limbo · Nuts Dice + Target</div>
-      </div>
-      <div class="spec">
-        <div class="k">Modes</div>
-        <div class="v">Manual · IOW · Smart</div>
-      </div>
-      <div class="spec">
-        <div class="k">Rapid-fire</div>
-        <div class="v">15 ms poll, stall + win-cooldown protected</div>
-      </div>
-      <div class="spec">
-        <div class="k">Profit graph</div>
-        <div class="v">Up to 10,000 points, refreshed per-bet</div>
-      </div>
+    <div class="tool-important">
+      <span class="label">IMPORTANT</span>
+      You must be in Stake's native <strong>Manual</strong> mode to use all three injected modes.
     </div>
-
-    <div class="alert">
-      <span class="label">Important</span>
-      You must be in the site's native <strong>Manual</strong> bet mode for any of the three injected modes to work — the script clicks the Bet button itself, so the native autobet UI has to be off.
-    </div>
-
-    <section class="section">
-      <h2>The three modes</h2>
-      <p class="section-sub">Pick the one that matches your playstyle. You can switch between them mid-session.</p>
-      <div class="modes">
-        <div class="mode">
-          <div class="mname">Mode 01</div>
-          <h4>Manual</h4>
-          <p>Static bet size every round. You set the wager once; the script just gives you the rapid-fire Start button and all the stats, leaving the bet math alone.</p>
-        </div>
-        <div class="mode">
-          <div class="mname">Mode 02</div>
-          <h4>IOW (Increase on Win)</h4>
-          <p>Bet grows by your <em>Win Increase %</em> on each win and resets to base after <em>Loss Reset Streak</em> consecutive losses. Optional win-reset count flashes the HUD when it triggers.</p>
-        </div>
-        <div class="mode">
-          <div class="mname">Mode 03</div>
-          <h4>Smart</h4>
-          <p>Bet size is calculated from <em>Balance</em>, target <em>Multiplier</em>, and an <em>Aggression</em> slider — auto-scales through five Gears as your streaks shift. Lock the gear to disable auto-scaling.</p>
-        </div>
-      </div>
-    </section>
 
     <section class="section">
       <h2>Screenshots</h2>
       <div class="gallery">
         <figure>
-          <img src="../assets/img/tool-iow-stake.png" alt="IOW / Smart HUD with profit graph on Stake Dice" />
-          <figcaption>Stake Dice — full HUD, 3-column layout, sidebar relocated, profit graph baked into the game frame.</figcaption>
+          <img src="../assets/img/tool-iow-stake.png" alt="IOW / Smart HUD and profit graph on Stake Dice" />
+          <figcaption>Live session on Stake Dice — HUD, stats, and the full profit graph.</figcaption>
         </figure>
         <figure>
           <img src="../assets/img/tool-iow-nuts.png" alt="IOW / Smart in Smart mode on Nuts Dice" />
-          <figcaption>Nuts Dice — Smart mode with Aggression slider, session RTP, streak counters.</figcaption>
+          <figcaption>Smart mode on Nuts Dice — Aggression, session RTP, aggression state, best/worst streaks.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="section">
-      <h2>Core controls</h2>
-      <ul class="list-tight">
-        <li><span class="k">Base Bet</span><span class="v">Starting wager. Scales per currency (Nuts uses 0.00000001 SOL minimum).</span></li>
-        <li><span class="k">Win Increase %</span><span class="v">IOW mode — multiplier applied to the bet after each win. Default <strong>125</strong> (= 1.25×).</span></li>
-        <li><span class="k">Loss Reset Streak</span><span class="v">Consecutive losses before bet resets to base. Default <strong>3</strong>.</span></li>
-        <li><span class="k">Win Streak Reset</span><span class="v">IOW only — wins needed before auto-resetting on opposite result. Default <strong>5</strong>.</span></li>
-        <li><span class="k">Aggression slider</span><span class="v">Smart mode — 0.1–2.0 scaling factor for streak-driven bet bumps.</span></li>
-        <li><span class="k">History Window</span><span class="v">Smart mode — lookback rounds for streak detection. Default <strong>30</strong>.</span></li>
-        <li><span class="k">Lock Aggression</span><span class="v">Pin to a specific Gear (1–5) to bypass auto-scaling.</span></li>
-        <li><span class="k">Stop Loss %</span><span class="v">Auto-stop if balance drops this % below session start.</span></li>
-        <li><span class="k">Take Profit %</span><span class="v">Auto-stop if balance gains this % above session start.</span></li>
-        <li><span class="k">Auto-Stop Balance</span><span class="v">Exact balance value at which to halt (optional).</span></li>
-        <li><span class="k">Switch Over/Under</span><span class="v">Dice only — flip roll direction inline without touching the native control.</span></li>
-        <li><span class="k">Start / Stop / Reset</span><span class="v">Start kicks off rapid-fire. Reset clears all session stats and restarts from current balance.</span></li>
-      </ul>
+      <h2>Install</h2>
+      <p>IOW / Smart ships inside the unified bundle. Head to the install guide, pick your platform, and grab the one download link. After install, toggle IOW / Smart on from the in-page control panel.</p>
+      <p><a href="../install.html" class="btn primary">Go to install guide →</a></p>
     </section>
 
-    <section class="section">
-      <h2>Live stats &amp; graph</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="ficon">📈</div>
-          <h4>Profit graph</h4>
-          <p>Canvas-rendered balance over time, up to 10,000 points. Green fill above the start line, red below. Refreshes per-bet — no 500ms lag.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">📊</div>
-          <h4>Session bar</h4>
-          <p>Starting Balance · Current P/L · Peak Balance · Peak Profit · Win/Loss Rate · Multiplier performance.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🔥</div>
-          <h4>Streak tracking</h4>
-          <p>Current win/loss streak, max-ever win/loss streak, top 10 of each kept sorted descending.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🎯</div>
-          <h4>Multiplier tracking</h4>
-          <p>Smart mode tracks games played and won at the target multiplier — shows hit-rate as "X in Y."</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Rapid-fire engine</h2>
-      <ul class="list-tight">
-        <li><span class="k">Poll cadence</span><span class="v">15 ms — matches React update speed without thrashing it.</span></li>
-        <li><span class="k">Post-win cooldown</span><span class="v">500 ms pause after each cashout so you can actually see the result.</span></li>
-        <li><span class="k">Rapid-blocked detection</span><span class="v">If the Play button doesn't reappear within 1.2 s, auto-stop.</span></li>
-        <li><span class="k">Rapid-stall detection</span><span class="v">3 s with no bet settling auto-stops the engine (catches page freezes).</span></li>
-        <li><span class="k">Auto-stop reasons</span><span class="v">Stop Loss / Take Profit / Auto-Stop Balance / stall / blocked — all logged in the HUD.</span></li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Per-site quirks</h2>
-      <ul class="list-tight">
-        <li><span class="k">Stake</span><span class="v">Full-screen overlay; relocates the native sidebar into the top-right.</span></li>
-        <li><span class="k">Shuffle</span><span class="v">Purple themed (#6c47ff); custom dice-range slider added in the footer; sidebar collapsed (Shuffle has none by default).</span></li>
-        <li><span class="k">Nuts</span><span class="v">Simplified layout; SOL-denominated; min bet 0.00000001 SOL.</span></li>
-        <li><span class="k">Dice ↔ Dice Tool stitch</span><span class="v">On Stake/Shuffle Dice the Dice Tool's Calculator/Optimizer/Stats mount inside this HUD as an "Advanced IOW" tab — no second floating panel.</span></li>
-        <li><span class="k">Click-sound mute</span><span class="v">Shuffle — patches the Web Audio API to silence the 60 ms click sound on each Bet, leaving win sounds intact.</span></li>
-      </ul>
-    </section>
-
-    <section class="section" style="text-align:center;">
-      <h2>Install IOW / Smart</h2>
-      <p class="section-sub" style="margin-left:auto; margin-right:auto;">Ships in the unified bundle. Toggle on per-site from the control panel — IOW/Smart reloads the page on toggle so it can wire itself into the game UI.</p>
-      <div class="cta">
-        <a href="../install.html" class="btn primary">Go to install guide <span class="arrow">→</span></a>
-        <a href="../index.html#tools" class="btn ghost">Other tools</a>
-      </div>
-    </section>
-
-    <div class="back-row">
-      <a href="../index.html#tools" class="btn">← Back to all tools</a>
-    </div>
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
   </main>
 
   <footer class="site">
-    <div class="container">
-      <div class="foot-credit"><strong>Userscripts run client-side only.</strong> No telemetry, no external services. Use at your own risk &mdash; gamble responsibly.</div>
-      <div class="foot-links">
-        <a href="../index.html">Home</a>
-        <a href="../install.html">Install</a>
-        <a href="../index.html#tools">Tools</a>
-      </div>
-    </div>
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
   </footer>
 
   <script src="../assets/config.js"></script>

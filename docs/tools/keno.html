@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Keno Presets — Gambling Tools</title>
-  <meta name="description" content="Save your Keno number selections and risk level as named presets — and reload them in one click across Stake, Shuffle, and Nuts.gg." />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -12,138 +11,51 @@
     <div class="container">
       <a href="../index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
+        <a href="../install.html">Install Tampermonkey</a>
         <a href="../index.html#tools">Tools</a>
-        <a href="../install.html">Install</a>
-        <a href="../index.html#how">How it works</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-
-    <div class="tool-detail-head">
-      <div class="row">
-        <div class="icon-lg">🎱</div>
-        <div>
-          <h1>Keno Presets</h1>
-          <div class="head-meta">
-            <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
-            <span class="tag nuts">Nuts</span>
-            <span class="tag">Keno only</span>
-          </div>
-        </div>
-      </div>
-      <p class="tagline">
-        Stop re-picking 10 tiles every round. Save your number set and risk level as a named preset,
-        then load it back with one click — and your presets follow you across Stake, Shuffle, and Nuts.
-      </p>
+    <div class="tool-header">
+      <span class="icon">🎱</span>
+      <h1>Keno Presets</h1>
     </div>
+    <p class="tool-sub">Save your Keno tile + risk combos once, load them back in one click — on Stake or Nuts.</p>
 
-    <div class="tool-spec">
-      <div class="spec">
-        <div class="k">Games</div>
-        <div class="v">Keno only</div>
-      </div>
-      <div class="spec">
-        <div class="k">Risk levels</div>
-        <div class="v">Classic · Low · Medium · High</div>
-      </div>
-      <div class="spec">
-        <div class="k">Preset storage</div>
-        <div class="v">Shared across Stake, Shuffle, Nuts (same key)</div>
-      </div>
-      <div class="spec">
-        <div class="k">UI</div>
-        <div class="v">Draggable 260 px panel, bottom-right</div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <p>Pick your tiles, set the risk dropdown, hit <strong>Save As…</strong>, give the preset a name. Done. The panel shows your current picks live, so you always know exactly what's on the board.</p>
-      <p>Next time you want that board: pick the preset from the dropdown, hit <strong>Load</strong>, and the script clicks the tiles for you with a 40 ms delay between clicks (so React stays in sync) and snaps the risk dropdown to the saved value.</p>
-      <p><strong>Presets are shared.</strong> Save on Stake, load on Nuts. Save on Shuffle, load on Stake.us. Same names, same setups, every site.</p>
+    <div class="tool-desc">
+      <p>Tired of clicking 10 tiles and re-picking your risk every single round? Pick your numbers, set your difficulty, hit <strong>Save As…</strong> and give the preset a name.</p>
+      <p>Next time you want that exact board, select the preset from the dropdown and hit <strong>Load</strong> — tiles and risk snap into place automatically. The panel shows your current picks live, so you know exactly what's on the board before you hit Play.</p>
+      <p>Presets are stored in localStorage and <strong>shared between Stake and Nuts</strong>. Save a preset on Stake, load it on Nuts, or vice-versa — same names, same setups, both sites. Works on Stake.com, Stake.us (and all mirrors), and Nuts.gg.</p>
+      <p>Delete a preset from the same dropdown when you're done with it. The compact panel is out-of-the-way and stays out of your face while you play.</p>
     </div>
 
     <section class="section">
       <h2>Screenshots</h2>
       <div class="gallery">
         <figure>
-          <img src="../assets/img/tool-keno-picks.png" alt="Keno Presets panel with picks loaded on Stake" />
-          <figcaption>Picks loaded — current count, risk level, and full pick list shown live.</figcaption>
+          <img src="../assets/img/tool-keno-picks.png" alt="Keno Presets panel showing current picks on Stake" />
+          <figcaption>Current: 7 picks · risk medium — preset loaded and ready.</figcaption>
         </figure>
         <figure>
-          <img src="../assets/img/tool-keno-nopicks.png" alt="Keno Presets panel with no picks" />
-          <figcaption>Empty board state — pick a preset from the dropdown and click Load.</figcaption>
+          <img src="../assets/img/tool-keno-nopicks.png" alt="Keno Presets panel with no picks selected" />
+          <figcaption>Empty board state — pick a preset and click Load.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="section">
-      <h2>Controls</h2>
-      <ul class="list-tight">
-        <li><span class="k">Current picks display</span><span class="v">Shows pick count, risk level, and the comma-separated list of selected numbers (1–80).</span></li>
-        <li><span class="k">Preset dropdown</span><span class="v">Lists every saved preset as "Name (## picks, risk)."</span></li>
-        <li><span class="k">Load</span><span class="v">Clicks the tiles in the saved order, toggles to reach the target set, snaps the risk dropdown. Shows a loading state during apply.</span></li>
-        <li><span class="k">Save As…</span><span class="v">Prompts for a name. Stores numbers (1–80) + risk. Confirms before overwriting an existing name.</span></li>
-        <li><span class="k">Delete</span><span class="v">Removes the selected preset after confirmation.</span></li>
-        <li><span class="k">Draggable header</span><span class="v">Move the panel anywhere; position persists between sessions on the same site.</span></li>
-      </ul>
+      <h2>Install</h2>
+      <p>Keno Presets ships inside the unified bundle. Head to the install guide, pick your platform, and grab the one download link. After install, toggle Keno Presets on from the in-page control panel.</p>
+      <p><a href="../install.html" class="btn primary">Go to install guide →</a></p>
     </section>
 
-    <section class="section">
-      <h2>How it tracks your picks</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="ficon">👆</div>
-          <h4>Click capture</h4>
-          <p>Captures tile clicks in the capture phase, so it sees every pick the user makes — independent of the game's own React state.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🔁</div>
-          <h4>DOM re-sync</h4>
-          <p>Polls <code>data-selected="true"</code> on tiles every 500 ms; a MutationObserver watches the grid for navigation changes.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🗂️</div>
-          <h4>Single source of truth</h4>
-          <p>The script's internal <code>userPicks</code> Set is authoritative, so the panel display matches reality even when the DOM lags.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Per-site quirks</h2>
-      <ul class="list-tight">
-        <li><span class="k">Stake / Shuffle</span><span class="v">Identical implementation; both use the native <code>game-difficulty</code> dropdown for risk.</span></li>
-        <li><span class="k">Nuts</span><span class="v">Uses a 0–3 slider instead of a dropdown; the script maps the index to the same Classic/Low/Medium/High names so presets stay portable.</span></li>
-        <li><span class="k">Cross-site presets</span><span class="v">All sites read/write the same localStorage <code>keno-presets</code> key — your library is genuinely shared.</span></li>
-      </ul>
-    </section>
-
-    <section class="section" style="text-align:center;">
-      <h2>Install Keno Presets</h2>
-      <p class="section-sub" style="margin-left:auto; margin-right:auto;">Ships in the unified bundle. Enable per-site from the control panel — the preset panel pops in at the bottom-right.</p>
-      <div class="cta">
-        <a href="../install.html" class="btn primary">Go to install guide <span class="arrow">→</span></a>
-        <a href="../index.html#tools" class="btn ghost">Other tools</a>
-      </div>
-    </section>
-
-    <div class="back-row">
-      <a href="../index.html#tools" class="btn">← Back to all tools</a>
-    </div>
+    <p><a href="../index.html#tools" class="btn">← Back to all tools</a></p>
   </main>
 
   <footer class="site">
-    <div class="container">
-      <div class="foot-credit"><strong>Userscripts run client-side only.</strong> No telemetry, no external services. Use at your own risk &mdash; gamble responsibly.</div>
-      <div class="foot-links">
-        <a href="../index.html">Home</a>
-        <a href="../install.html">Install</a>
-        <a href="../index.html#tools">Tools</a>
-      </div>
-    </div>
+    <div class="container">Userscripts run client-side only. Use at your own risk — gamble responsibly.</div>
   </footer>
 
   <script src="../assets/config.js"></script>

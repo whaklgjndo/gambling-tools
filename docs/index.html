@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gambling Tools — Userscripts for Stake, Nuts.gg &amp; Shuffle</title>
-  <meta name="description" content="One Tampermonkey userscript per platform, bundling Auto-Vault, IOW/Smart bet-sizing, Keno preset manager, Mines auto-player, and the Dice strategy tool. Built for Stake, Nuts.gg, and Shuffle." />
+  <title>Gambling Tools — Userscripts for Stake, Nuts & Shuffle</title>
+  <meta name="description" content="A collection of Tampermonkey userscripts for Stake, Nuts.gg, and Shuffle: auto-vault, bet-sizing modes, Keno presets, Mines helper, and Dice tools. One unified script per platform with an in-page control panel." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -12,257 +12,112 @@
     <div class="container">
       <a href="index.html" class="logo"><span class="dot"></span> Gambling Tools</a>
       <nav>
-        <a href="index.html#tools">Tools</a>
-        <a href="install.html">Install</a>
-        <a href="index.html#how">How it works</a>
+        <a href="install.html">Install Tampermonkey</a>
+        <a href="#tools">Tools</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-
-    <!-- ============ HERO ============ -->
     <section class="hero">
-      <span class="section-eyebrow">v2.29 · Unified bundle</span>
-      <h1>Five tools, <span class="accent">one userscript</span>,<br />every site you play on.</h1>
-      <p class="lead">
-        A handcrafted Tampermonkey bundle for casino originals on Stake, Nuts.gg, and Shuffle.
-        Auto-Vault profits, run smart bet-sizing on Dice and Limbo, manage Keno presets,
-        auto-play Mines, and design Dice strategies with a built-in simulator — all toggled from one
-        in-page control panel.
-      </p>
+      <h1>Userscripts for Stake, Nuts &amp; Shuffle</h1>
+      <p>A clean collection of Tampermonkey tools — auto-vault, smart bet-sizing, Keno presets, Mines helper, and Dice utilities. <strong>Now bundled into one script per platform</strong> with a built-in control panel to enable or disable each tool right from the page.</p>
       <div class="cta">
-        <a href="install.html" class="btn primary large">Install now <span class="arrow">→</span></a>
-        <a href="#tools" class="btn ghost large">See the tools</a>
-      </div>
-
-      <div class="support-strip">
-        <span class="label">Runs on</span>
-        <span class="sites">
-          <span class="site-name stake">Stake.com</span>
-          <span class="site-name stake">Stake.us</span>
-          <span class="site-name stake">+ mirrors</span>
-          <span class="site-name nuts">Nuts.gg</span>
-          <span class="site-name shuffle">Shuffle.com</span>
-          <span class="site-name shuffle">Shuffle.us</span>
-        </span>
-      </div>
-
-      <div class="stats">
-        <div class="stat"><div class="num accent">5</div><div class="label">Tools bundled</div></div>
-        <div class="stat"><div class="num accent">14</div><div class="label">Domains covered</div></div>
-        <div class="stat"><div class="num accent">1</div><div class="label">Install per platform</div></div>
-        <div class="stat"><div class="num accent">∞</div><div class="label">Times toggled</div></div>
+        <a href="install.html" class="btn primary">Install Tampermonkey →</a>
+        <a href="#tools" class="btn">Browse tools</a>
       </div>
     </section>
 
-    <!-- ============ TOOLS ============ -->
     <section id="tools" class="section">
-      <span class="section-eyebrow">What's inside</span>
-      <h2>The five tools</h2>
-      <p class="section-sub">
-        Every tile below ships in the same Unified Desktop / Unified Mobile script. The in-page
-        control panel groups them by site so you can enable just what you want — nothing else
-        renders or runs.
-      </p>
+      <h2>Tools</h2>
+      <p style="color:var(--text-dim); margin: 0 0 8px;">Everything below ships in a single <strong>Unified Desktop</strong> or <strong>Unified Mobile</strong> userscript — install once, then toggle individual tools from the in-page control panel. Each card below links to its full guide.</p>
 
-      <div class="tool-grid">
-        <a href="tools/autovault.html" class="tool-card">
-          <div class="row-top">
-            <div class="icon">🔒</div>
-          </div>
+      <div class="grid">
+        <a href="tools/autovault.html" class="card">
+          <div class="icon">🔒</div>
           <h3>Auto-Vault</h3>
-          <p>Watches your balance and quietly sweeps a configurable % of profits into your vault. Big-win multiplier locks in more when a spike happens, rate-limited so it's never spammy.</p>
+          <p>Automatically sends a configurable percentage of your profits straight to the vault. Floating UI, per-currency limits.</p>
           <div class="tags">
             <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
             <span class="tag nuts">Nuts</span>
           </div>
-          <div class="card-foot">
-            <span>Site-wide</span>
-            <span class="more">Read more →</span>
+          <div class="card-footer">
+            <span>Bundled · Desktop + Mobile</span>
+            <span>→</span>
           </div>
         </a>
 
-        <a href="tools/iow-smart.html" class="tool-card">
-          <div class="row-top">
-            <div class="icon">🎯</div>
-          </div>
+        <a href="tools/iow-smart.html" class="card">
+          <div class="icon">🎯</div>
           <h3>IOW / Smart</h3>
-          <p>Manual, Increase-on-Win, and Smart bet-sizing for Dice and Limbo. Live profit graph, streak tracking, stop-loss / take-profit, and a rapid-fire engine with stall protection.</p>
+          <p>Manual, Increase-on-Win, and Smart bet-sizing modes for Dice and Limbo. Live stats, compact HUD, auto-stop limits.</p>
           <div class="tags">
             <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
             <span class="tag nuts">Nuts</span>
           </div>
-          <div class="card-foot">
-            <span>Dice · Limbo · Target</span>
-            <span class="more">Read more →</span>
+          <div class="card-footer">
+            <span>Bundled · Desktop + Mobile</span>
+            <span>→</span>
           </div>
         </a>
 
-        <a href="tools/keno.html" class="tool-card">
-          <div class="row-top">
-            <div class="icon">🎱</div>
-          </div>
-          <h3>Keno Presets</h3>
-          <p>Save your number picks and risk level once, reload them in one click. Presets are shared across Stake, Shuffle, and Nuts via a common storage key — same names, every site.</p>
+        <a href="tools/keno.html" class="card">
+          <div class="icon">🎱</div>
+          <h3>Keno Preset Manager</h3>
+          <p>Save and load Keno number + difficulty presets. Shared across Stake sites via localStorage.</p>
           <div class="tags">
             <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
             <span class="tag nuts">Nuts</span>
           </div>
-          <div class="card-foot">
-            <span>Keno only</span>
-            <span class="more">Read more →</span>
+          <div class="card-footer">
+            <span>Bundled · Desktop + Mobile</span>
+            <span>→</span>
           </div>
         </a>
 
-        <a href="tools/mines.html" class="tool-card">
-          <div class="row-top">
-            <div class="icon">💎</div>
-          </div>
-          <h3>Mines Auto</h3>
-          <p>Auto-plays Mines with weighted random tile picks in your chosen Min–Max range. Shows live multiplier, payout, and next-gem probability. Auto-cashes out when the board clears.</p>
+        <a href="tools/mines.html" class="card">
+          <div class="icon">💎</div>
+          <h3>Mines Auto + Helper</h3>
+          <p>Auto-plays Mines with weighted random tile picks. Live multiplier, payout, and next-gem probability stats.</p>
           <div class="tags">
             <span class="tag stake">Stake</span>
-            <span class="tag shuffle">Shuffle</span>
             <span class="tag nuts">Nuts</span>
           </div>
-          <div class="card-foot">
-            <span>Mines only</span>
-            <span class="more">Read more →</span>
+          <div class="card-footer">
+            <span>Bundled · Desktop + Mobile</span>
+            <span>→</span>
           </div>
         </a>
 
-        <a href="tools/shuffle-dice.html" class="tool-card">
-          <div class="row-top">
-            <div class="icon">🎲</div>
-          </div>
+        <a href="tools/shuffle-dice.html" class="card">
+          <div class="icon">🎲</div>
           <h3>Dice Tool</h3>
-          <p>Build SWALD-style strategies with a Kelly-flavored calculator, then grid-search the parameter space in parallel Web Workers. Results table, CSV export, one-click strategy import.</p>
+          <p>On-site dice helper: win/loss counter, streak-based autoplay stopper, balance export, one-tap strategy import.</p>
           <div class="tags">
             <span class="tag stake">Stake</span>
             <span class="tag shuffle">Shuffle</span>
           </div>
-          <div class="card-foot">
-            <span>Dice page (stitched into IOW HUD)</span>
-            <span class="more">Read more →</span>
-          </div>
-        </a>
-
-        <a href="install.html" class="tool-card" style="background: linear-gradient(140deg, rgba(34,197,94,0.06), transparent 60%);">
-          <div class="row-top">
-            <div class="icon">⚙️</div>
-          </div>
-          <h3>Control Panel</h3>
-          <p>One floating ⚙ button on every supported site. Opens a draggable panel grouped by site with a status badge per tool (Running / Disabled / Unmatched), bulk enable/disable, and per-game quick-toggle chips.</p>
-          <div class="tags">
-            <span class="tag">Always on</span>
-          </div>
-          <div class="card-foot">
-            <span>Ships with the bundle</span>
-            <span class="more">Install →</span>
+          <div class="card-footer">
+            <span>Bundled · Desktop + Mobile</span>
+            <span>→</span>
           </div>
         </a>
       </div>
     </section>
 
-    <!-- ============ HOW IT WORKS ============ -->
-    <section id="how" class="section">
-      <span class="section-eyebrow">How it works</span>
-      <h2>Three steps, then you're playing</h2>
-      <p class="section-sub">
-        The bundle is one userscript per platform. No build pipeline, no extension permissions,
-        no account login — Tampermonkey injects it on the matching URL and the control panel does
-        the rest.
-      </p>
-
-      <div class="howit">
-        <div class="step">
-          <span class="n">Step 01</span>
-          <h4>Install Tampermonkey</h4>
-          <p>Free browser extension on desktop. iOS uses the Userscripts app; Android uses Firefox + Tampermonkey. The install guide walks each one.</p>
-        </div>
-        <div class="step">
-          <span class="n">Step 02</span>
-          <h4>Add the unified script</h4>
-          <p>One download. The install page has a single pinned link per platform — drag it into Tampermonkey on desktop, tap-install on mobile.</p>
-        </div>
-        <div class="step">
-          <span class="n">Step 03</span>
-          <h4>Toggle tools on the page</h4>
-          <p>Open Stake, Nuts.gg, or Shuffle. The ⚙ button appears bottom-left — flip the switches for the tools you actually want. The rest stay dormant.</p>
-        </div>
-      </div>
-
-      <div class="cta" style="margin-top: 24px;">
-        <a href="install.html" class="btn primary">Open the install guide <span class="arrow">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============ ARCHITECTURE / FAQ-ISH ============ -->
     <section class="section">
-      <span class="section-eyebrow">Under the hood</span>
-      <h2>Built like a tool, not a toy</h2>
-
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="ficon">⚡</div>
-          <h4>One bundle, every site</h4>
-          <p>Matches 14 domains (Stake, Stake.us, Stake mirrors, Nuts.gg + subdomains, Shuffle.com, Shuffle.us). Each tool only mounts on the games it supports.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🔌</div>
-          <h4>Cross-tool integrations</h4>
-          <p>The Dice Tool's Calculator / Optimizer / Stats stitch directly into the IOW/Smart HUD as an "Advanced IOW" tab on Stake and Shuffle Dice pages.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">💾</div>
-          <h4>Settings persist</h4>
-          <p>Each tool saves its own configuration to localStorage. Keno presets are shared across sites; Auto-Vault tracks vaulted totals per currency per site.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🛟</div>
-          <h4>Idle &amp; stall aware</h4>
-          <p>Rapid-fire bet engine auto-stops on stall (3s no settle), rapid-blocked (1.2s no Play button), and after every win for a 500ms cool-down so you actually see the result.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🎚️</div>
-          <h4>Quick toggles per game</h4>
-          <p>On games where a tool is active (Dice, Mines, Keno…), a small chip stacks above the ⚙ button so you can enable/disable that one tool without opening the panel.</p>
-        </div>
-        <div class="feature">
-          <div class="ficon">🔒</div>
-          <h4>Client-side, always</h4>
-          <p>No telemetry, no remote calls, no auth. The script runs in your browser, talks only to the site you're already on. Open-source under your own copy of the repo.</p>
-        </div>
-      </div>
+      <h2>Getting started</h2>
+      <ol class="steps">
+        <li><strong>Install Tampermonkey</strong> (desktop) or the Userscripts app (iOS) / Firefox + Tampermonkey (Android). <a href="install.html">See the install guide →</a></li>
+        <li><strong>Install the unified script</strong> — one download covers every tool on every supported site. The install page has Desktop and Mobile builds pinned at the top of each tab.</li>
+        <li><strong>Open a supported site</strong> (Stake, Nuts.gg, or Shuffle) and refresh once. A small control panel appears — toggle the tools you want on, leave the rest off.</li>
+      </ol>
     </section>
-
-    <!-- ============ CTA FOOTER ============ -->
-    <section class="section" style="text-align:center; padding-top: 24px;">
-      <h2 style="margin-bottom: 14px;">Ready to install?</h2>
-      <p class="section-sub" style="margin-left:auto; margin-right:auto;">
-        One link per platform on the install page. Tampermonkey handles the rest.
-      </p>
-      <div class="cta">
-        <a href="install.html" class="btn primary large">Go to install guide <span class="arrow">→</span></a>
-      </div>
-    </section>
-
   </main>
 
   <footer class="site">
     <div class="container">
-      <div class="foot-credit">
-        <strong>Userscripts run client-side only.</strong> No telemetry, no external services. Use at your own risk &mdash; gamble responsibly.
-      </div>
-      <div class="foot-links">
-        <a href="install.html">Install</a>
-        <a href="index.html#tools">Tools</a>
-        <a href="index.html#how">How it works</a>
-      </div>
+      Userscripts run client-side only. Use at your own risk — gamble responsibly.
     </div>
   </footer>
 
